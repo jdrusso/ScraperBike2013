@@ -251,7 +251,7 @@ public class ScraperBike extends IterativeRobot {
         new ChangeShooterSpeed('j').start();
 //        System.out.println("Rots: " + truncate(VerticalAxis.getVerRotationsDouble()) + ", " + truncate(shooterController.getRotationsDouble()));
         Scheduler.getInstance().run();
-        System.out.println("TSORT Running: " + targetSort.isRunning());
+        //System.out.println("TSORT Running: " + targetSort.isRunning());
     }
     
     public double truncate(double d){

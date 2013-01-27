@@ -149,7 +149,15 @@ public class RobotMap {
     // Ki - K integral value for shooter.
     public static final double shooterKi = (double) (0);
     // Kp - K differential value for shooter.
-    public static final double shooterKd = (double) (0);
+    public static final double shooterKd = (double) (0);    
+    
+     /* ROBOT CODE DEFINED CONSTANTS */
+    // Kp - K proportional value for shooter.
+    public static final double DTKp = (double) (1);
+    // Ki - K integral value for shooter.
+    public static final double DTKi = (double) (0);
+    // Kp - K differential value for shooter.
+    public static final double DTKd = (double) (0);
     
     /*String KeyValues for Vision Tracking Hashtable*/
     //VTx - X value offset
@@ -169,6 +177,9 @@ public class RobotMap {
     public static final int realignLeft = -1;
     public static final int realignRight = 1;
     public static final int realignCenter = 0;
+    
+    public static double targetDistance = 6;
+    public static double LatMovOut = 0;
     /*
     * Target Values to be edited by Target Sorting thread
     */

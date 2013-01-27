@@ -78,6 +78,10 @@ public class DriveTrain extends Subsystem {
         drive.drive(speed, 0.0);
     }
     
+    public void drive(double speed, double rot) {
+        drive.drive(speed, rot);
+    }
+    
     public void rotate(double rot) {
         drive.arcadeDrive(0, rot);
     }

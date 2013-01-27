@@ -18,41 +18,32 @@ import edu.wpi.first.wpilibj.PIDSource;
  *
  * @author abbottk
  */
-public class DriveTrainTargeting extends PIDCommand {
+public class DriveTrainLateral extends PIDCommand {
     private DriveTrain driveTrain;
     private RobotDrive d;
     
     
-    public DriveTrainTargeting(double Kp, double Ki, double Kd){
+    public DriveTrainLateral(double Kp, double Ki, double Kd){
         super("", Kp, Ki, Kd);
         this.driveTrain = ScraperBike.getDriveTrain();
-        requires(this.driveTrain);
+        //requires(this.driveTrain);
         
     }    
-    
-//    public DriveTrainTargeting(double Kp, double Ki, double Kd, double Kp2, double Ki2, double Kd2){
-//        super("", Kp, Ki, Kd);
-//        this.driveTrain = ScraperBike.getDriveTrain();
-//        requires(this.driveTrain);
-//        
-//    }
     
     //Takes X coordinate of top detected target centroid and feeds it to PID loop
     protected double returnPIDInput() {
         
-        //If a top target is detected, give it's X coord
-        if(RobotMap.top[0] != 0){
+        //If a range is detected, use that as input
+        if(RobotMap.range != 0 && RobotMap.range < 300){
             
-            return RobotMap.top[0];
+            return RobotMap.range;
         }
         
         //if not, this effectively stops the loop from moving anything.
         else {
             
-//            HorizontalTurretAxis.getCommandLog().setOutputs("N/A");//
-            return RobotMap.cameraXOffset;
+            return RobotMap.targetDistance;
         }
-        //TODO:  Get x values and add to meta command log, also do for vertical turret
         
     }
 
@@ -61,27 +52,20 @@ public class DriveTrainTargeting extends PIDCommand {
         // Only give the PIDcommand output if the manual control is not on.
         
         //this.driveTrain.rotate(-output*.55);
-        System.out.println("Speed: " + RobotMap.LatMovOut + ", Rotation: " + output*.63);
-        
-        if (Math.abs(RobotMap.LatMovOut) >= .1)
-        {
-            this.driveTrain.drive(RobotMap.LatMovOut*.3, -output*.63);
-        } else if (Math.abs(RobotMap.LatMovOut) < .1)
-        {
-            this.driveTrain.rotate(-output*.63);
-        }
+        RobotMap.LatMovOut = output;
     }
 
     protected void initialize() {
         
         //this.getPIDController().setPercentTolerance(5);
 //        HorizontalTurretAxis.getCommandLog().setCommand(this.getName());
-        //this.getPIDController().setOutputRange(-1, 1);
+        this.getPIDController().setPercentTolerance(8);
+        this.getPIDController().setOutputRange(-1, 1);
     }
 
     protected void execute() {
         
-        this.setSetpoint(RobotMap.cameraXOffset);
+        this.setSetpoint(RobotMap.targetDistance);
     }
 
     protected boolean isFinished() {
@@ -90,9 +74,13 @@ public class DriveTrainTargeting extends PIDCommand {
     }
 
     protected void end() {
+        
+        RobotMap.LatMovOut = 0;
     }
 
     protected void interrupted() {
+        
+        RobotMap.LatMovOut = 0;
     }
     
     

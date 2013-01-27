@@ -39,7 +39,7 @@ public class HorizontalTurretAxis extends Subsystem{
     }
     
     public void rotate(double speed){
-        System.out.println(RobotMap.leftLimit.get() +", " + RobotMap.rightLimit.get());
+        //System.out.println(RobotMap.leftLimit.get() +", " + RobotMap.rightLimit.get());
         if(RobotMap.leftLimit.get() == true && RobotMap.rightLimit.get() == true) //These switches are false when high
         {
             

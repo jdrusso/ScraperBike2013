@@ -48,7 +48,7 @@ public class TargetSorting extends CommandBase {
     {
         
         if(isSorting == false){
-            System.out.println("Initiating sort");
+            //System.out.println("Initiating sort");
             validTargets = 0;
 
             X_values = fillXArray();
@@ -90,10 +90,10 @@ public class TargetSorting extends CommandBase {
                 validTargets++;
             }
 
-            System.out.println("Unsorted array: " + arrayToString(targetArray));
-            System.out.println("About to sort!");
+            //System.out.println("Unsorted array: " + arrayToString(targetArray));
+            //System.out.println("About to sort!");
             sortTargets();
-            System.out.println("Sorted.");
+            //System.out.println("Sorted.");
             finished = true;
         }
         
@@ -119,7 +119,7 @@ public class TargetSorting extends CommandBase {
             X_values[1] = ScraperBike.nt.getNumber("X2");
             X_values[2] = ScraperBike.nt.getNumber("X3");
             X_values[3] = ScraperBike.nt.getNumber("X4");
-            System.out.println("X values stored");
+            //System.out.println("X values stored");
         }
         return X_values;
     }
@@ -133,7 +133,7 @@ public class TargetSorting extends CommandBase {
             Y_values[1] = ScraperBike.nt.getNumber("Y2");
             Y_values[2] = ScraperBike.nt.getNumber("Y3");
             Y_values[3] = ScraperBike.nt.getNumber("Y4");
-            System.out.println("Y values stored");
+            //System.out.println("Y values stored");
         }
         return Y_values;
     }
@@ -141,7 +141,7 @@ public class TargetSorting extends CommandBase {
     protected synchronized double[][] sortTargets(){
 
         isSorting = true;
-        System.out.println("sortTargets begun");
+        //System.out.println("sortTargets begun");
         double[][] sortedArray = new double[4][2];
 
         double[] x_sort = new double[]{targetArray[0][0], targetArray[1][0], targetArray[2][0], targetArray[3][0]};
@@ -196,7 +196,7 @@ public class TargetSorting extends CommandBase {
             }
         }
 
-        System.out.println("Targets sorted! " + truncate(sortedArray[0][0]) + ", " + validTargets);
+        //System.out.println("Targets sorted! " + truncate(sortedArray[0][0]) + ", " + validTargets);
         RobotMap.top[0] = sortedArray[0][0];
         RobotMap.top[1] = sortedArray[0][1];
         RobotMap.bottom[0] = sortedArray[1][0];
@@ -221,7 +221,7 @@ public class TargetSorting extends CommandBase {
 
     public synchronized double[] arraySort(double[] unsorted)
     {
-        System.out.println("ArraySort running");
+        //System.out.println("ArraySort running");
         double[] sorted;
 
         for(int i=0; i<unsorted.length; i++)
@@ -241,7 +241,7 @@ public class TargetSorting extends CommandBase {
 
         sorted = unsorted;
 
-        System.out.println("ArraySort finished.");
+        //System.out.println("ArraySort finished.");
         return sorted;
     }
     
