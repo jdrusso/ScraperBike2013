@@ -18,6 +18,7 @@ public class Shooter extends Subsystem {
 
     public Jaguar LeftJaguar;
     public Jaguar RightJaguar;
+    public AnalogChannel RangeFinder;
     
     //private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
     
@@ -36,6 +37,17 @@ public class Shooter extends Subsystem {
         LeftJaguar.set(speed);
         RightJaguar.set(speed);
         
+    }
+    
+    public double getRange(){
+        
+        double range = this.RangeFinder.getVoltage()/.098;
+        return range;
+    }
+    
+    public double getRangeFT(){
+        
+        return (getRange()/12);
     }
     
 //    public double getUltrasonic(){

@@ -77,6 +77,8 @@ public class DriveTrainTargeting extends PIDCommand {
         //this.getPIDController().setPercentTolerance(5);
 //        HorizontalTurretAxis.getCommandLog().setCommand(this.getName());
         //this.getPIDController().setOutputRange(-1, 1);
+        ScraperBike.nt.putBoolean("AutoAlign", true);
+        this.getPIDController().setPercentTolerance(5);
     }
 
     protected void execute() {

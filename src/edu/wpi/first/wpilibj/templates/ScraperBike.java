@@ -102,6 +102,7 @@ public class ScraperBike extends IterativeRobot {
         status = new String();
         nt = NetworkTable.getTable("ST");
         nt.putString("Status", "Initializing");
+        nt.putBoolean("AutoAlign", false);
         autonomousCommand = new WinAutonomous();
         DriveTrain = new DriveTrain();
         HorizontalAxis = new HorizontalTurretAxis();
@@ -128,6 +129,7 @@ public class ScraperBike extends IterativeRobot {
         autoTracking = new HorizontalTurretRotation
                 (RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd);
         nt.putString("Status", "Initialized");
+        shooterController.RangeFinder = new AnalogChannel(2);
         
 //        RobotMap.motor.setDirection(Relay.Direction.kBoth);
 //        RobotMap.motor.set(Relay.Value.kOff);
@@ -224,7 +226,9 @@ public class ScraperBike extends IterativeRobot {
         //FRCControl.setErrorData("test error".getBytes(), "test error".length(), 100);
         //display.println(Line.kUser2, 1, "" +   correctRange()   + ", " + metaTable.getConnections() + "                 ");
         display.println(Line.kUser1, 1, "Status: " + status + "              ");
-        display.println(Line.kUser2, 1, "Range: " + correctRange() + " ft");
+        //display.println(Line.kUser2, 1, "Range: " + correctRange() + " ft");
+        display.println(Line.kUser2, 1, "Range: " + shooterController.getRange() + " ft");
+        nt.putNumber("USRange", shooterController.getRange());
         display.println(Line.kUser3, 1, "" + RobotMap.top[0]    + ", " + RobotMap.top[1]            + "                 ");
         display.println(Line.kUser4, 1, "" + RobotMap.right[0]  + ", " + RobotMap.right[1]          + "                 ");
         display.println(Line.kUser5, 1, "" + RobotMap.bottom[0] + ", " + RobotMap.bottom[1]         + "                 ");
@@ -239,6 +243,7 @@ public class ScraperBike extends IterativeRobot {
         display.updateLCD();
         
         if (RobotMap.shootTrigger.get()) {
+            
             
             shooterController.LeftJaguar.set(shooterSpeed);
             shooterController.RightJaguar.set(shooterSpeed);

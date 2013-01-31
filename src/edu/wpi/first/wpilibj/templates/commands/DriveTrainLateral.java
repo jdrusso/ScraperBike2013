@@ -37,6 +37,7 @@ public class DriveTrainLateral extends PIDCommand {
         if(RobotMap.range != 0 && RobotMap.range < 300){
             
             return RobotMap.range;
+            //return ScraperBike.getShooterController().getRange();
         }
         
         //if not, this effectively stops the loop from moving anything.

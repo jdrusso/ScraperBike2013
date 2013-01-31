@@ -116,8 +116,8 @@ public class OI {
         autoTargeter = RobotMap.shootButton8;
         autoTargeterDisable = RobotMap.shootButton9;
         //autoTargeter.whenPressed(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-        autoTargeter.whenPressed(new DriveTrainTargeting(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-        autoTargeter.whenPressed(new DriveTrainLateral(RobotMap.DTKp, RobotMap.DTKi, RobotMap.DTKd));
+        autoTargeter.whenPressed(new DriveTrainTargeting(RobotMap.DTRKp, RobotMap.DTRKi, RobotMap.DTRKd));
+        autoTargeter.whenPressed(new DriveTrainLateral(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd));
         //autoTargeterDisable.whenPressed(new HorizontalTurretRotationManual());
         autoTargeterDisable.whenPressed(new DefaultDriveTrain(ScraperBike.getDriveTrain().getDrive(), getJoystick1()));
     }

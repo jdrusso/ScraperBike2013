@@ -35,6 +35,7 @@ public class DefaultDriveTrain extends CommandBase{
     }
     
     protected void initialize() {
+        ScraperBike.nt.putBoolean("AutoAlign", false);
 //        DriveTrain.getCommandLog().setCommand(this.getName());
     }
 

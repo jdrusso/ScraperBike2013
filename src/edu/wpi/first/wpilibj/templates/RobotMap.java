@@ -151,13 +151,21 @@ public class RobotMap {
     // Kp - K differential value for shooter.
     public static final double shooterKd = (double) (0);    
     
+    /* ROBOT CODE DEFINED CONSTANTS */
+    // Kp - K proportional value for Drive Train Rotation.
+    public static final double DTRKp = (double) (.25/20);
+    // Ki - K integral value for Drive Train Rotation.
+    public static final double DTRKi = (double) (3);
+    // Kp - K differential value for Drive Train Rotation.
+    public static final double DTRKd = (double) (0);
+    
      /* ROBOT CODE DEFINED CONSTANTS */
-    // Kp - K proportional value for shooter.
-    public static final double DTKp = (double) (1);
-    // Ki - K integral value for shooter.
-    public static final double DTKi = (double) (0);
-    // Kp - K differential value for shooter.
-    public static final double DTKd = (double) (0);
+    // Kp - K proportional value for Lateral Drive Train.
+    public static final double DTLKp = (double) (1);
+    // Ki - K integral value for Lateral Drive Train.
+    public static final double DTLKi = (double) (0);
+    // Kp - K differential value for Lateral Drive Train.
+    public static final double DTLKd = (double) (0);
     
     /*String KeyValues for Vision Tracking Hashtable*/
     //VTx - X value offset
