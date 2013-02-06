@@ -19,99 +19,29 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
  */
 public class OI {
     // Process operator interface input here.
-    private static Button Balance;
-    private static Button AutoBalance;
     private static Button manualShooter;
-   // private static MetaTCPVariables mdu;
-    private static Button endAutoBalance;
-    private static Button RampUp;
-    private static Button RampDown;
-    private static Button ballCollector;
-    private static Button ShooterRealignRight;
-    private static Button ShooterRealignLeft;
-    private static Button ShooterRealignCenter;
-    private static Button speedSetterUp;
-    private static Button speedSetterDown;
-    private static Button elevatorUpButton;
-    private static Button relayTest;
-    private static Button elevatorDownButton;
-    private static Button ballSpitter;;
-    private static Button HorTurretFwd;
-    private static Button HorTurretRev;
-    private static Button VerTurretFwd;
-    private static Button VerTurretRev;
+    //private static Button speedSetterUp;
+    //private static Button speedSetterDown;
+    //private static Button VerTurretFwd;
+    //private static Button VerTurretRev;
     private static Button autoTargeter;
     private static Button autoTargeterDisable;
+    private static Button reloadLeft;
+    private static Button reloadRight;
     
     
     public static void initialize() {
         
-        Balance = RobotMap.dButton2;
-        //Balance.whileHeld(new BalancingManual());
-        //Balance.whenReleased(new BalancingAutomatic(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));        
+        manualShooter = RobotMap.dButton3;
+        reloadLeft = RobotMap.dButton4;
+        reloadRight = RobotMap.dButton5;
         
-        //AutoBalance = RobotMap.dButton3;
-        //AutoBalance.whenDoublePressed(new BalancingAutomatic(RobotMap.AutoBalKp, RobotMap.AutoBalKi, RobotMap.AutoBalKd));
-        
-        manualShooter = RobotMap.shootTrigger;
-        //manualShooter.whileHeld(new VerticalDefaultCommand());
-        //manualShooter.whileHeld(new HorizontalDefaultCommand());
-        //manualShooter.whenTriplePressed(new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd));
-        
-        ballCollector = RobotMap.dButton4;
-        ballCollector.whenPressed(new BallCollectionOn());
-        ballCollector.whenReleased(new BallCollectionOff());
-        
-        ballSpitter = RobotMap.dButton5;
-        ballSpitter.whenPressed(new BallCollectionReverse());
-        ballSpitter.whenReleased(new BallCollectionOff());
-        
-        elevatorUpButton = RobotMap.shootButton3;
-        elevatorUpButton.whenPressed(new ElevatorUp());
-        elevatorUpButton.whenReleased(new ElevatorOff());
-        
-        elevatorDownButton = RobotMap.shootButton2;
-        elevatorDownButton.whenPressed(new ElevatorDown());       
-        elevatorDownButton.whenReleased(new ElevatorOff());
-
-        ShooterRealignRight = RobotMap.shootButton5;
-        ShooterRealignRight.whileHeld(new SetpointRealignment(RobotMap.realignRight));
-        
-        ShooterRealignLeft = RobotMap.shootButton4;
-        ShooterRealignLeft.whileHeld(new SetpointRealignment(RobotMap.realignLeft));
-        
-        ShooterRealignCenter = RobotMap.shootButton10;
-        ShooterRealignRight.whenPressed(new SetpointRealignment(RobotMap.realignCenter));
-        
-        RampUp = RobotMap.dButton8;
-        RampDown = RobotMap.dButton9;
-        // below code tried to do this in one button but it wasnt working.
-        // so i swapped it out for two buttons.
-        //RampUp.whenPressed(new ArmDown());
-        //RampUp.whenTriplePressed(new ArmUp());
-        RampUp.whileHeld(new ArmUp());
-        RampDown.whileHeld(new ArmDown());
-
-        
-        speedSetterUp = RobotMap.shootButton6;
-        speedSetterDown = RobotMap.shootButton7;
-        speedSetterUp.whileHeld(new ChangeShooterSpeed('+'));
-        speedSetterDown.whileHeld(new ChangeShooterSpeed('-'));
-        speedSetterUp.whenReleased(new ChangeShooterSpeed(' '));
-        speedSetterDown.whenReleased(new ChangeShooterSpeed(' '));
-//        speedSetterUp.whenTriplePressed(new ChangeShooterSpeed('r'));
-//        speedSetterDown.whenTriplePressed(new ChangeShooterSpeed('r'));
-        
-        HorTurretFwd = RobotMap.shootButton11;
-        HorTurretFwd.whileHeld(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-        HorTurretFwd.whenReleased(new HorizontalTurretRotationManual());
-        
-        //change thsi to be like horturret, default automatic off, use joysticks
-        //Modified to work with joysticks instead of butans
-        //VerTurretFwd = RobotMap.shootButton11;
-        //VerTurretRev = RobotMap.shootButton10;
-        //VerTurretFwd.whileHeld(new VerticalTurretRotationManual(1));
-        //VerTurretRev.whileHeld(new VerticalTurretRotationManual(-1));
+        //speedSetterUp = RobotMap.shootButton6;
+        //speedSetterDown = RobotMap.shootButton7;
+        //speedSetterUp.whileHeld(new ChangeShooterSpeed('+'));
+        //speedSetterDown.whileHeld(new ChangeShooterSpeed('-'));
+        //speedSetterUp.whenReleased(new ChangeShooterSpeed(' '));
+        //speedSetterDown.whenReleased(new ChangeShooterSpeed(' '));
         
         autoTargeter = RobotMap.shootButton8;
         autoTargeterDisable = RobotMap.shootButton9;
@@ -119,11 +49,11 @@ public class OI {
         autoTargeter.whenPressed(new DriveTrainTargeting(RobotMap.DTRKp, RobotMap.DTRKi, RobotMap.DTRKd));
         autoTargeter.whenPressed(new DriveTrainLateral(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd));
         //autoTargeterDisable.whenPressed(new HorizontalTurretRotationManual());
-        autoTargeterDisable.whenPressed(new DefaultDriveTrain(ScraperBike.getDriveTrain().getDrive(), getJoystick1()));
-    }
-    
-    public static Button getButton3(){
-        return AutoBalance;
+        autoTargeterDisable.whenPressed(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), getJoystick1()));
+        
+        manualShooter.whileHeld(new Shoot());
+        reloadLeft.whileHeld(new Reload(1));
+        reloadRight.whileHeld(new Reload(-1));
     }
     
     public static Joystick getJoystick1(){

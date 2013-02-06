@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.templates.commands.DefaultDriveTrain;
+import edu.wpi.first.wpilibj.templates.commands.StandardDrive;
 //import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.RobotMap;
@@ -46,7 +46,7 @@ public class DriveTrain extends Subsystem {
     public DriveTrain(){
         super("Drive Train");
 //        Log = new MetaCommandLog("DriveTrain", "Gyro" , "Left Jaguars,Right Jaguars");
-        gyro1 = new Gyro(RobotMap.AnalogSideCar , RobotMap.DriveTrainGyroInput);
+        //gyro1 = new Gyro(RobotMap.AnalogSideCar , RobotMap.DriveTrainGyroInput);
         lfJag = new Jaguar(RobotMap.frontLeftMotor);
         lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
         rtJag = new Jaguar(RobotMap.frontRightMotor);
@@ -63,7 +63,7 @@ public class DriveTrain extends Subsystem {
     }
       
     public void initDefaultCommand() {  
-        super.setDefaultCommand(new DefaultDriveTrain(drive, OI.getJoystick1()));
+        super.setDefaultCommand(new StandardDrive(drive, OI.getJoystick1()));
     }
     
 //    public double getLeftOutput(){

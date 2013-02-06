@@ -6,6 +6,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
@@ -16,8 +17,8 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class Shooter extends Subsystem {
 
-    public Jaguar LeftJaguar;
-    public Jaguar RightJaguar;
+    public Talon ShootTalon;
+    public Talon ReloadTalon;
     public AnalogChannel RangeFinder;
     
     //private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
@@ -25,19 +26,22 @@ public class Shooter extends Subsystem {
 //    private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.shooterEncoderPos);
 
     public Shooter() {
-        LeftJaguar = new Jaguar(RobotMap.LeftShooterMotor);
-        RightJaguar = new Jaguar(RobotMap.RightShooterMotor);
+        ShootTalon = new Talon(RobotMap.ShooterMotor);
+        ReloadTalon = new Talon(RobotMap.ReloadMotor);
     }
     protected void initDefaultCommand() {
     
     
     }
     
-    public void setShooterMotors(double speed){
-        LeftJaguar.set(speed);
-        RightJaguar.set(speed);
+    public void setShooterMotor(double speed){
+        ShootTalon.set(speed);
         
     }
+    
+    public void setReloadMotor(double speed){
+        ReloadTalon.set(speed);
+    }    
     
     public double getRange(){
         

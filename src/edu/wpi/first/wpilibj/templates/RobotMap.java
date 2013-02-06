@@ -34,23 +34,15 @@ public class RobotMap {
     public static final int rearLeftMotor = 2;
     public static final int frontRightMotor = 3;
     public static final int rearRightMotor = 4;
-    public static final int HorTurretMotor = 5;
-    public static final int VerTurretMotor = 6;
-    public static final int LeftShooterMotor = 7;  //Left when standing behind the robot
-    public static final int RightShooterMotor = 8; //Right when standing behind the robot
-    
-    public static double defaultShooterSpeed = 0.80;
+    public static final int ShooterMotor = 5;
+    public static final int ReloadMotor = 6;
+    public static final int VerTurretMotor = 7;
     
     /* Relay outputs for Spikes
      * 
      */
     
-    public static final Relay armSpike = new Relay(1);
-    public static final Relay ballCollector = new Relay(2);
-    public static final Relay elevator = new Relay(3);
-    //public static final Relay motor = new Relay(5);         //For testing
-    //public static final Relay HorTurretMotorSpike = new Relay(4);
-    //public static final Relay VerTurretMotorSpike = new Relay(5);
+    
     
     /*
      * Height Constants for shooter in inches
@@ -106,12 +98,6 @@ public class RobotMap {
     /* ANALOG INPUTS 
      * These should be sequential.
      */
-    public static final int DriveTrainGyroInput = 1; // Gyro Analog Input is channel 1
-    public static final int VerticalTurretGyroInput = 2; // Gyro Analog Input for Vertical Turret    
-    //public static final int ultrasonicInput = 3;
-    public static final int horRotEncoderPos = 4;
-    public static final int verRotEncoderPos = 5;
-    public static final int shooterEncoderPos = 6;
     
     /* DIGITAL INPUTS 
      * These should be sequential.
