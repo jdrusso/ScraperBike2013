@@ -7,7 +7,9 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -18,25 +20,49 @@ public class Grips extends Subsystem {
     private boolean rearGripDeployed;
     private boolean frontGripContacted;
     private boolean rearGripContacted;
+    private Solenoid frontSolenoid;
+    private Solenoid rearSolenoid;
     
     public Grips() {
+        frontGripDeployed = false;
+        rearGripDeployed = false;
+        frontGripContacted = false;
+        rearGripContacted = false;
+        frontSolenoid = new Solenoid(RobotMap.gripsFrontSolenoid);
+        rearSolenoid = new Solenoid(RobotMap.gripsRearSolenoid);
         
     }
     
     public void moveFrontGrip(int direction) {
-        
+        if(direction == 1) {
+            frontSolenoid.set(true);
+            frontGripDeployed = true;
+        }
+        if(direction == -1) {
+            frontSolenoid.set(false);
+            frontGripDeployed = false;
+        }
     }
     
     public void moveRearGrip(int direction) {
-        
+        if(direction == 1) {
+            rearSolenoid.set(true);
+            rearGripDeployed = true;
+        }
+        if(direction == -1) {
+            rearSolenoid.set(false);
+            rearGripDeployed = false;
+        }
     }
     
     public boolean isFrontContacting() {
-        return true;
+        frontGripContacted = RobotMap.gripsFrontSensor.get();
+        return frontGripContacted;
     }
     
     public boolean isRearContacting() {
-        return true;
+        rearGripContacted = RobotMap.gripsRearSensor.get();
+        return rearGripContacted;
     }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
