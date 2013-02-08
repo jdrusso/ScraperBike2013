@@ -167,4 +167,4 @@ pip-log.txt
 # NetBeans
 #############
 
-nbproject/*
+nbproject/*.*
