@@ -167,5 +167,4 @@ pip-log.txt
 # NetBeans
 #############
 
-/nbproject/private/private.xml
-/nbproject/project.bak.xml
+nbproject/*
