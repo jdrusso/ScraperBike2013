@@ -162,4 +162,12 @@ pip-log.txt
 # Mac crap
 .DS_Store
 
+<<<<<<< HEAD
+
+#############
+# NetBeans
+#############
+
 nbproject/project.xml
+nbproject/project.bak.xml
+nbproject/private/private.xml

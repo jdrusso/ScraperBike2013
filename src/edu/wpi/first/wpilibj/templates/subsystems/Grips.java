@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 
 public class Grips extends Subsystem {
+    
     private boolean frontGripDeployed;
     private boolean rearGripDeployed;
     private boolean frontGripContacted;

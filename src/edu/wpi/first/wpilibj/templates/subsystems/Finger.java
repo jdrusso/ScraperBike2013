@@ -17,7 +17,8 @@ public class Finger extends Subsystem {
     private boolean contacted;
     
     public Finger() {
-        
+        extended = false;
+        contacted = false;
     }
     
     public boolean isContacting() {

@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
@@ -19,19 +20,21 @@ public class Arms extends Subsystem {
     // here. Call these from Commands.
    
     public Arms() {
-        
+        contacted = false;
+        extended = false;
     }
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    
     public boolean isContacting() {
-        return true;
+        contacted = RobotMap.armsContacted.get();
+        return contacted;
     }
     public boolean isExtended() {
-        return true;
+        extended = RobotMap.armsExtended.get();
+        return extended;
     }
     public void move(int direction) {
         
