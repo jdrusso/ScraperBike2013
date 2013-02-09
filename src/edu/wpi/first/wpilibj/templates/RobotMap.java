@@ -212,10 +212,11 @@ public class RobotMap {
     public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
     public static final DigitalInput topLimit = new DigitalInput(4); //DIO 3, limit switch Normally open
     public static final DigitalInput bottomLimit = new DigitalInput(3); //DIO 4, limit switch Normally open
-    public static final DigitalInput gripsFrontSensor = new DigitalInput(5);
-    public static final DigitalInput gripsRearSensor = new DigitalInput(6);
-    public static final DigitalInput armsContacted = new DigitalInput(7);
-    public static final DigitalInput armsExtended = new DigitalInput(8);
+    public static final DigitalInput gripsFrontSensor = new DigitalInput(5); // Grips subsytem
+    public static final DigitalInput gripsRearSensor = new DigitalInput(6); // Grips subsystem
+    public static final DigitalInput armsContacted = new DigitalInput(7); // Arms subsystem
+    public static final DigitalInput armsExtended = new DigitalInput(8); // Arms subsytem
+    public static final DigitalInput fingerContacted = new DigitalInput(9); // Finger Subsystem
     
     public static final int pressureSwitch = 5;
     public static final int compressorRelay = 8;
@@ -225,4 +226,5 @@ public class RobotMap {
     
     public static final int gripsFrontSolenoid = 1;
     public static final int gripsRearSolenoid = 2;
+    public static final int fingerSolenoid = 3;
 }
