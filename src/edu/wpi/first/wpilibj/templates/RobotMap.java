@@ -11,6 +11,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -41,7 +42,8 @@ public class RobotMap {
     /* Relay outputs for Spikes
      * 
      */
-    
+    //TODO: GET THE ACTUAL PORT ASIAGNMENT
+    public static final Relay armSpike = new Relay(3);
     
     
     /*

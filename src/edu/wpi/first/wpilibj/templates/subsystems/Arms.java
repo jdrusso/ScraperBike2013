@@ -7,6 +7,7 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
@@ -16,12 +17,15 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class Arms extends Subsystem {
     private boolean contacted;
     private boolean extended;
+    private Relay arm;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
    
     public Arms() {
         contacted = false;
         extended = false;
+        arm = RobotMap.armSpike;
+        arm.setDirection(Relay.Direction.kBoth);
     }
 
     public void initDefaultCommand() {
@@ -36,8 +40,8 @@ public class Arms extends Subsystem {
         extended = RobotMap.armsExtended.get();
         return extended;
     }
-    public void move(int direction) {
-        
+    public void move(Relay.Value direction) {
+        arm.set(direction);
     }
 }
 
