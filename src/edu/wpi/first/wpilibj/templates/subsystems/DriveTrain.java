@@ -52,6 +52,10 @@ public class DriveTrain extends Subsystem {
         rtJag = new Jaguar(RobotMap.frontRightMotor);
         rtRearJag = new Jaguar(RobotMap.rearRightMotor);
         drive = new RobotDrive(lfJag, lfRearJag, rtJag, rtRearJag);
+        //drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        //drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        //drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        //drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         
         //lfFrontJag = new Jaguar (3);
         //rtFrontJag = new Jaguar (4);
@@ -93,6 +97,11 @@ public class DriveTrain extends Subsystem {
     
     public RobotDrive getDrive(){
         return drive;
+    }
+    
+    public void arcadeDrive(Joystick j){
+        
+        drive.arcadeDrive(j);
     }
     
 //    public static MetaCommandLog getCommandLog(){

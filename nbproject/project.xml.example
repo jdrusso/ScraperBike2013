@@ -108,12 +108,14 @@
                     <separator/>
                 </context-menu>
             </view>
-            <subprojects/>
+            <subprojects>
+                <project>C:\Documents and Settings\robotlab\sunspotfrcsdk\WPILIBJ</project>
+            </subprojects>
         </general-data>
         <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/3">
             <compilation-unit>
                 <package-root>src</package-root>
-                <classpath mode="compile">C:\Documents and Settings\bandrus\sunspotfrcsdk\lib\networktables-crio.jar;C:\Documents and Settings\bandrus\sunspotfrcsdk\lib\squawk.jar;C:\Documents and Settings\bandrus\sunspotfrcsdk\lib\wpilibj.jar</classpath>
+                <classpath mode="compile">C:\Documents and Settings\robotlab\sunspotfrcsdk\WPILIBJ\src;C:\Documents and Settings\robotlab\sunspotfrcsdk\WPILIBJ\build;C:\Documents and Settings\robotlab\sunspotfrcsdk\WPILIBJ\dist\lib\wpilibj.jar;C:\Documents and Settings\robotlab\sunspotfrcsdk\lib\networktables-crio.jar</classpath>
                 <source-level>1.6</source-level>
             </compilation-unit>
         </java-data>
