@@ -9,46 +9,57 @@ import edu.wpi.first.wpilibj.templates.commands.VerticalTurretRotationManual;
 
 /**
  *
- * @author abbottk
+ * @author Team 2035
  */
 public class VerticalTurretAxis extends Subsystem  {
 
-  private Jaguar VerTurretJag;
-//    private Relay VerTurretSpike;
-//    private static MetaCommandLog VerLog;
-    private static Gyro gyro1;
-
-//    private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.verRotEncoderPos);
-
+    private Jaguar verTurretJag;
+    private static Gyro gyro;
+    private double angle;
+    
+    public static void resetGyro() {
+        gyro.reset();
+    }
+    
+    public static double readGyroDegress() {
+        return gyro.getAngle();
+    }
+    
+    public void updateAngle(double d) {
+        angle += d;
+    }
+    
+    public void moveElevation() {
+        verTurretJag.set(0.1);
+    }
+    
+    public void stopElevation() {
+        verTurretJag.set(0.0);
+    }
+    
     public VerticalTurretAxis(){
         super("VerticalTurretAxis");
-        //gyro1 = new Gyro(1 , 2);
-//        VerLog = new MetaCommandLog("VerticalTurretAxis", "Target Y-value" , "Jaguar");
-        VerTurretJag = new Jaguar(RobotMap.VerTurretMotor);
-        //this.VerTurretSpike = RobotMap.VerTurretMotorSpike;
+        verTurretJag = new Jaguar(RobotMap.VerTurretMotor);
     }
     protected void initDefaultCommand() {
         super.setDefaultCommand(new VerticalTurretRotationManual());
-        //super.setDefaultCommand(new VerticalTurretRotation(RobotMap.VerTurretKp, RobotMap.VerTurretKi, RobotMap.VerTurretKd));
-        
-    }
-    
+    }    
     public void rotate(double speed){
         
         if(RobotMap.bottomLimit.get() && RobotMap.topLimit.get()){
-            VerTurretJag.set(speed);
+            verTurretJag.set(speed);
 //            VerLog.setOutputs("" + speed);
             
         } else if (!RobotMap.bottomLimit.get()){
             
             if(speed >= 0){
                 
-                VerTurretJag.set(speed);
+                verTurretJag.set(speed);
 //                VerLog.setOutputs("" + speed);
             
             } else if (speed < 0){
                 
-                VerTurretJag.set(0);
+                verTurretJag.set(0);
 //                VerLog.setOutputs("" + speed);
             }
             
@@ -56,40 +67,19 @@ public class VerticalTurretAxis extends Subsystem  {
         } else if (!RobotMap.topLimit.get()){
             if(speed <= 0){
                 
-                VerTurretJag.set(speed);
+                verTurretJag.set(speed);
 //                VerLog.setOutputs("" + speed);
             
             }
             else if (speed > 0){
-                VerTurretJag.set(0);
+                verTurretJag.set(0);
 //                VerLog.setOutputs("" + speed);
             }
         }
     }
-    
-//    public static MetaCommandLog getCommandLog(){
-//        return VerLog;
-//    }
-    
-    public static Gyro getGyro1(){
-        return gyro1;//
+   
+    public static Gyro getGyro(){
+        return gyro;
     }
-
-    /** Vertical rotations
-     *
-     * @return the integer number of complete rotations by the magnetic
-     * encoder.
-     */
-//    public int getVerRotations(){
-//        return magneticencoder.getIntegerCounter();
-//    }
-
-    /**
-     * This is not fully tested yet.
-     * @return
-     */
-//    public double getVerRotationsDouble(){
-//        return magneticencoder.getDoubleCounter();
-//    }
     
 }
