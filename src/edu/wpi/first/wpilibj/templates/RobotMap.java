@@ -9,8 +9,8 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -103,6 +103,8 @@ public class RobotMap {
      * These should be sequential.
      */
     
+    public static final Encoder shootEncoder = new Encoder(3, 4);
+    
     //public static final DigitalInput elevatorSwitch = new DigitalInput(1); //Placeholder number
     
     /* ROBOT CODE DEFINED CONSTANTS */
@@ -131,7 +133,7 @@ public class RobotMap {
     
      /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for shooter.
-    public static final double shooterKp = (double) (.1);
+    public static final double shooterKp = (double) (5);
     // Ki - K integral value for shooter.
     public static final double shooterKi = (double) (0);
     // Kp - K differential value for shooter.
@@ -189,6 +191,8 @@ public class RobotMap {
     
     public static double desiredAngle = 0.0;
     
+    public static double shootRPM = 0;
+    public static final double maxRPM = 1500;
     
     public static final double fieldZone1 = 18.0;
     public static final double fieldZone1DesiredAngle = 45.0;

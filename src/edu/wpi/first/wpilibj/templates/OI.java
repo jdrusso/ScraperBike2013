@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 public class OI {
     // Process operator interface input here.
     private static Button manualShooter;
+    private static Button pidShooter;
     //private static Button speedSetterUp;
     //private static Button speedSetterDown;
     //private static Button VerTurretFwd;
@@ -33,6 +34,7 @@ public class OI {
     public static void initialize() {
         
         manualShooter = RobotMap.dButton3;
+        pidShooter = RobotMap.dButton2;
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
         
@@ -52,6 +54,7 @@ public class OI {
         autoTargeterDisable.whenPressed(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), getJoystick1()));
         
         manualShooter.whileHeld(new Shoot());
+        pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
         reloadLeft.whileHeld(new Reload(1));
         reloadRight.whileHeld(new Reload(-1));
     }
