@@ -34,6 +34,11 @@ public class ScraperBike extends IterativeRobot {
     private Compressor compressor;
     private String status;
     public static NetworkTable nt;
+    private static Grips grips;
+    
+    public static Grips getGrips() {
+        return grips;
+    }
     
     public static DriveTrain getDriveTrain(){
         
@@ -63,6 +68,7 @@ public class ScraperBike extends IterativeRobot {
         nt = NetworkTable.getTable("ST");
         nt.putString("Status", "Initializing");
         nt.putBoolean("AutoAlign", false);
+        grips =  new Grips();
         DriveTrain = new DriveTrain();
         VerticalAxis = new VerticalTurretAxis();   
         shooterController = new Shooter();
