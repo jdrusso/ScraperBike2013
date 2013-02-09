@@ -42,7 +42,8 @@ public class StandardDrive extends CommandBase{
     protected void execute() {
 //        DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
 //        DriveTrain.setMetaCommandOutputs();
-        drive.arcadeDrive(Joystick1);
+        //drive.arcadeDrive(Joystick1);
+        DriveTrain.arcadeDrive(Joystick1);
     
     }
 
