@@ -210,8 +210,10 @@ public class RobotMap {
     public static final DigitalInput bottomLimit = new DigitalInput(3); //DIO 4, limit switch Normally open
     public static final DigitalInput gripsFrontSensor = new DigitalInput(5);
     public static final DigitalInput gripsRearSensor = new DigitalInput(6);
+    public static final DigitalInput armsContacted = new DigitalInput(7);
+    public static final DigitalInput armsExtended = new DigitalInput(8);
     
-     public static final int pressureSwitch = 5;
+    public static final int pressureSwitch = 5;
     public static final int compressorRelay = 8;
     
     public static final int RampUpSol = 1;
