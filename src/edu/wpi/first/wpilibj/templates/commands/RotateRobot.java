@@ -18,6 +18,7 @@ public class RotateRobot extends CommandBase {
     
     public RotateRobot() {
         turn = ScraperBike.getDriveTrain();
+        requires(turn);
     }
 
     // Called just before this Command runs the first time

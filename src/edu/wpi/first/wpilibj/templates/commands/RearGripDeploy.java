@@ -19,6 +19,7 @@ public class RearGripDeploy extends CommandBase {
     
     public RearGripDeploy() {
         g = ScraperBike.getGrips();
+        requires(g);
     }
 
     protected void initialize() {
