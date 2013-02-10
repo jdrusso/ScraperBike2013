@@ -59,8 +59,8 @@ public class TargetSorting extends CommandBase {
 //            else
 //                RobotMap.range = 0;
             
-            if (ScraperBike.nt.getNumber("Range") < 5300)
-                RobotMap.range = truncate(ScraperBike.nt.getNumber("Range"));
+            if (ScraperBike.nt.getNumber("Range", 5800) < 5300)
+                RobotMap.range = truncate(ScraperBike.nt.getNumber("Range", 5800));
             else
                 RobotMap.range = 0;
 
@@ -115,10 +115,10 @@ public class TargetSorting extends CommandBase {
         for(int i = 1; i<=4; i++){
             
 //            X_values[(i-1)] = MetaTCPVariables.dataMessage[((i*2)-1)];
-            X_values[0] = ScraperBike.nt.getNumber("X1");
-            X_values[1] = ScraperBike.nt.getNumber("X2");
-            X_values[2] = ScraperBike.nt.getNumber("X3");
-            X_values[3] = ScraperBike.nt.getNumber("X4");
+            X_values[0] = ScraperBike.nt.getNumber("X1", -1);
+            X_values[1] = ScraperBike.nt.getNumber("X2", -1);
+            X_values[2] = ScraperBike.nt.getNumber("X3", -1);
+            X_values[3] = ScraperBike.nt.getNumber("X4", -1);
             //System.out.println("X values stored");
         }
         return X_values;
@@ -129,10 +129,10 @@ public class TargetSorting extends CommandBase {
         for(int i = 1; i<=4; i++){
             
 //            Y_values[(i-1)] = MetaTCPVariables.dataMessage[(i*2)];
-            Y_values[0] = ScraperBike.nt.getNumber("Y1");
-            Y_values[1] = ScraperBike.nt.getNumber("Y2");
-            Y_values[2] = ScraperBike.nt.getNumber("Y3");
-            Y_values[3] = ScraperBike.nt.getNumber("Y4");
+            Y_values[0] = ScraperBike.nt.getNumber("Y1", -1);
+            Y_values[1] = ScraperBike.nt.getNumber("Y2", -1);
+            Y_values[2] = ScraperBike.nt.getNumber("Y3", -1);
+            Y_values[3] = ScraperBike.nt.getNumber("Y4", -1);
             //System.out.println("Y values stored");
         }
         return Y_values;
