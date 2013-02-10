@@ -19,6 +19,7 @@ public class FrontGripDeploy extends CommandBase {
     
     public FrontGripDeploy() {
         g = ScraperBike.getGrips();
+        requires(g);
     }
 
     protected void initialize() {

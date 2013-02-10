@@ -20,6 +20,7 @@ public class Reload extends CommandBase {
     
     public Reload(int direction) {
         shooter = ScraperBike.getShooterController();
+        requires(shooter);
         this.direction = direction;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

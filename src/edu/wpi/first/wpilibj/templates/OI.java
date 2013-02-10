@@ -11,8 +11,6 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.templates.commands.*;
-import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj.templates.ScraperBike;
 /**
  * 
  * @author Team 2035 Programmers
@@ -29,6 +27,7 @@ public class OI {
     private static Button autoTargeterDisable;
     private static Button reloadLeft;
     private static Button reloadRight;
+    private static Button rotate;
     
     
     public static void initialize() {
@@ -37,6 +36,7 @@ public class OI {
         pidShooter = RobotMap.dButton2;
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
+        rotate = RobotMap.dButton6;
         
         //speedSetterUp = RobotMap.shootButton6;
         //speedSetterDown = RobotMap.shootButton7;
@@ -57,6 +57,7 @@ public class OI {
         pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
         reloadLeft.whileHeld(new Reload(1));
         reloadRight.whileHeld(new Reload(-1));
+        rotate.whileHeld(new RotateRobot());
     }
     
     public static Joystick getJoystick1(){

@@ -19,6 +19,7 @@ public class FrontGripRetract extends CommandBase {
        
     public FrontGripRetract() {
         g = ScraperBike.getGrips();
+        requires(g);
     }
 
     protected void initialize() {

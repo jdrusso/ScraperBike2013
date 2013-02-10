@@ -20,6 +20,7 @@ public class ArmsRetract extends CommandBase {
     
     public ArmsRetract() {
         arm = ScraperBike.getArms();
+        requires(arm);
     }
 
     // Called just before this Command runs the first time

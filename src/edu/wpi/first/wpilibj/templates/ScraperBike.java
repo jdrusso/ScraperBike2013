@@ -48,11 +48,6 @@ public class ScraperBike extends IterativeRobot {
     public static Arms getArms() {
         return arms;
     }
-    
-    public static DriveTrain getDriveTrain(){
-        
-        return DriveTrain;
-    }
 
     public static VerticalTurretAxis getVerticalTurretAxis(){
         

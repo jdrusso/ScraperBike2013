@@ -20,6 +20,7 @@ public class ArmsExtend extends CommandBase {
     
     public ArmsExtend() {
         arm = ScraperBike.getArms();
+        requires(arm);
     }
 
     // Called just before this Command runs the first time
