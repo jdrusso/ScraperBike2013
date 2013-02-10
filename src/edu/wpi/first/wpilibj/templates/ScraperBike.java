@@ -37,6 +37,10 @@ public class ScraperBike extends IterativeRobot {
     private static Grips grips;
     private static Arms arms;
     
+    public static DriveTrain getDriveTrain() {
+        return DriveTrain;
+    }
+    
     public static Grips getGrips() {
         return grips;
     }
