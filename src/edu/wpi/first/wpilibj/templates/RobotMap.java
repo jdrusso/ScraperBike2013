@@ -42,7 +42,7 @@ public class RobotMap {
     /* Relay outputs for Spikes
      * 
      */
-    //TODO: GET THE ACTUAL PORT ASIAGNMENT
+    //TODO: GET THE ACTUAL PORT ASSIGNMENT
     public static final Relay armSpike = new Relay(3);
     
     
