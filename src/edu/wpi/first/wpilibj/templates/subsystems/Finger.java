@@ -7,33 +7,60 @@
 
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
-/**
+/** finger subsystem implements code for a finger latch that holds the robot up on the pyramid as it climbs.
  *
  */
 public class Finger extends Subsystem {
     private boolean extended;
     private boolean contacted;
+    private Solenoid fingerSolenoid;
     
+    
+    /**Constructor that creates a solenoid.
+     *
+     */
     public Finger() {
         extended = false;
         contacted = false;
+        fingerSolenoid = new Solenoid(RobotMap.fingerSolenoid);
     }
     
+    /**
+     *
+     * @return true if contacted
+     */
     public boolean isContacting() {
+        contacted = RobotMap.fingerContacted.get();
         return contacted;
     }
     
+    /** checks to see if extended.
+     *
+     * @return state of extending finger (true if extended)
+     */
     public boolean isExtending() {
         return extended;
     }
     
+    /** extends finger.
+     *
+     */
     public void extend() {
+        extended = true;
+        fingerSolenoid.set(extended);
     
     }
     
+    /** retracts finger.
+     *
+     */
     public void retract() {
+        extended = false;
+        fingerSolenoid.set(extended);
         
     }
     // Put methods for controlling this subsystem
