@@ -22,6 +22,7 @@ public class Shoot extends CommandBase {
     
     public Shoot() {
         shooter = ScraperBike.getShooterController();
+        requires(shooter);
         joystick = RobotMap.dStick;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

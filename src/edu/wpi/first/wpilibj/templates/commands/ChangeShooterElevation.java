@@ -20,6 +20,7 @@ public class ChangeShooterElevation extends CommandBase {
     
     public ChangeShooterElevation(int Degrees) {
         elev = ScraperBike.getVerticalTurretAxis();
+        requires(elev);
         degrees = Degrees;
     }
 

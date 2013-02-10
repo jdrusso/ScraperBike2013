@@ -19,6 +19,7 @@ public class RearGripRetract extends CommandBase {
     
     public RearGripRetract() {
         g = ScraperBike.getGrips();
+        requires(g);
     }
 
     protected void initialize() {
