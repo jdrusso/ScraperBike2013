@@ -8,17 +8,17 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
-import edu.wpi.first.wpilibj.templates.subsystems.Grips;
+import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
 /**
  *
  * @author bradmiller
  */
-public class FrontGripRetract extends CommandBase {
-       private Grips g;
+public class FrontPusherRetract extends CommandBase {
+       private Pusher g;
        
-    public FrontGripRetract() {
-        g = ScraperBike.getGrips();
+    public FrontPusherRetract() {
+        g = ScraperBike.getPusher();
         requires(g);
     }
 
