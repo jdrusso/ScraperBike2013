@@ -25,7 +25,7 @@ public class Pusher extends Subsystem {
     private Solenoid frontSolenoid1;
     private Solenoid frontSolenoid2;
     private Solenoid rearSolenoid;
-    
+
     public Pusher() {
         frontGripDeployed = false;
         rearGripDeployed = false;
