@@ -7,13 +7,15 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
+
 /**
  *
  * @author bradmiller
  */
-public class ExampleCommand extends CommandBase {
+public class ClimbLevelOne extends CommandGroup {
 
-    public ExampleCommand() {
+    public ClimbLevelOne() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
