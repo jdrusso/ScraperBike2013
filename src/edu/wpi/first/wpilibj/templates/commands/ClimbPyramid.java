@@ -11,9 +11,9 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author bradmiller
  */
-public class ExampleCommand extends CommandBase {
+public class ClimbPyramid extends CommandBase {
 
-    public ExampleCommand() {
+    public ClimbPyramid() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
