@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  * @author Team 2035 Programmers
  */
 
-public class Grips extends Subsystem {
+public class Pusher extends Subsystem {
     
     private boolean frontGripDeployed1;
     private boolean frontGripDeployed2;
@@ -25,9 +25,9 @@ public class Grips extends Subsystem {
     private Solenoid frontSolenoid1;
     private Solenoid frontSolenoid2;
     private Solenoid rearSolenoid;
-    
-    public Grips() {
-        frontGripDeployed1 = false;
+
+    public Pusher() {
+        frontGripDeployed = false;
         rearGripDeployed = false;
         frontGripContacted = false;
         rearGripContacted = false;
