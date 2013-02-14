@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
- *
+ * @author Team 2035 Programmers
  */
 public class Arms extends Subsystem {
     private boolean contacted;

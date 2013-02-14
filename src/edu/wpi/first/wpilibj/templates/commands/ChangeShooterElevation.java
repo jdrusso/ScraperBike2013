@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class ChangeShooterElevation extends CommandBase {
     private VerticalTurretAxis elev;

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class RotateRobot extends CommandBase {
     private DriveTrain turn;

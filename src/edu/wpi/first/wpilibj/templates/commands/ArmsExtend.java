@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class ArmsExtend extends CommandBase {
     private Arms arm;
