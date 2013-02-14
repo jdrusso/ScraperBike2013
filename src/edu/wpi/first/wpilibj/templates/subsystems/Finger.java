@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class Finger extends Subsystem {
     private boolean extended;
     private boolean contacted;
-    private Solenoid fingerSolenoid;
+
     
     
     /**Constructor that creates a solenoid.
@@ -26,7 +26,6 @@ public class Finger extends Subsystem {
     public Finger() {
         extended = false;
         contacted = false;
-        fingerSolenoid = new Solenoid(RobotMap.fingerSolenoid);
     }
     
     /**
@@ -49,20 +48,18 @@ public class Finger extends Subsystem {
     /** extends finger.
      *
      */
-    public void extend() {
-        extended = true;
-        fingerSolenoid.set(extended);
-    
-    }
+    //public void extend() {
+    //    extended = true;
+    //    fingerSolenoid.set(extended);
+    //}
     
     /** retracts finger.
      *
      */
-    public void retract() {
-        extended = false;
-        fingerSolenoid.set(extended);
-        
-    }
+    //public void retract() {
+    //    extended = false;
+    //    fingerSolenoid.set(extended);    
+    //}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
