@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class RearPusherRetract extends CommandBase {
     private Pusher g;
@@ -26,7 +26,7 @@ public class RearPusherRetract extends CommandBase {
     }
 
     protected void execute() {
-        g.moveRearGrip(-1);
+        g.moveRearGrip(0);
     }
 
     protected boolean isFinished() {
