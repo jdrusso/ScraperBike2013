@@ -10,7 +10,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * @author Team 2035 Programmers
  */
 public class ExampleSubsystem extends Subsystem {
     // Put methods for controlling this subsystem

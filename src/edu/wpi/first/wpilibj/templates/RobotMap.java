@@ -245,7 +245,8 @@ public class RobotMap {
     public static final int RampUpSol = 1;
     public static final int RampDownSol = 2;
     
-    public static final int gripsFrontSolenoid = 1;
-    public static final int gripsRearSolenoid = 2;
-    public static final int fingerSolenoid = 3;
+    public static final int gripsFrontSolenoid1 = 1;
+    public static final int gripsFrontSolenoid2 = 2;
+    public static final int gripsRearSolenoid = 3;
+    //public static final int fingerSolenoid = ; not currently used (stinger is mechanical)
 }
