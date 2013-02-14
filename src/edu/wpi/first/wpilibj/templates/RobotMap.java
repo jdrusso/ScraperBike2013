@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import java.util.Vector;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -54,6 +55,24 @@ public class RobotMap {
     public static final double target3Height = 98.0/12.0;
     public static final double shooterHeight = 30.0/12.0; //default, TBD
     
+    
+    //Create target objects for use in sorting later
+    public static Target t1 = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0));
+    public static Target t2 = new Target(ScraperBike.nt.getNumber("H2", 0), ScraperBike.nt.getNumber("W2", 0));
+    public static Target t3 = new Target(ScraperBike.nt.getNumber("H3", 0), ScraperBike.nt.getNumber("W3", 0));
+    public static Target t4 = new Target(ScraperBike.nt.getNumber("H4", 0), ScraperBike.nt.getNumber("W4", 0));
+    public static Target t5 = new Target(ScraperBike.nt.getNumber("H5", 0), ScraperBike.nt.getNumber("W5", 0));
+    public static Target t6 = new Target(ScraperBike.nt.getNumber("H6", 0), ScraperBike.nt.getNumber("W6", 0));
+    
+    public static Target Top = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0));
+    public static Target LMid = new Target(ScraperBike.nt.getNumber("H2", 0), ScraperBike.nt.getNumber("W2", 0));
+    public static Target RMid = new Target(ScraperBike.nt.getNumber("H3", 0), ScraperBike.nt.getNumber("W3", 0));
+    public static Target LBot = new Target(ScraperBike.nt.getNumber("H4", 0), ScraperBike.nt.getNumber("W4", 0));
+    public static Target RBot = new Target(ScraperBike.nt.getNumber("H5", 0), ScraperBike.nt.getNumber("W5", 0));
+    public static Target Tower = new Target(ScraperBike.nt.getNumber("H6", 0), ScraperBike.nt.getNumber("W6", 0));
+    
+    public static Vector<Target> unsortedMid;
+    public static Vector<Target> unsortedBot;
     
     /* DRIVER STATION CONTROLS
      * 
