@@ -7,36 +7,42 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
-import edu.wpi.first.wpilibj.templates.subsystems.Grips;
+import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
 /**
  *
  * @author bradmiller
  */
-public class RearGripDeploy extends CommandBase {
-    private Grips g;
+public class ArmsRetractConditional extends CommandBase {
+    private Arms arm;
     
-    public RearGripDeploy() {
-        g = ScraperBike.getGrips();
-        requires(g);
+    public ArmsRetractConditional() {
+        arm = ScraperBike.getArms();
+        requires(arm);
     }
 
+    // Called just before this Command runs the first time
     protected void initialize() {
-        
     }
 
+    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        g.moveRearGrip(1);
+        arm.move(Relay.Value.kReverse);
     }
 
+    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return g.isRearContacting();
+        return !arm.isContacting();
     }
 
+    // Called once after isFinished returns true
     protected void end() {
     }
 
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
     protected void interrupted() {
     }
 }
