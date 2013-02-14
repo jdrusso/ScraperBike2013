@@ -26,7 +26,7 @@ public class FrontPusherRetract extends CommandBase {
     }
 
     protected void execute() {
-        g.moveFrontPusher(-1);
+        g.moveFrontPusher(0);
     }
 
     protected boolean isFinished() {
