@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Grips;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class FrontGripDeploy extends CommandBase {
     private Grips g;

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.templates.commands.VerticalTurretRotationManual;
 
 /**
  *
- * @author Team 2035
+ * @author Team 2035 Programmers
  */
 public class VerticalTurretAxis extends Subsystem  {
 

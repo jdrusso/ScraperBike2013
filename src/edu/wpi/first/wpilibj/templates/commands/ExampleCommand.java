@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class ExampleCommand extends CommandBase {
 

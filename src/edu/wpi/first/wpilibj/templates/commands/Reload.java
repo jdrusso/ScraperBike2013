@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class Reload extends CommandBase {
     private Shooter shooter;
