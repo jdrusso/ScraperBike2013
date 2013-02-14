@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class FrontPusherExtend extends CommandBase {
     private Pusher g;
