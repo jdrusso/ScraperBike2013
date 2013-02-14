@@ -26,7 +26,7 @@ public class RearPusherClimbOver extends CommandBase {
     }
 
     protected void execute() {
-        g.moveFrontGrip(1);
+        g.moveFrontPusher(1);
     }
 
     protected boolean isFinished() {

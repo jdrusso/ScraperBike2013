@@ -26,7 +26,7 @@ public class RearPusherRetract extends CommandBase {
     }
 
     protected void execute() {
-        g.moveRearGrip(0);
+        g.moveRearPusher(0);
     }
 
     protected boolean isFinished() {

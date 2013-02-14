@@ -27,7 +27,8 @@ public class Pusher extends Subsystem {
     private Solenoid rearSolenoid;
 
     public Pusher() {
-        frontGripDeployed = false;
+        frontGripDeployed1 = false;
+        frontGripDeployed2 = false;
         rearGripDeployed = false;
         frontGripContacted = false;
         rearGripContacted = false;
@@ -36,11 +37,11 @@ public class Pusher extends Subsystem {
         rearSolenoid = new Solenoid(RobotMap.gripsRearSolenoid);
         
     }
-    /** The front Grip has two air cylinders to have the option to extend 3 or 6 inches.
+    /** The front Pusher has two air cylinders to have the option to extend 3 or 6 inches.
      * 
      * @param position Either 0 for both off, 1 for a single extension, or 2 for double extension
      */
-    public void moveFrontGrip(int position) {
+    public void moveFrontPusher(int position) {
         if(position == 1) {
             frontSolenoid1.set(true);
             frontGripDeployed1 = true;
@@ -65,11 +66,11 @@ public class Pusher extends Subsystem {
         }
     }
     
-    /** The rear Grip has only one cylinder to extend 3 inches.
+    /** The rear Pusher has only one cylinder to extend 3 inches.
      * 
      * @param position Either 0 for off, or 1 for extension.
      */
-    public void moveRearGrip(int position) {
+    public void moveRearPusher(int position) {
         if(position == 1) {
             rearSolenoid.set(true);
             rearGripDeployed = true;
@@ -80,27 +81,30 @@ public class Pusher extends Subsystem {
         }
     }
     
-    /** Returns the Solenoid position of the front Grip.
+    /** Returns the Solenoid position of the front Pusher.
      * 
      * @return 0 for not deployed, 1 for extended 3 inches, 2 for extended 6 inches.
      */
-    public int getFrontGripPosition() {
+    public int getFrontPusherPosition() {
         int position = 0;
-        if (frontGripDeployed1)
+        if (frontGripDeployed1) {
             position++;
-        if (frontGripDeployed2)
+        }
+        if (frontGripDeployed2) {
             position++;
+        }
         return position;
     }
     
-        /** Returns the Solenoid position of the rear Grip.
+        /** Returns the Solenoid position of the rear Pusher.
      * 
      * @return 0 for not deployed, 1 for extended 3 inches.
      */
-    public int getRearGripPosition() {
+    public int getRearPusherPosition() {
         int position = 0;
-        if (rearGripDeployed)
+        if (rearGripDeployed) {
             position++;
+        }
         return position;
     }
     
