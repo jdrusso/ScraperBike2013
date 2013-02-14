@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Grips;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class RearGripRetract extends CommandBase {
     private Grips g;
@@ -26,7 +26,7 @@ public class RearGripRetract extends CommandBase {
     }
 
     protected void execute() {
-        g.moveRearGrip(-1);
+        g.moveRearGrip(0);
     }
 
     protected boolean isFinished() {

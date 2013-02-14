@@ -12,48 +12,96 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
- *
+ * @author Team 2035 Programmers
  */
 
 public class Grips extends Subsystem {
     
-    private boolean frontGripDeployed;
+    private boolean frontGripDeployed1;
+    private boolean frontGripDeployed2;
     private boolean rearGripDeployed;
     private boolean frontGripContacted;
     private boolean rearGripContacted;
-    private Solenoid frontSolenoid;
+    private Solenoid frontSolenoid1;
+    private Solenoid frontSolenoid2;
     private Solenoid rearSolenoid;
     
     public Grips() {
-        frontGripDeployed = false;
+        frontGripDeployed1 = false;
         rearGripDeployed = false;
         frontGripContacted = false;
         rearGripContacted = false;
-        frontSolenoid = new Solenoid(RobotMap.gripsFrontSolenoid);
+        frontSolenoid1 = new Solenoid(RobotMap.gripsFrontSolenoid1);
+        frontSolenoid2 = new Solenoid(RobotMap.gripsFrontSolenoid2);
         rearSolenoid = new Solenoid(RobotMap.gripsRearSolenoid);
         
     }
-    
-    public void moveFrontGrip(int direction) {
-        if(direction == 1) {
-            frontSolenoid.set(true);
-            frontGripDeployed = true;
+    /** The front Grip has two air cylinders to have the option to extend 3 or 6 inches.
+     * 
+     * @param position Either 0 for both off, 1 for a single extension, or 2 for double extension
+     */
+    public void moveFrontGrip(int position) {
+        if(position == 1) {
+            frontSolenoid1.set(true);
+            frontGripDeployed1 = true;
+            
+            frontSolenoid2.set(false);
+            frontGripDeployed2 = false;
         }
-        if(direction == -1) {
-            frontSolenoid.set(false);
-            frontGripDeployed = false;
+        if(position == 2) {
+            frontSolenoid2.set(true);
+            frontGripDeployed1 = true;
+            
+            frontSolenoid2.set(true);
+            frontGripDeployed2 = true;
+            
+        }
+        if(position == 0) {
+            frontSolenoid1.set(false);
+            frontGripDeployed1 = false;
+            
+            frontSolenoid2.set(false);
+            frontGripDeployed2 = false;
         }
     }
     
-    public void moveRearGrip(int direction) {
-        if(direction == 1) {
+    /** The rear Grip has only one cylinder to extend 3 inches.
+     * 
+     * @param position Either 0 for off, or 1 for extension.
+     */
+    public void moveRearGrip(int position) {
+        if(position == 1) {
             rearSolenoid.set(true);
             rearGripDeployed = true;
         }
-        if(direction == -1) {
+        if(position == 0) {
             rearSolenoid.set(false);
             rearGripDeployed = false;
         }
+    }
+    
+    /** Returns the Solenoid position of the front Grip.
+     * 
+     * @return 0 for not deployed, 1 for extended 3 inches, 2 for extended 6 inches.
+     */
+    public int getFrontGripPosition() {
+        int position = 0;
+        if (frontGripDeployed1)
+            position++;
+        if (frontGripDeployed2)
+            position++;
+        return position;
+    }
+    
+        /** Returns the Solenoid position of the rear Grip.
+     * 
+     * @return 0 for not deployed, 1 for extended 3 inches.
+     */
+    public int getRearGripPosition() {
+        int position = 0;
+        if (rearGripDeployed)
+            position++;
+        return position;
     }
     
     public boolean isFrontContacting() {
