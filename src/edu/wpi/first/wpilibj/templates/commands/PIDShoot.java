@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
 /**
- *
+ * @author Team 2035 Programmers
  */
 public class  PIDShoot extends PIDCommand {
     private Shooter shooter;

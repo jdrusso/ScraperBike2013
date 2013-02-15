@@ -8,7 +8,7 @@
 //
 ///**
 // *
-// * @author jrusso
+// * @author Team 2035 Programmers
 // */
 //public class ChangeShooterSpeed extends CommandBase {
 //    char modifier;

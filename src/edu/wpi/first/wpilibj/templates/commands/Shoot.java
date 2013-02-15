@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class Shoot extends CommandBase {
     private Shooter shooter;
