@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.templates.commands.StandardDrive;
 //import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.templates.OI;
@@ -31,7 +32,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class DriveTrain extends Subsystem {
     
-    private Relay shifter;
+    private Solenoid shifter;
     private static RobotDrive drive;
     private Encoder transmission1;
     private DigitalInput sensor1;
@@ -50,8 +51,8 @@ public class DriveTrain extends Subsystem {
         super("Drive Train");
 //        Log = new MetaCommandLog("DriveTrain", "Gyro" , "Left Jaguars,Right Jaguars");
         //gyro1 = new Gyro(RobotMap.AnalogSideCar , RobotMap.DriveTrainGyroInput);
-        shifter = RobotMap.shiftSpike;
-        shifter.setDirection(Relay.Direction.kBoth);
+        shifter = RobotMap.powerTakeoff;
+        //shifter.setDirection(Relay.Direction.kBoth);
         
         lfJag = new Jaguar(RobotMap.frontLeftMotor);
         lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
