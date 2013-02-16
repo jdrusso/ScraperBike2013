@@ -8,6 +8,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
@@ -17,10 +18,12 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
  */
 public class ArmsRetractConditional extends CommandBase {
     private Arms arm;
+    private boolean started;
     
     public ArmsRetractConditional() {
         arm = ScraperBike.getArms();
         requires(arm);
+        started = false;
     }
 
     // Called just before this Command runs the first time
@@ -29,12 +32,18 @@ public class ArmsRetractConditional extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        arm.move(Relay.Value.kReverse);
+        if (arm.isContacting()) {
+            started = true;
+        }
+        if (started) {
+            arm.move(Relay.Value.kReverse);    
+        }
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !arm.isContacting();
+        return started;
     }
 
     // Called once after isFinished returns true
