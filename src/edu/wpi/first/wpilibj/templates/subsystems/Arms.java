@@ -38,15 +38,15 @@ public class Arms extends Subsystem {
     }
     
     public boolean isLimitFore() {
-        return RobotMap.armLimitForward.get();
+        return RobotMap.armsExtendedFore.get();
     }
     
     public boolean isLimitAft() {
-        return RobotMap.armLimitReverse.get();
+        return RobotMap.armsExtendedAft.get();
     }
     
     public boolean isExtended() {
-        extended = RobotMap.armLimitForward.get() || RobotMap.armLimitReverse.get();
+        extended = RobotMap.armsExtendedFore.get() || RobotMap.armsExtendedAft.get();
         return extended;
     }
     
