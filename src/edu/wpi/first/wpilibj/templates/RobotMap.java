@@ -11,7 +11,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import java.util.Vector;
 
@@ -44,7 +44,6 @@ public class RobotMap {
      * 
      */
     //TODO: GET THE ACTUAL PORT ASSIGNMENT
-    public static final Relay armSpike = new Relay(3);
     
     public static final Relay.Value shifterDriveTrainDirection = Relay.Value.kForward;
     public static final Relay.Value shifterArmsDirection = Relay.Value.kReverse;
@@ -60,22 +59,30 @@ public class RobotMap {
     
     
     //Create target objects for use in sorting later
-    public static Target t1 = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0));
-    public static Target t2 = new Target(ScraperBike.nt.getNumber("H2", 0), ScraperBike.nt.getNumber("W2", 0));
-    public static Target t3 = new Target(ScraperBike.nt.getNumber("H3", 0), ScraperBike.nt.getNumber("W3", 0));
-    public static Target t4 = new Target(ScraperBike.nt.getNumber("H4", 0), ScraperBike.nt.getNumber("W4", 0));
-    public static Target t5 = new Target(ScraperBike.nt.getNumber("H5", 0), ScraperBike.nt.getNumber("W5", 0));
-    public static Target t6 = new Target(ScraperBike.nt.getNumber("H6", 0), ScraperBike.nt.getNumber("W6", 0));
+    public static Target t1 = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0)
+            , ScraperBike.nt.getNumber("X1", 0), ScraperBike.nt.getNumber("Y1", 0));
+    public static Target t2 = new Target(ScraperBike.nt.getNumber("H2", 0), ScraperBike.nt.getNumber("W2", 0)
+            , ScraperBike.nt.getNumber("X2", 0), ScraperBike.nt.getNumber("Y2", 0));
+    public static Target t3 = new Target(ScraperBike.nt.getNumber("H3", 0), ScraperBike.nt.getNumber("W3", 0)
+            , ScraperBike.nt.getNumber("X3", 0), ScraperBike.nt.getNumber("Y3", 0));
+    public static Target t4 = new Target(ScraperBike.nt.getNumber("H4", 0), ScraperBike.nt.getNumber("W4", 0)
+            , ScraperBike.nt.getNumber("X4", 0), ScraperBike.nt.getNumber("Y4", 0));
+    public static Target t5 = new Target(ScraperBike.nt.getNumber("H5", 0), ScraperBike.nt.getNumber("W5", 0)
+            , ScraperBike.nt.getNumber("X5", 0), ScraperBike.nt.getNumber("Y5", 0));
+    public static Target t6 = new Target(ScraperBike.nt.getNumber("H6", 0), ScraperBike.nt.getNumber("W6", 0)
+            , ScraperBike.nt.getNumber("X6", 0), ScraperBike.nt.getNumber("Y6", 0));
     
-    public static Target Top = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0));
-    public static Target LMid = new Target(ScraperBike.nt.getNumber("H2", 0), ScraperBike.nt.getNumber("W2", 0));
-    public static Target RMid = new Target(ScraperBike.nt.getNumber("H3", 0), ScraperBike.nt.getNumber("W3", 0));
-    public static Target LBot = new Target(ScraperBike.nt.getNumber("H4", 0), ScraperBike.nt.getNumber("W4", 0));
-    public static Target RBot = new Target(ScraperBike.nt.getNumber("H5", 0), ScraperBike.nt.getNumber("W5", 0));
-    public static Target Tower = new Target(ScraperBike.nt.getNumber("H6", 0), ScraperBike.nt.getNumber("W6", 0));
+    public static Target Top = new Target(0, 0, 0, 0);
+    public static Target LMid = new Target(0, 0, 0, 0);
+    public static Target RMid = new Target(0, 0, 0, 0);
+    public static Target LBot = new Target(0, 0, 0, 0);
+    public static Target RBot = new Target(0, 0, 0, 0);
+    public static Target Tower = new Target(0, 0, 0, 0);
     
     public static Vector unsortedMid = new Vector();
     public static Vector unsortedBot = new Vector();
+    
+    public static int numTargets;
     
     /* DRIVER STATION CONTROLS
      * 
@@ -126,26 +133,21 @@ public class RobotMap {
     /* DIGITAL INPUTS 
      * These should be sequential.
      */
-        //Turret rotation limit switches
-//    public static final DigitalInput leftLimit = new DigitalInput(1); //DIO 1, Normally Closed
-//    public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
-    public static final DigitalInput topLimit = new DigitalInput(1); //DIO 3, limit switch Normally open
-    public static final DigitalInput bottomLimit = new DigitalInput(2); //DIO 4, limit switch Normally open\
-    public static final DigitalInput leftLimit = new DigitalInput(3); //DIO 1, Normally Closed
-    public static final DigitalInput rightLimit = new DigitalInput(4); //DIO 2, Normally Closed
+    
+    public static final Encoder shootEncoder = new Encoder(1, 2);
+    public static final DigitalInput topLimit = new DigitalInput(3); //DIO 3, limit switch Normally open
+    public static final DigitalInput bottomLimit = new DigitalInput(4); //DIO 4, limit switch Normally open
     public static final DigitalInput armsContacted = new DigitalInput(5); // Arms subsystem
-    public static final DigitalInput armsExtended = new DigitalInput(6); // Arms subsytem
-    public static final DigitalInput fingerContacted = new DigitalInput(7); // Finger Subsystem
-    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(8); // Pusher subsytem
-    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(9); // Pusher subsytem
-    public static final DigitalInput pusherRearSensor1 = new DigitalInput(10); // Pusher subsystem
-    public static final DigitalInput pusherRearSensor2 = new DigitalInput(11); // Pusher subsystem
+    public static final DigitalInput armsExtendedFore = new DigitalInput(6); // Arms subsytem
+    public static final DigitalInput armsExtendedAft = new DigitalInput(7); // Arms subsytem
+    public static final DigitalInput fingerContacted = new DigitalInput(8); // Finger Subsystem
+    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(9); // Pusher subsytem
+    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(10); // Pusher subsytem
+    public static final DigitalInput pusherRearSensor1 = new DigitalInput(11); // Pusher subsystem
+    public static final DigitalInput pusherRearSensor2 = new DigitalInput(12); // Pusher subsystem
     
-    public static final int pressureSwitch = 10;
-    public static final int compressorRelay = 8;
-    public static final Encoder shootEncoder = new Encoder(3, 4);
-    
-    //public static final DigitalInput elevatorSwitch = new DigitalInput(1); //Placeholder number
+    public static final int pressureSwitch = 13;
+    public static final int compressorRelay = 1;
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for AutoBalancing.
@@ -217,42 +219,20 @@ public class RobotMap {
     
     public static double targetDistance = 6;
     public static double LatMovOut = 0;
-    /*
-    * Target Values to be edited by Target Sorting thread
-    */
-    public static double[] top = new double[2];
-    public static double[] bottom = new double[2];
-    public static double[] left = new double[2];
-    public static double[] right = new double[2];
-    public static double range;
-    
-    
-    //This would be useful if the ultrasonic sensors didn't suck
-    public static double ultrasonicRange;
     
     public static double desiredAngle = 0.0;
     
     public static double shootRPM = 0;
     public static final double maxRPM = 1500;
     
-    public static final double fieldZone1 = 18.0;
-    public static final double fieldZone1DesiredAngle = 45.0;
-    public static final double fieldZone2 = 36.0;
-    public static final double fieldZone2DesiredAngle = 35.0;
-    public static final double fieldZone3 = 54.0;
-    public static final double fieldZone3DesiredAngle = 25.0;
-   
-    public static final int elevationEncoderPerTenthDegree = 5;  // Actually is 2.5 now -TA 2/19/2012
-    public static final int azimuthEncoderPerTenthDegree = 10;
-    
     public static final double autonomousSpeed = .92;
     public static final double climbSpeed = .5;
     
-    public static final int RampUpSol = 1;
-    public static final int RampDownSol = 2;
-    
-    public static final int gripsFrontSolenoid1 = 1;
-    public static final int gripsFrontSolenoid2 = 2;
-    public static final int gripsRearSolenoid = 3;
-    //public static final int fingerSolenoid = ; not currently used (stinger is mechanical)
+    //Solenoids
+    public static final Solenoid shifter = new Solenoid(1);
+    public static final Solenoid powerTakeoff = new Solenoid(2);
+    public static final Solenoid frontPusherFirst = new Solenoid(3);
+    public static final Solenoid frontPusherSecond = new Solenoid(4);
+    public static final Solenoid rearPusher = new Solenoid(5);
+    public static final Solenoid popper = new Solenoid(6);
 }
