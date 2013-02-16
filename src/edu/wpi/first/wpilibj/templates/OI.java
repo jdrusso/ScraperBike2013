@@ -28,7 +28,7 @@ public class OI {
     private static Button reloadLeft;
     private static Button reloadRight;
     private static Button rotate;
-    
+    private static Button climbPyramid;
     
     public static void initialize() {
         
@@ -37,7 +37,8 @@ public class OI {
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
         rotate = RobotMap.dButton6;
-        
+        climbPyramid = RobotMap.dButton11;
+                
         //speedSetterUp = RobotMap.shootButton6;
         //speedSetterDown = RobotMap.shootButton7;
         //speedSetterUp.whileHeld(new ChangeShooterSpeed('+'));
