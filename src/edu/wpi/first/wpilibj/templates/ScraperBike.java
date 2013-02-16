@@ -28,7 +28,6 @@ public class ScraperBike extends IterativeRobot {
     private static Shooter shooterController;
     private static DriverStationLCD display;
     private static boolean isDisabled;
-    private static TargetSorting targetSort;
     private static Shooter shooter;
     private double shooterSpeed;
     private Compressor compressor;
@@ -88,7 +87,6 @@ public class ScraperBike extends IterativeRobot {
         display.println(Line.kUser5, 1, "                                     ");
         display.println(Line.kUser6, 1, "                                     ");
         display.updateLCD();
-        targetSort = new TargetSorting();
         compressor = new Compressor(RobotMap.pressureSwitch, RobotMap.compressorRelay);
         compressor.start();
         nt.putString("Status", "Initialized");
@@ -120,8 +118,6 @@ public class ScraperBike extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if(targetSort.isRunning())
-            targetSort.cancel();
         
         System.out.println("Entering TeleOp...");
         tp.start();
