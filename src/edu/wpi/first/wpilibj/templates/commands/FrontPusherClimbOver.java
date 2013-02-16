@@ -7,7 +7,6 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
@@ -42,7 +41,7 @@ public class FrontPusherClimbOver extends CommandBase {
             // may need a dealy
             state = 2;
         } else if (state == 2) {
-            arms.move(Relay.Value.kOn);
+            arms.move(-1);
             state = 3;
         } else if (state == 3) {
             if (pusher.checkFrontSensor2()) {

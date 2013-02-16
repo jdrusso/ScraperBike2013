@@ -45,6 +45,9 @@ public class RobotMap {
      */
     //TODO: GET THE ACTUAL PORT ASSIGNMENT
     
+    public static final Relay.Value shifterDriveTrainDirection = Relay.Value.kForward;
+    public static final Relay.Value shifterArmsDirection = Relay.Value.kReverse;
+    
     
     /*
      * Height Constants for shooter in inches
@@ -224,6 +227,7 @@ public class RobotMap {
     public static final double maxRPM = 1500;
     
     public static final double autonomousSpeed = .92;
+    public static final double climbSpeed = .5;
     
     //Solenoids
     public static final Solenoid shifter = new Solenoid(1);

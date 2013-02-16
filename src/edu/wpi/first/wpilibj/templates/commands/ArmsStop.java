@@ -12,36 +12,28 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
-public class ArmsRetractConditional extends CommandBase {
+public class ArmsStop extends CommandBase {
     private Arms arm;
-    private boolean started;
     
-    public ArmsRetractConditional() {
+    public ArmsStop() {
         arm = ScraperBike.getArms();
         requires(arm);
-        started = false;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        arm.move(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (arm.isContacting()) {
-            started = true;
-        }
-        if (started) {
-            arm.move(-1);    
-        }
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return started;
+        return true;
     }
 
     // Called once after isFinished returns true
