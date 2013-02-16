@@ -20,9 +20,14 @@ public class Target {
     public static final int tMid = 2;
     public static final int tTop = 3;
     
-    public static final double topAspect = 3.100;
-    public static final double midAspect = 2.138;
-    public static final double botAspect = 1.156;
+    //public static final double topAspect = 3.100;
+    //public static final double midAspect = 2.138;
+    //public static final double botAspect = 1.156;
+    public static final double topAspect = 62/20;
+    //public static final double midAspect = 62/29;
+    public static final double midAspect = 24/18;
+    //public static final double botAspect = 37/32;
+    public static final double botAspect = 69;
     
     private final double tolerance = 0.4;
     
@@ -41,14 +46,15 @@ public class Target {
     
     public Target(double h, double w){
         
-        this.height = h;
-        this.width = w;
+        //this.height = h;
+        //this.width = w;
+        this.horPos = tUnassigned;
+        this.vertPos = tUnassigned;
+        this.setSize(h, w);
         if (h == 0 | w == 0)
             this.isNull = true;
         else if (h != 0 && w !=0)
             this.isNull = false;
-        this.horPos = tUnassigned;
-        this.vertPos = tUnassigned;
     }
     
     public void setCenter(double x, double y){
@@ -76,13 +82,13 @@ public class Target {
             RobotMap.Top = this;
         }
         
-        if(Math.abs(this.aspect - midAspect) < tolerance){
+        else if(Math.abs(this.aspect - midAspect) < tolerance){
             this.vertPos = this.tMid;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedMid.addElement(this);
         }
         
-        if(Math.abs(this.aspect - botAspect) < tolerance){
+        else if(Math.abs(this.aspect - botAspect) < tolerance){
             this.vertPos = this.tBot;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedBot.addElement(this);
@@ -112,6 +118,7 @@ public class Target {
                 else if (this.vertPos == tMid)
                     RobotMap.LMid = this;
                 break;
+                
             case tRight:
                 if (this.vertPos == tBot)
                     RobotMap.RBot = this;
@@ -124,5 +131,14 @@ public class Target {
     public void setVertPos(int pos){
         
         this.vertPos = pos;
+    }
+    
+    public void clear(){
+        
+        this.cenX = 0;
+        this.cenY = 0;
+        this.height = 0;
+        this.width = 0;
+        this.aspect = 0;
     }
 }

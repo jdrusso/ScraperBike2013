@@ -140,13 +140,18 @@ public class ScraperBike extends IterativeRobot {
         
         if (!RobotMap.unsortedMid.isEmpty()){
             
-            System.out.println(((Target)RobotMap.unsortedMid.elementAt(0)).vertPos);
+            System.out.println("Vertical position: " + ((Target)RobotMap.unsortedMid.elementAt(0)).vertPos 
+                             + ", Horizontal Position: " + ((Target)RobotMap.unsortedMid.elementAt(0)).horPos);
         
-            display.println(Line.kUser1, 1, "Aspect Ratio: " + ((Target)RobotMap.unsortedMid.elementAt(0)).aspect);
-            display.println(Line.kUser2, 1, "CenX: " + ((Target)RobotMap.unsortedMid.elementAt(0)).cenX);
-            display.println(Line.kUser3, 1, "CenY: " + ((Target)RobotMap.unsortedMid.elementAt(0)).cenY);
-            display.println(Line.kUser4, 1, "Height: " + ((Target)RobotMap.unsortedMid.elementAt(0)).height);
-            display.println(Line.kUser5, 1, "Width: " + ((Target)RobotMap.unsortedMid.elementAt(0)).width);
+            display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
+            display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
+            display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
+                        
+            display.println(Line.kUser4, 1, "Aspect Ratio: " + RobotMap.LMid.aspect);
+            display.println(Line.kUser5, 1, "CenX: " + RobotMap.LMid.cenX);
+            display.println(Line.kUser6, 1, "CenY: " + RobotMap.LMid.cenY);
+            //display.println(Line.kUser4, 1, "Height: " + ((Target)RobotMap.unsortedMid.elementAt(0)).height);
+            //display.println(Line.kUser5, 1, "Width: " + ((Target)RobotMap.unsortedMid.elementAt(0)).width);
         }
         
 //        display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
