@@ -46,6 +46,9 @@ public class RobotMap {
     //TODO: GET THE ACTUAL PORT ASSIGNMENT
     public static final Relay armSpike = new Relay(3);
     
+    public static final Relay.Value shifterDriveTrainDirection = Relay.Value.kForward;
+    public static final Relay.Value shifterArmsDirection = Relay.Value.kReverse;
+    
     
     /*
      * Height Constants for shooter in inches
@@ -243,6 +246,7 @@ public class RobotMap {
     public static final int azimuthEncoderPerTenthDegree = 10;
     
     public static final double autonomousSpeed = .92;
+    public static final double climbSpeed = .5;
     
     public static final int RampUpSol = 1;
     public static final int RampDownSol = 2;

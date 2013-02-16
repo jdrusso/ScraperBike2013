@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.commands.StandardDrive;
 //import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.templates.OI;
@@ -30,6 +31,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class DriveTrain extends Subsystem {
     
+    private Relay shifter;
     private static RobotDrive drive;
     private Encoder transmission1;
     private DigitalInput sensor1;
@@ -48,6 +50,9 @@ public class DriveTrain extends Subsystem {
         super("Drive Train");
 //        Log = new MetaCommandLog("DriveTrain", "Gyro" , "Left Jaguars,Right Jaguars");
         //gyro1 = new Gyro(RobotMap.AnalogSideCar , RobotMap.DriveTrainGyroInput);
+        shifter = RobotMap.armSpike;
+        shifter.setDirection(Relay.Direction.kBoth);
+        
         lfJag = new Jaguar(RobotMap.frontLeftMotor);
         lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
         rtJag = new Jaguar(RobotMap.frontRightMotor);
@@ -80,17 +85,29 @@ public class DriveTrain extends Subsystem {
 //    }
     
     public void drive(double speed) {
+        shifter.set(RobotMap.shifterDriveTrainDirection);
         drive.drive(speed, 0.0);
     }
     
     public void drive(double speed, double rot) {
+        shifter.set(RobotMap.shifterDriveTrainDirection);
         drive.drive(speed, rot);
     }
     
+    public void arcadeDrive(Joystick j){
+        shifter.set(RobotMap.shifterDriveTrainDirection);
+        drive.arcadeDrive(j);
+    }
+    
     public void rotate(double rot) {
+        shifter.set(RobotMap.shifterDriveTrainDirection);
         drive.arcadeDrive(0, rot);
     }
     
+    public void climb(double speed) {
+        shifter.set(RobotMap.shifterArmsDirection);
+        drive.drive(speed, 0.0);
+    }
 
     public static Gyro getGyro1(){
         return gyro1;
@@ -100,10 +117,7 @@ public class DriveTrain extends Subsystem {
         return drive;
     }
     
-    public void arcadeDrive(Joystick j){
-        
-        drive.arcadeDrive(j);
-    }
+    
     
 //    public static MetaCommandLog getCommandLog(){
 //        return Log;//
