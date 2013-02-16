@@ -7,13 +7,22 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.Timer;
+
 /**
  *
- * @author bradmiller
+ * @author Team 2035 programmers
  */
 public class Pause extends CommandBase {
 
+    private Timer time;
+    private double delayamount;
+    
     public Pause(double amount) {
+        
+        delayamount = amount * Math.pow(10, 6);
+        time = new Timer();
+        time.start();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -28,11 +37,12 @@ public class Pause extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (time.get() > delayamount);
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        time.stop();
     }
 
     // Called when another command which requires one or more of the same
