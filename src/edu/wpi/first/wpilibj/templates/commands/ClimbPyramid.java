@@ -7,19 +7,18 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
+
 /**
  *
  * @author bradmiller
  */
-public class ClimbPyramid extends CommandBase {
-    private ClimbLevelOne levelOne;
-    private ClimbLevelTwo levelTwo;
-    private ClimbLevelThree levelThree;
+public class ClimbPyramid extends CommandGroup {
     
     public ClimbPyramid() {
-     levelOne = new ClimbLevelOne();
-     levelTwo = new ClimbLevelTwo();
-     levelThree = new ClimbLevelThree();
+        addSequential(new ClimbLevelOne());
+        addSequential(new ClimbLevelTwo());
+        addSequential(new ClimbLevelThree());
     }
 
     // Called just before this Command runs the first time
@@ -29,9 +28,6 @@ public class ClimbPyramid extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        levelOne.execute();
-        levelTwo.execute();
-        levelThree.execute();
     }
 
     // Make this return true when this Command no longer needs to run execute()
