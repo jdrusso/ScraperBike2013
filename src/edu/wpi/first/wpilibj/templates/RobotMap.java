@@ -71,8 +71,8 @@ public class RobotMap {
     public static Target RBot = new Target(ScraperBike.nt.getNumber("H5", 0), ScraperBike.nt.getNumber("W5", 0));
     public static Target Tower = new Target(ScraperBike.nt.getNumber("H6", 0), ScraperBike.nt.getNumber("W6", 0));
     
-    public static Vector<Target> unsortedMid;
-    public static Vector<Target> unsortedBot;
+    public static Vector unsortedMid = new Vector();
+    public static Vector unsortedBot = new Vector();
     
     /* DRIVER STATION CONTROLS
      * 
@@ -123,7 +123,23 @@ public class RobotMap {
     /* DIGITAL INPUTS 
      * These should be sequential.
      */
+        //Turret rotation limit switches
+//    public static final DigitalInput leftLimit = new DigitalInput(1); //DIO 1, Normally Closed
+//    public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
+    public static final DigitalInput topLimit = new DigitalInput(1); //DIO 3, limit switch Normally open
+    public static final DigitalInput bottomLimit = new DigitalInput(2); //DIO 4, limit switch Normally open\
+    public static final DigitalInput leftLimit = new DigitalInput(3); //DIO 1, Normally Closed
+    public static final DigitalInput rightLimit = new DigitalInput(4); //DIO 2, Normally Closed
+    public static final DigitalInput armsContacted = new DigitalInput(5); // Arms subsystem
+    public static final DigitalInput armsExtended = new DigitalInput(6); // Arms subsytem
+    public static final DigitalInput fingerContacted = new DigitalInput(7); // Finger Subsystem
+    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(8); // Pusher subsytem
+    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(9); // Pusher subsytem
+    public static final DigitalInput pusherRearSensor1 = new DigitalInput(10); // Pusher subsystem
+    public static final DigitalInput pusherRearSensor2 = new DigitalInput(11); // Pusher subsystem
     
+    public static final int pressureSwitch = 10;
+    public static final int compressorRelay = 8;
     public static final Encoder shootEncoder = new Encoder(3, 4);
     
     //public static final DigitalInput elevatorSwitch = new DigitalInput(1); //Placeholder number
@@ -221,28 +237,11 @@ public class RobotMap {
     public static final double fieldZone2DesiredAngle = 35.0;
     public static final double fieldZone3 = 54.0;
     public static final double fieldZone3DesiredAngle = 25.0;
-    
-    
+   
     public static final int elevationEncoderPerTenthDegree = 5;  // Actually is 2.5 now -TA 2/19/2012
     public static final int azimuthEncoderPerTenthDegree = 10;
     
     public static final double autonomousSpeed = .92;
-    
-    //Turret rotation limit switches
-    public static final DigitalInput leftLimit = new DigitalInput(1); //DIO 1, Normally Closed
-    public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
-    public static final DigitalInput topLimit = new DigitalInput(4); //DIO 3, limit switch Normally open
-    public static final DigitalInput bottomLimit = new DigitalInput(3); //DIO 4, limit switch Normally open
-    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(5); // Pusher subsytem
-    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(6); // Pusher subsytem
-    public static final DigitalInput pusherRearSensor1 = new DigitalInput(7); // Pusher subsystem
-    public static final DigitalInput pusherRearSensor2 = new DigitalInput(8); // Pusher subsystem
-    public static final DigitalInput armsContacted = new DigitalInput(9); // Arms subsystem
-    public static final DigitalInput armsExtended = new DigitalInput(10); // Arms subsytem
-    public static final DigitalInput fingerContacted = new DigitalInput(11); // Finger Subsystem
-    
-    public static final int pressureSwitch = 5;
-    public static final int compressorRelay = 8;
     
     public static final int RampUpSol = 1;
     public static final int RampDownSol = 2;
