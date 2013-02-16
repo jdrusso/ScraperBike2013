@@ -26,11 +26,11 @@ public class RearPusherClimbOver extends CommandBase {
     }
 
     protected void execute() {
-        g.moveFrontPusher(1);
+        g.moveRearPusher(1);
     }
 
     protected boolean isFinished() {
-        return g.isFrontContacting();
+        return g.isRearContacting();
     }
 
     protected void end() {

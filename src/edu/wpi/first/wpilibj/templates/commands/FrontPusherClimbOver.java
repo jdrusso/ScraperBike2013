@@ -7,7 +7,9 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
+import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
 /**
@@ -15,22 +17,45 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
  * @author bradmiller
  */
 public class FrontPusherClimbOver extends CommandBase {
-    private Pusher g;
+    private Pusher pusher;
+    private Arms arms;
+    private int state;
     
     public FrontPusherClimbOver() {
-        g = ScraperBike.getPusher();
-        requires(g);
+        pusher = ScraperBike.getPusher();
+        requires(pusher);
+        arms = ScraperBike.getArms();
+        requires(arms);
+        state = 0;
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        g.moveFrontPusher(1);
+        if (state == 0) {
+            if (pusher.checkFrontSensor1()) {
+                state = 1;
+            }
+        } else if (state == 1) {
+            pusher.moveFrontPusher(0);
+            // may need a dealy
+            state = 2;
+        } else if (state == 2) {
+            arms.move(Relay.Value.kOn);
+            state = 3;
+        } else if (state == 3) {
+            if (pusher.checkFrontSensor2()) {
+                pusher.moveFrontPusher(1);
+                // may need delay
+                state = 4;
+            }
+        } 
+        
     }
 
     protected boolean isFinished() {
-        return g.isFrontContacting();
+        return (state == 4);
     }
 
     protected void end() {

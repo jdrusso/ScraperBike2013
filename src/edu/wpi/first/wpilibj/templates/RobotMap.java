@@ -127,13 +127,16 @@ public class RobotMap {
 //    public static final DigitalInput leftLimit = new DigitalInput(1); //DIO 1, Normally Closed
 //    public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
     public static final DigitalInput topLimit = new DigitalInput(1); //DIO 3, limit switch Normally open
-    public static final DigitalInput bottomLimit = new DigitalInput(2); //DIO 4, limit switch Normally open
-    
-    public static final DigitalInput gripsFrontSensor = new DigitalInput(5); // Grips subsytem
-    public static final DigitalInput gripsRearSensor = new DigitalInput(6); // Grips subsystem
-    public static final DigitalInput armsContacted = new DigitalInput(7); // Arms subsystem
-    public static final DigitalInput armsExtended = new DigitalInput(8); // Arms subsytem
-    public static final DigitalInput fingerContacted = new DigitalInput(9); // Finger Subsystem
+    public static final DigitalInput bottomLimit = new DigitalInput(2); //DIO 4, limit switch Normally open\
+    public static final DigitalInput leftLimit = new DigitalInput(3); //DIO 1, Normally Closed
+    public static final DigitalInput rightLimit = new DigitalInput(4); //DIO 2, Normally Closed
+    public static final DigitalInput armsContacted = new DigitalInput(5); // Arms subsystem
+    public static final DigitalInput armsExtended = new DigitalInput(6); // Arms subsytem
+    public static final DigitalInput fingerContacted = new DigitalInput(7); // Finger Subsystem
+    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(8); // Pusher subsytem
+    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(9); // Pusher subsytem
+    public static final DigitalInput pusherRearSensor1 = new DigitalInput(10); // Pusher subsystem
+    public static final DigitalInput pusherRearSensor2 = new DigitalInput(11); // Pusher subsystem
     
     public static final int pressureSwitch = 10;
     public static final int compressorRelay = 8;
@@ -234,14 +237,11 @@ public class RobotMap {
     public static final double fieldZone2DesiredAngle = 35.0;
     public static final double fieldZone3 = 54.0;
     public static final double fieldZone3DesiredAngle = 25.0;
-    
-    
+   
     public static final int elevationEncoderPerTenthDegree = 5;  // Actually is 2.5 now -TA 2/19/2012
     public static final int azimuthEncoderPerTenthDegree = 10;
     
     public static final double autonomousSpeed = .92;
-    
-
     
     public static final int RampUpSol = 1;
     public static final int RampDownSol = 2;
