@@ -66,22 +66,6 @@ public class VerticalTurretRotation extends PIDCommand {
     
     protected void determineSetpoint(){
         
-        if((RobotMap.range - RobotMap.fieldZone1) < 0 ){
-           RobotMap.desiredAngle = RobotMap.fieldZone1DesiredAngle;
-           return;
-        }
-        
-        if((RobotMap.range - RobotMap.fieldZone2) < 0 ){
-            RobotMap.desiredAngle =  RobotMap.fieldZone2DesiredAngle;
-            return;
-        }
-        
-        if((RobotMap.range - RobotMap.fieldZone3) < 0 ){
-            RobotMap.desiredAngle =  RobotMap.fieldZone1DesiredAngle;
-            return;
-        }
-        
-        RobotMap.desiredAngle = 0;
     }
 
 }
