@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
 /**
- *
+ *we may not use this, it has errors currently
  * @author bradmiller
  */
 public class ArmsRetractConditional extends CommandBase {

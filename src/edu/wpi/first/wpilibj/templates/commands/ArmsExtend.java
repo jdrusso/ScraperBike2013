@@ -16,10 +16,12 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
  */
 public class ArmsExtend extends CommandBase {
     private Arms arm;
+    private int endcond;
     
-    public ArmsExtend() {
+    public ArmsExtend(int endCondition) {
         arm = ScraperBike.getArms();
         requires(arm);
+        endcond = endCondition;
     }
 
     // Called just before this Command runs the first time
@@ -33,7 +35,12 @@ public class ArmsExtend extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return arm.isContacting();
+        if (endcond == 1) {
+            return arm.isContacting();
+        } else if (endcond == 2) {
+            return arm.isLimitFore();
+        } 
+        return false;
     }
 
     // Called once after isFinished returns true

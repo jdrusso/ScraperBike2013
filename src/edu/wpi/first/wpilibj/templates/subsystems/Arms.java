@@ -37,8 +37,16 @@ public class Arms extends Subsystem {
         return contacted;
     }
     
+    public boolean isLimitFore() {
+        return RobotMap.armLimitForward.get();
+    }
+    
+    public boolean isLimitAft() {
+        return RobotMap.armLimitReverse.get();
+    }
+    
     public boolean isExtended() {
-        extended = RobotMap.armsExtended.get();
+        extended = RobotMap.armLimitForward.get() || RobotMap.armLimitReverse.get();
         return extended;
     }
     
