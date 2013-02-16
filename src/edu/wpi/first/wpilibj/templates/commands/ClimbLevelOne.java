@@ -18,14 +18,17 @@ public class ClimbLevelOne extends CommandGroup {
     public ClimbLevelOne() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new FrontPusherExtend(2));
-        addSequential(new ArmsExtend());
-        addSequential(new ArmsRetractConditional());
         addSequential(new DisableJoystick());
+        addSequential(new FrontPusherExtend(1));
+        addSequential(new Pause(0.25));
+        addSequential(new FrontPusherExtend(2));
+        addSequential(new ArmsExtend(2));
+        addSequential(new FrontPusherRetract());
+        addSequential(new ArmsRetract());
         addSequential(new Pause(2.0));
         addSequential(new FrontPusherClimbOver());
         addSequential(new RearPusherClimbOver());
-        addSequential(new ArmsExtend());
+        //addSequential(new ArmsExtend());//not sure, but I think this should be deleted
     }
 
     // Called just before this Command runs the first time
