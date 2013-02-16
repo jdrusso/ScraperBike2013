@@ -203,6 +203,7 @@ public class RobotMap {
    
     public static boolean HorTurretManualControl = false;
     public static boolean VerTurretManualControl = false;
+    public static boolean JoystickEnabled = true;
 
     public static double cameraXOffset = 160;
     public static final int defaultCameraOffset = 160;
