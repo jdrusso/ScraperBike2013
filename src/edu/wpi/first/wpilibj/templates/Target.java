@@ -79,13 +79,13 @@ public class Target {
         if(Math.abs(this.aspect - midAspect) < tolerance){
             this.vertPos = this.tMid;
             this.horPos = this.tUnassigned;
-            RobotMap.unsortedMid.add(this);
+            RobotMap.unsortedMid.addElement(this);
         }
         
         if(Math.abs(this.aspect - botAspect) < tolerance){
             this.vertPos = this.tBot;
             this.horPos = this.tUnassigned;
-            RobotMap.unsortedBot.add(this);
+            RobotMap.unsortedBot.addElement(this);
         }
         
         this.horPos = tUnassigned;

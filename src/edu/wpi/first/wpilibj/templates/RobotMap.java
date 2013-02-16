@@ -71,8 +71,8 @@ public class RobotMap {
     public static Target RBot = new Target(ScraperBike.nt.getNumber("H5", 0), ScraperBike.nt.getNumber("W5", 0));
     public static Target Tower = new Target(ScraperBike.nt.getNumber("H6", 0), ScraperBike.nt.getNumber("W6", 0));
     
-    public static Vector<Target> unsortedMid;
-    public static Vector<Target> unsortedBot;
+    public static Vector unsortedMid = new Vector();
+    public static Vector unsortedBot = new Vector();
     
     /* DRIVER STATION CONTROLS
      * 
@@ -123,7 +123,20 @@ public class RobotMap {
     /* DIGITAL INPUTS 
      * These should be sequential.
      */
+        //Turret rotation limit switches
+//    public static final DigitalInput leftLimit = new DigitalInput(1); //DIO 1, Normally Closed
+//    public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
+    public static final DigitalInput topLimit = new DigitalInput(1); //DIO 3, limit switch Normally open
+    public static final DigitalInput bottomLimit = new DigitalInput(2); //DIO 4, limit switch Normally open
     
+    public static final DigitalInput gripsFrontSensor = new DigitalInput(5); // Grips subsytem
+    public static final DigitalInput gripsRearSensor = new DigitalInput(6); // Grips subsystem
+    public static final DigitalInput armsContacted = new DigitalInput(7); // Arms subsystem
+    public static final DigitalInput armsExtended = new DigitalInput(8); // Arms subsytem
+    public static final DigitalInput fingerContacted = new DigitalInput(9); // Finger Subsystem
+    
+    public static final int pressureSwitch = 10;
+    public static final int compressorRelay = 8;
     public static final Encoder shootEncoder = new Encoder(3, 4);
     
     //public static final DigitalInput elevatorSwitch = new DigitalInput(1); //Placeholder number
@@ -228,19 +241,7 @@ public class RobotMap {
     
     public static final double autonomousSpeed = .92;
     
-    //Turret rotation limit switches
-    public static final DigitalInput leftLimit = new DigitalInput(1); //DIO 1, Normally Closed
-    public static final DigitalInput rightLimit = new DigitalInput(2); //DIO 2, Normally Closed
-    public static final DigitalInput topLimit = new DigitalInput(4); //DIO 3, limit switch Normally open
-    public static final DigitalInput bottomLimit = new DigitalInput(3); //DIO 4, limit switch Normally open
-    public static final DigitalInput gripsFrontSensor = new DigitalInput(5); // Grips subsytem
-    public static final DigitalInput gripsRearSensor = new DigitalInput(6); // Grips subsystem
-    public static final DigitalInput armsContacted = new DigitalInput(7); // Arms subsystem
-    public static final DigitalInput armsExtended = new DigitalInput(8); // Arms subsytem
-    public static final DigitalInput fingerContacted = new DigitalInput(9); // Finger Subsystem
-    
-    public static final int pressureSwitch = 5;
-    public static final int compressorRelay = 8;
+
     
     public static final int RampUpSol = 1;
     public static final int RampDownSol = 2;

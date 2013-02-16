@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.Target;
+import java.util.Vector;
 
 /**
  *
@@ -30,8 +31,8 @@ public class TargetParser extends CommandBase {
     protected void execute() {
         
         numDetected = (int)ScraperBike.nt.getNumber("NumTargets", 0);
-        RobotMap.unsortedMid.clear();
-        RobotMap.unsortedBot.clear();
+        RobotMap.unsortedMid.removeAllElements();
+        RobotMap.unsortedBot.removeAllElements();
         
         //Create target objects
         for (int i = 1; i <= 6; i++){
@@ -58,39 +59,56 @@ public class TargetParser extends CommandBase {
             }
         } //Finished assigning sizes, time to sort through the unsorted vectors
         
-        if (RobotMap.Top.cenX == 0.0){
         
-            //Sort mid vector IF NO TOP DETECTED
-            if (RobotMap.unsortedMid.capacity() == 2){
-                for (int i = 0; i <= RobotMap.unsortedMid.capacity(); i++){
+        //TIME TO START SORTIN' GOOD
+        //Sort if a top target is detected
+        if (!Double.isNaN(RobotMap.Top.aspect)) {
+            
+            this.sort(RobotMap.unsortedMid, RobotMap.Top);
+            
+            this.sort(RobotMap.unsortedBot, RobotMap.Top);
+        }
+        
+        else if (Double.isNaN(RobotMap.Top.aspect)){
+        
+            //Sort mid vector
+            this.sort(RobotMap.unsortedMid);
+            
+            
+//            if (RobotMap.unsortedMid.size() == 2){
+//                for (int i = 0; i <= RobotMap.unsortedMid.capacity(); i++){
+//
+//                    if (((Target)RobotMap.unsortedMid.elementAt(0)).cenX < ((Target)RobotMap.unsortedMid.elementAt(1)).cenX){
+//                        ((Target)RobotMap.unsortedMid.elementAt(0)).setHorPos(Target.tLeft);
+//                        ((Target)RobotMap.unsortedMid.elementAt(1)).setHorPos(Target.tRight);
+//                    }
+//
+//                    else if (((Target)RobotMap.unsortedMid.elementAt(0)).cenX > ((Target)RobotMap.unsortedMid.elementAt(1)).cenX){
+//                        ((Target)RobotMap.unsortedMid.elementAt(0)).setHorPos(Target.tRight);
+//                        ((Target)RobotMap.unsortedMid.elementAt(1)).setHorPos(Target.tLeft);
+//                    }
+//                }
+//            }
 
-                    if (RobotMap.unsortedMid.get(0).cenX < RobotMap.unsortedMid.get(1).cenX){
-                        RobotMap.unsortedMid.get(0).setHorPos(Target.tLeft);
-                        RobotMap.unsortedMid.get(1).setHorPos(Target.tRight);
-                    }
-
-                    else if (RobotMap.unsortedMid.get(0).cenX > RobotMap.unsortedMid.get(1).cenX){
-                        RobotMap.unsortedMid.get(0).setHorPos(Target.tRight);
-                        RobotMap.unsortedMid.get(1).setHorPos(Target.tLeft);
-                    }
-                }
-            }
-
-            //Sort bot vector IF NO TOP DETECTED
-            if (RobotMap.unsortedBot.capacity() == 2){
-                for (int i = 0; i <= RobotMap.unsortedBot.capacity(); i++){
-
-                    if (RobotMap.unsortedBot.get(0).cenX < RobotMap.unsortedBot.get(1).cenX){
-                        RobotMap.unsortedBot.get(0).setHorPos(Target.tLeft);
-                        RobotMap.unsortedBot.get(1).setHorPos(Target.tRight);
-                    }
-
-                    else if (RobotMap.unsortedBot.get(0).cenX > RobotMap.unsortedBot.get(1).cenX){
-                        RobotMap.unsortedBot.get(0).setHorPos(Target.tRight);
-                        RobotMap.unsortedBot.get(1).setHorPos(Target.tLeft);
-                    }
-                }
-            }
+            
+            //Sort bot vector
+            this.sort(RobotMap.unsortedBot);
+            
+            
+//            if (RobotMap.unsortedBot.capacity() == 2){
+//                for (int i = 0; i <= RobotMap.unsortedBot.capacity(); i++){
+//
+//                    if (((Target)RobotMap.unsortedBot.elementAt(0)).cenX < ((Target)RobotMap.unsortedBot.elementAt(1)).cenX){
+//                        ((Target)RobotMap.unsortedBot.elementAt(0)).setHorPos(Target.tLeft);
+//                        ((Target)RobotMap.unsortedBot.elementAt(1)).setHorPos(Target.tRight);
+//                    }
+//
+//                    else if (((Target)RobotMap.unsortedBot.elementAt(0)).cenX > ((Target)RobotMap.unsortedBot.elementAt(1)).cenX){
+//                        ((Target)RobotMap.unsortedBot.elementAt(0)).setHorPos(Target.tRight);
+//                        ((Target)RobotMap.unsortedBot.elementAt(1)).setHorPos(Target.tLeft);
+//                    }
+//                }
+//            }
             
         }
         
@@ -108,5 +126,43 @@ public class TargetParser extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+    
+    private void sort(Vector tVec, Target compare){
+        if (tVec.size() == 2){
+            for (int i = 0; i <= tVec.size(); i++){
+
+                if (((Target)tVec.elementAt(0)).cenX < compare.cenX){
+                    ((Target)tVec.elementAt(0)).setHorPos(Target.tLeft);
+                    ((Target)tVec.elementAt(1)).setHorPos(Target.tRight);
+                }
+
+                else if (((Target)tVec.elementAt(0)).cenX > compare.cenX){
+                    ((Target)tVec.elementAt(0)).setHorPos(Target.tRight);
+                    ((Target)tVec.elementAt(1)).setHorPos(Target.tLeft);
+                }
+            }
+            }
+        else
+            System.out.println("Vector doesn't contain two targets!");
+    }
+    
+    private void sort(Vector tVec){
+        if (tVec.size() == 2){
+            for (int i = 0; i <= tVec.size(); i++){
+
+                if (((Target)tVec.elementAt(0)).cenX < ((Target)tVec.elementAt(1)).cenX){
+                    ((Target)tVec.elementAt(0)).setHorPos(Target.tLeft);
+                    ((Target)tVec.elementAt(1)).setHorPos(Target.tRight);
+                }
+
+                else if (((Target)tVec.elementAt(0)).cenX > ((Target)tVec.elementAt(1)).cenX){
+                    ((Target)tVec.elementAt(0)).setHorPos(Target.tRight);
+                    ((Target)tVec.elementAt(1)).setHorPos(Target.tLeft);
+                }
+            }
+        }
+        else
+            System.out.println("Vector doesn't contain two targets!");
     }
 }

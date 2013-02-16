@@ -36,6 +36,7 @@ public class ScraperBike extends IterativeRobot {
     public static NetworkTable nt;
     private static Pusher pusher;
     private static Arms arms;
+    private static TargetParser tp;
     
     public static DriveTrain getDriveTrain() {
         return DriveTrain;
@@ -91,6 +92,7 @@ public class ScraperBike extends IterativeRobot {
         compressor = new Compressor(RobotMap.pressureSwitch, RobotMap.compressorRelay);
         compressor.start();
         nt.putString("Status", "Initialized");
+        tp = new TargetParser();
         
     }
     public void disabledInit(){
@@ -122,6 +124,7 @@ public class ScraperBike extends IterativeRobot {
             targetSort.cancel();
         
         System.out.println("Entering TeleOp...");
+        tp.start();
 
     }
     /**
@@ -134,5 +137,25 @@ public class ScraperBike extends IterativeRobot {
         display.updateLCD();
         
         Scheduler.getInstance().run();
+        
+        if (!RobotMap.unsortedMid.isEmpty()){
+            
+            System.out.println(((Target)RobotMap.unsortedMid.elementAt(0)).vertPos);
+        
+            display.println(Line.kUser1, 1, "Aspect Ratio: " + ((Target)RobotMap.unsortedMid.elementAt(0)).aspect);
+            display.println(Line.kUser2, 1, "CenX: " + ((Target)RobotMap.unsortedMid.elementAt(0)).cenX);
+            display.println(Line.kUser3, 1, "CenY: " + ((Target)RobotMap.unsortedMid.elementAt(0)).cenY);
+            display.println(Line.kUser4, 1, "Height: " + ((Target)RobotMap.unsortedMid.elementAt(0)).height);
+            display.println(Line.kUser5, 1, "Width: " + ((Target)RobotMap.unsortedMid.elementAt(0)).width);
+        }
+        
+//        display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
+//        display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
+//        display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
+//        display.println(Line.kUser4, 1, "Height: " + RobotMap.Top.height);
+//        display.println(Line.kUser5, 1, "Width: " + RobotMap.Top.width);
+        //System.out.println(RobotMap.Top.aspect);
+        
+        display.updateLCD();
     }
 }
