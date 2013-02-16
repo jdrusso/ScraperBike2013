@@ -17,7 +17,10 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Relay;
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.Solenoid;
+=======
+>>>>>>> Made a shifter between the DriveTrain and the Arms, and then corrected the code that uses the arms.
 import edu.wpi.first.wpilibj.templates.commands.StandardDrive;
 //import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.templates.OI;

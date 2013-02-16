@@ -44,13 +44,9 @@ public class RobotMap {
      * 
      */
     //TODO: GET THE ACTUAL PORT ASSIGNMENT
-<<<<<<< HEAD
    
     public static final boolean shifterDriveTrainDirection = true;
     public static final boolean shifterArmsDirection = false;   
-=======
-    
->>>>>>> Fixed port assignments to match the standard
     
     /*
      * Height Constants for shooter in inches
