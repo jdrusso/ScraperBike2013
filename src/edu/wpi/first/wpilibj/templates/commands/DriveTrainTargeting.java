@@ -41,9 +41,9 @@ public class DriveTrainTargeting extends PIDCommand {
     protected double returnPIDInput() {
         
         //If a top target is detected, give it's X coord
-        if(RobotMap.top[0] != 0){
+        if(RobotMap.Top.cenX != 0){
             
-            return RobotMap.top[0];
+            return RobotMap.Top.cenX;
         }
         
         //if not, this effectively stops the loop from moving anything.
