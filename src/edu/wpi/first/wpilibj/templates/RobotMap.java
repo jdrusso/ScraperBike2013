@@ -45,8 +45,8 @@ public class RobotMap {
      */
     //TODO: GET THE ACTUAL PORT ASSIGNMENT
     
-    public static final Relay.Value shifterDriveTrainDirection = Relay.Value.kForward;
-    public static final Relay.Value shifterArmsDirection = Relay.Value.kReverse;
+    public static final boolean shifterDriveTrainDirection = true;
+    public static final boolean shifterArmsDirection = false;
     
     
     /*
