@@ -31,9 +31,11 @@ public class OI {
     private static Button climbPyramid;
     private static Button armExtend;
     private static Button armRetract;
+    private static Button shiftLowGear;
     
     public static void initialize() {
         
+        shiftLowGear = RobotMap.dTrigger;
         manualShooter = RobotMap.dButton3;
         pidShooter = RobotMap.dButton2;
         reloadLeft = RobotMap.dButton4;
@@ -58,6 +60,7 @@ public class OI {
         //autoTargeterDisable.whenPressed(new HorizontalTurretRotationManual());
         autoTargeterDisable.whenPressed(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), getJoystick1()));
         
+        shiftLowGear.whileHeld(new ShiftLowGear());
         manualShooter.whileHeld(new Shoot());
         pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
         reloadLeft.whileHeld(new Reload(1));

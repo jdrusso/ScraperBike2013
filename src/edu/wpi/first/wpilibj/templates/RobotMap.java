@@ -237,5 +237,8 @@ public class RobotMap {
     public static final Solenoid rearPusher = new Solenoid(5);
     public static final Solenoid popper = new Solenoid(6);
     public static final Solenoid popper2 = new Solenoid(7);
+    
+    public static final boolean shifterLowGear = true;
+    public static final boolean shifterHighGear = false;
 
 }
