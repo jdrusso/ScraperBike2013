@@ -36,40 +36,40 @@ public class TargetParser extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected synchronized void execute() {
                
-        System.out.println("Running TargetParser");
+        ScraperBike.debugPrint("Running TargetParser");
         numDetected = (int)ScraperBike.nt.getNumber("NumTargets", 0);
         RobotMap.unsortedMid.removeAllElements();
         RobotMap.unsortedBot.removeAllElements();
         updateTargets();
-        System.out.println("Num: " + RobotMap.numTargets);
+        ScraperBike.debugPrint("Num: " + RobotMap.numTargets);
         //Create target objects
         for (int i = 1; i <= RobotMap.numTargets; i++){
             
             switch (i){
                 case 1:
-                    System.out.print("Setting H1. H1: " + h1 + "W1: " + w1);
+                    ScraperBike.debugPrint("Setting H1. H1: " + h1 + "W1: " + w1);
                     RobotMap.t1.setCenter(x1, y1); 
                     RobotMap.t1.setSize(h1, w1);
-                    System.out.println(" | T1 Aspect: " + RobotMap.t1.aspect + ", X: " + RobotMap.t1.cenX + ", Y: " + RobotMap.t1.cenY + ", H: " + RobotMap.t1.height + ", W: " + RobotMap.t1.width);break;
+                    ScraperBike.debugPrint(" | T1 Aspect: " + RobotMap.t1.aspect + ", X: " + RobotMap.t1.cenX + ", Y: " + RobotMap.t1.cenY + ", H: " + RobotMap.t1.height + ", W: " + RobotMap.t1.width);break;
                 case 2:
-                    System.out.print("Setting 2 | ");
+                    ScraperBike.debugPrint("Setting 2 | ");
                     RobotMap.t2.setCenter(x2, y2);
                     RobotMap.t2.setSize(h2, w2);
-                    System.out.println("T2 Aspect: " + RobotMap.t2.aspect + ", X: " + RobotMap.t2.cenX + ", Y: " + RobotMap.t2.cenY + ", H: " + RobotMap.t2.height + ", W: " + RobotMap.t2.width); break;
+                    ScraperBike.debugPrint("T2 Aspect: " + RobotMap.t2.aspect + ", X: " + RobotMap.t2.cenX + ", Y: " + RobotMap.t2.cenY + ", H: " + RobotMap.t2.height + ", W: " + RobotMap.t2.width); break;
                 case 3:
-                    System.out.println("Setting 3");
+                    ScraperBike.debugPrint("Setting 3");
                     RobotMap.t3.setSize(h3, w3);
                     RobotMap.t3.setCenter(x3, y3); break;
                 case 4:
-                    System.out.println("Setting 4");
+                    ScraperBike.debugPrint("Setting 4");
                     RobotMap.t4.setSize(h4, w4);
                     RobotMap.t4.setCenter(x4, y4); break;
                 case 5:
-                    System.out.println("Setting 5");
+                    ScraperBike.debugPrint("Setting 5");
                     RobotMap.t5.setSize(h5, w5);
                     RobotMap.t5.setCenter(x5, y5); break;
                 case 6:
-                    System.out.println("Setting 6");
+                    ScraperBike.debugPrint("Setting 6");
                     RobotMap.t6.setSize(h6, w6);
                     RobotMap.t6.setCenter(x6, y6); break;
             }
@@ -175,7 +175,7 @@ public class TargetParser extends CommandBase {
             //tVec.removeAllElements();
         }
         else
-            System.out.println("Compare to - Vector doesn't contain two targets!");
+            ScraperBike.debugPrint("Compare to - Vector doesn't contain two targets!");
     }
     
     private void sort(Vector tVec){
@@ -195,7 +195,7 @@ public class TargetParser extends CommandBase {
             //tVec.removeAllElements();
         }
         else
-            System.out.println("Regular - Vector doesn't contain two targets!");
+            ScraperBike.debugPrint("Regular - Vector doesn't contain two targets!");
     }
     
     private void updateTargets(){

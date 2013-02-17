@@ -95,14 +95,14 @@ public class ScraperBike extends IterativeRobot {
     }
     public void disabledInit(){
         
-        System.out.println("Entering disabled...");
+        ScraperBike.debugPrintln("Entering disabled...");
     }
     public void disabledPeriodic(){
         
     }
     public void autonomousInit() {
         
-        System.out.println("Entering Autonomous...");
+        ScraperBike.debugPrintln("Entering Autonomous...");
     }
 
     /**
@@ -118,8 +118,8 @@ public class ScraperBike extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        
-        System.out.println("Entering TeleOp...");
+         
+        ScraperBike.debugPrintln("Entering TeleOp...");
         tp.start();
 
     }
@@ -136,7 +136,7 @@ public class ScraperBike extends IterativeRobot {
         
         if (!RobotMap.unsortedMid.isEmpty()){
             
-            System.out.println("Vertical position: " + ((Target)RobotMap.unsortedMid.elementAt(0)).vertPos 
+            ScraperBike.debugPrintln("Vertical position: " + ((Target)RobotMap.unsortedMid.elementAt(0)).vertPos 
                              + ", Horizontal Position: " + ((Target)RobotMap.unsortedMid.elementAt(0)).horPos);
         
             display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
@@ -153,8 +153,22 @@ public class ScraperBike extends IterativeRobot {
 //        display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
 //        display.println(Line.kUser4, 1, "Height: " + RobotMap.Top.height);
 //        display.println(Line.kUser5, 1, "Width: " + RobotMap.Top.width);
-        //System.out.println(RobotMap.Top.aspect);
+        //ScraperBike.debugPrintln(RobotMap.Top.aspect);
         
         display.updateLCD();
+    }
+    
+    public static void debugPrintln(String text){
+        
+        if (RobotMap.debug){
+            System.out.println(text);
+        }
+    } 
+    
+    public static void debugPrint(String text){
+        
+        if (RobotMap.debug){
+            System.out.print(text);
+        }
     }
 }

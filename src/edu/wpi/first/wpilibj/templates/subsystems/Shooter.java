@@ -62,7 +62,7 @@ public class Shooter extends Subsystem {
 //    public double getUltrasonicRange(){
 //        
 //        double temp = ((5/512)*ultrasonic.getVoltage());
-//        System.out.println(temp);
+//        ScraperBike.debugPrint(temp);
 //        return (temp);
 //    }
 

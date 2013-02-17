@@ -50,10 +50,10 @@ public class Target {
         //this.width = w;
         this.horPos = tUnassigned;
         this.vertPos = tUnassigned;
-        System.out.println("B - Height: " + h + ", Width: " + w + ", X: " + x + ", Y: " + y);
+        ScraperBike.debugPrint("B - Height: " + h + ", Width: " + w + ", X: " + x + ", Y: " + y);
         this.setSize(h, w);
         this.setCenter(x, y);
-        System.out.println("A - Height: " + this.height + ", Width: " + this.width + ", X: " + this.cenX + ", Y: " + this.cenY + ", Aspect: " + this.aspect);
+        ScraperBike.debugPrint("A - Height: " + this.height + ", Width: " + this.width + ", X: " + this.cenX + ", Y: " + this.cenY + ", Aspect: " + this.aspect);
         if (h == 0 | w == 0)
             this.isNull = true;
         else if (h != 0 && w !=0)
@@ -72,11 +72,11 @@ public class Target {
     
     public synchronized void setSize(double h, double w){
         
-        System.out.println("Setting size.");
+        ScraperBike.debugPrint("Setting size.");
         this.height = h;
         this.width = w;
         
-        System.out.println("Size set.");
+        ScraperBike.debugPrint("Size set.");
         
         if (h == 0 | w == 0)
             this.isNull = true;
@@ -84,16 +84,16 @@ public class Target {
         else if (h != 0 && w !=0)
             this.isNull = false;
         
-        System.out.println("Null conditions checked.");
-        System.out.print("X = " + this.cenX + ", Y = " + this.cenY + ", W = " + w + ", H = " + h);
+        ScraperBike.debugPrint("Null conditions checked.");
+        ScraperBike.debugPrint("X = " + this.cenX + ", Y = " + this.cenY + ", W = " + w + ", H = " + h);
         this.aspect = w/h;
-        System.out.println(", A = " + this.aspect);
+        ScraperBike.debugPrint(", A = " + this.aspect);
         
         
         if(Math.abs(this.aspect - topAspect) < tolerance){
             this.vertPos = this.tTop;
             RobotMap.Top = this.cloneTarget();
-            System.out.println("Top -- " + RobotMap.Top.toString());
+            ScraperBike.debugPrint("Top -- " + RobotMap.Top.toString());
             ScraperBike.nt.putString("TopTargetSTR", this.toString());
             ScraperBike.nt.putNumber("TopTargetSTR'", RobotMap.Top.aspect);
         }
@@ -102,7 +102,7 @@ public class Target {
             this.vertPos = this.tMid;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedMid.addElement(this.cloneTarget());
-            System.out.println("Mid -- " + RobotMap.unsortedMid.elementAt(0).toString());
+            ScraperBike.debugPrint("Mid -- " + RobotMap.unsortedMid.elementAt(0).toString());
             //ScraperBike.nt.putValue("MidTarget", ((Object)this));
             ScraperBike.nt.putString("MidTargetSTR", this.toString());
             ScraperBike.nt.putString("MidTargetSTRL", ((Target)RobotMap.unsortedMid.elementAt(0)).toString());
@@ -113,7 +113,7 @@ public class Target {
             this.vertPos = this.tBot;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedBot.addElement(this.cloneTarget());
-            System.out.println("Bot");
+            ScraperBike.debugPrint("Bot");
         }
         
         this.horPos = tUnassigned;
