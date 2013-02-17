@@ -76,7 +76,7 @@ public class DriveTrain extends Subsystem {
     }
       
     public void initDefaultCommand() {  
-        super.setDefaultCommand(new StandardDrive(drive, OI.getJoystick1()));
+        super.setDefaultCommand(new StandardDrive(drive, OI.getDriveStick()));
     }
     
 //    public double getLeftOutput(){

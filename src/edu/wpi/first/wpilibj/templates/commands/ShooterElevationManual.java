@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
  *
  * @author jrusso
  */
-public class VerticalTurretRotationManual extends CommandBase {
+public class ShooterElevationManual extends CommandBase {
     public double direction;
 //    public Relay VerTurretSpike;
     public VerticalTurretAxis vt;
     
-    public VerticalTurretRotationManual() {
+    public ShooterElevationManual() {
         vt = ScraperBike.getVerticalTurretAxis();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

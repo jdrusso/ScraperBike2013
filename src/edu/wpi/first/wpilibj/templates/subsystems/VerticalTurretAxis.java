@@ -1,10 +1,10 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
-//import edu.team2035.meta.MetaCommandLog;
+
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.VerticalTurretRotationManual;
+import edu.wpi.first.wpilibj.templates.commands.ShooterElevationManual;
 
 
 /**
@@ -42,7 +42,7 @@ public class VerticalTurretAxis extends Subsystem  {
         verTurretTalon = new Talon(RobotMap.VerTurretMotor);
     }
     protected void initDefaultCommand() {
-        super.setDefaultCommand(new VerticalTurretRotationManual());
+        super.setDefaultCommand(new ShooterElevationManual());
     }    
     public void rotate(double speed){
         
