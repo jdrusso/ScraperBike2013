@@ -127,8 +127,8 @@ public class ScraperBike extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {        
-        status =  nt.getString("Status", "");
-        display.println(Line.kUser1, 1, "Status: " + status + "              ");
+        //status =  nt.getString("Status", "");
+        //display.println(Line.kUser1, 1, "Status: " + status + "              ");
         
         display.updateLCD();
         
@@ -146,8 +146,6 @@ public class ScraperBike extends IterativeRobot {
             display.println(Line.kUser4, 1, "Aspect Ratio: " + RobotMap.LMid.aspect);
             display.println(Line.kUser5, 1, "CenX: " + RobotMap.LMid.cenX);
             display.println(Line.kUser6, 1, "CenY: " + RobotMap.LMid.cenY);
-            //display.println(Line.kUser4, 1, "Height: " + ((Target)RobotMap.unsortedMid.elementAt(0)).height);
-            //display.println(Line.kUser5, 1, "Width: " + ((Target)RobotMap.unsortedMid.elementAt(0)).width);
         }
         
 //        display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
