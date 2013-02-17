@@ -47,7 +47,7 @@ public class ShooterElevationPID extends PIDCommand {
     protected void execute() {
         
         this.determineSetpoint();
-        this.setSetpoint(RobotMap.desiredAngle);
+        this.setSetpoint(RobotMap.desiredShooterAngle);
         
     }
 

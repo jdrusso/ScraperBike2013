@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.ShooterElevationManual;
@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.commands.ShooterElevationManual;
  */
 public class VerticalTurretAxis extends Subsystem  {
 
-    private Jaguar verTurretJag;
+    private Talon verTurretTalon;
     private static Gyro gyro;
     private double angle;
     
@@ -30,52 +30,52 @@ public class VerticalTurretAxis extends Subsystem  {
     }
     
     public void moveElevation() {
-        verTurretJag.set(0.1);
+        verTurretTalon.set(RobotMap.elevatorSpeed);
     }
     
     public void stopElevation() {
-        verTurretJag.set(0.0);
+        verTurretTalon.set(0.0);
     }
     
     public VerticalTurretAxis(){
         super("VerticalTurretAxis");
-        verTurretJag = new Jaguar(RobotMap.VerTurretMotor);
+        verTurretTalon = new Talon(RobotMap.VerTurretMotor);
     }
     protected void initDefaultCommand() {
         super.setDefaultCommand(new ShooterElevationManual());
     }    
     public void rotate(double speed){
-        
-        if(RobotMap.bottomLimit.get() && RobotMap.topLimit.get()){
-            verTurretJag.set(speed);
-//            VerLog.setOutputs("" + speed);
-            
-        } else if (!RobotMap.bottomLimit.get()){
-            
-            if(speed >= 0){
-                
-                verTurretJag.set(speed);
-//                VerLog.setOutputs("" + speed);
-            
-            } else if (speed < 0){
-                
-                verTurretJag.set(0);
-//                VerLog.setOutputs("" + speed);
-            }
-            
-            
-        } else if (!RobotMap.topLimit.get()){
-            if(speed <= 0){
-                
-                verTurretJag.set(speed);
-//                VerLog.setOutputs("" + speed);
-            
-            }
-            else if (speed > 0){
-                verTurretJag.set(0);
-//                VerLog.setOutputs("" + speed);
-            }
-        }
+        verTurretTalon.set(speed);
+//        if(RobotMap.bottomLimit.get() && RobotMap.topLimit.get()){
+//            verTurretTalon.set(speed);
+////            VerLog.setOutputs("" + speed);
+//            
+//        } else if (!RobotMap.bottomLimit.get()){
+//            
+//            if(speed >= 0){
+//                
+//                verTurretTalon.set(speed);
+////                VerLog.setOutputs("" + speed);
+//            
+//            } else if (speed < 0){
+//                
+//                verTurretTalon.set(0);
+////                VerLog.setOutputs("" + speed);
+//            }
+//            
+//            
+//        } else if (!RobotMap.topLimit.get()){
+//            if(speed <= 0){
+//                
+//                verTurretTalon.set(speed);
+////                VerLog.setOutputs("" + speed);
+//            
+//            }
+//            else if (speed > 0){
+//                verTurretTalon.set(0);
+////                VerLog.setOutputs("" + speed);
+//            }
+//        }
     }
    
     public static Gyro getGyro(){
