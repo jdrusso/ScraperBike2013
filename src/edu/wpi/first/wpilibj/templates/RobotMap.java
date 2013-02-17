@@ -146,7 +146,7 @@ public class RobotMap {
     public static final DigitalInput pusherRearSensor2 = new DigitalInput(12); // Pusher subsystem
     
     public static final int pressureSwitch = 13;
-    public static final int compressorRelay = 1;
+    public static final int compressorRelay = 6;
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for AutoBalancing.
