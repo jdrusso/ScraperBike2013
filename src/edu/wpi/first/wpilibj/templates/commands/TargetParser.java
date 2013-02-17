@@ -34,33 +34,42 @@ public class TargetParser extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected synchronized void execute() {
                
+        System.out.println("Running TargetParser");
         numDetected = (int)ScraperBike.nt.getNumber("NumTargets", 0);
         RobotMap.unsortedMid.removeAllElements();
         RobotMap.unsortedBot.removeAllElements();
         updateTargets();
-        
+        System.out.println("Num: " + RobotMap.numTargets);
         //Create target objects
-        for (int i = 1; i <= 6; i++){
+        for (int i = 1; i <= RobotMap.numTargets; i++){
             
             switch (i){
                 case 1:
+                    System.out.print("Setting H1. H1: " + h1 + "W1: " + w1);
+                    RobotMap.t1.setCenter(x1, y1); 
                     RobotMap.t1.setSize(h1, w1);
-                    RobotMap.t1.setCenter(x1, y1); break;
+                    System.out.println(" | T1 Aspect: " + RobotMap.t1.aspect + ", X: " + RobotMap.t1.cenX + ", Y: " + RobotMap.t1.cenY + ", H: " + RobotMap.t1.height + ", W: " + RobotMap.t1.width);break;
                 case 2:
+                    System.out.print("Setting 2 | ");
+                    RobotMap.t2.setCenter(x2, y2);
                     RobotMap.t2.setSize(h2, w2);
-                    RobotMap.t2.setCenter(x2, y2); break;
+                    System.out.println("T2 Aspect: " + RobotMap.t2.aspect + ", X: " + RobotMap.t2.cenX + ", Y: " + RobotMap.t2.cenY + ", H: " + RobotMap.t2.height + ", W: " + RobotMap.t2.width); break;
                 case 3:
+                    System.out.println("Setting 3");
                     RobotMap.t3.setSize(h3, w3);
                     RobotMap.t3.setCenter(x3, y3); break;
                 case 4:
+                    System.out.println("Setting 4");
                     RobotMap.t4.setSize(h4, w4);
                     RobotMap.t4.setCenter(x4, y4); break;
                 case 5:
+                    System.out.println("Setting 5");
                     RobotMap.t5.setSize(h5, w5);
                     RobotMap.t5.setCenter(x5, y5); break;
                 case 6:
+                    System.out.println("Setting 6");
                     RobotMap.t6.setSize(h6, w6);
                     RobotMap.t6.setCenter(x6, y6); break;
             }
@@ -190,36 +199,50 @@ public class TargetParser extends CommandBase {
     }
     
     private void updateTargets(){
+        RobotMap.numTargets = 0;
+        double x = 1;
         
         this.h1 = ScraperBike.nt.getNumber("H1", 0);
         this.w1 = ScraperBike.nt.getNumber("W1", 0);
         this.x1 = ScraperBike.nt.getNumber("X1", 0);
         this.y1 = ScraperBike.nt.getNumber("Y1", 0);
+        if(!Double.isNaN(this.h1/this.w1/this.x1/this.y1))
+            RobotMap.numTargets++;
         
         this.h2 = ScraperBike.nt.getNumber("H2", 0);
         this.w2 = ScraperBike.nt.getNumber("W2", 0);
         this.x2 = ScraperBike.nt.getNumber("X2", 0);
         this.y2 = ScraperBike.nt.getNumber("Y2", 0);
+        if(!Double.isNaN(this.h2/this.w2/this.x2/this.y2))
+            RobotMap.numTargets++;
         
         this.h3 = ScraperBike.nt.getNumber("H3", 0);
         this.w3 = ScraperBike.nt.getNumber("W3", 0);
         this.x3 = ScraperBike.nt.getNumber("X3", 0);
         this.y3 = ScraperBike.nt.getNumber("Y3", 0);
+        if(!Double.isNaN(this.h3/this.w3/this.x3/this.y3))
+            RobotMap.numTargets++;
         
         this.h4 = ScraperBike.nt.getNumber("H4", 0);
         this.w4 = ScraperBike.nt.getNumber("W4", 0);
         this.x4 = ScraperBike.nt.getNumber("X4", 0);
         this.y4 = ScraperBike.nt.getNumber("Y4", 0);
+        if(!Double.isNaN(this.h4/this.w4/this.x4/this.y4))
+            RobotMap.numTargets++;
         
         this.h5 = ScraperBike.nt.getNumber("H5", 0);
         this.w5 = ScraperBike.nt.getNumber("W5", 0);
         this.x5 = ScraperBike.nt.getNumber("X5", 0);
         this.y5 = ScraperBike.nt.getNumber("Y5", 0);
+        if(!Double.isNaN(this.h5/this.w5/this.x5/this.y5))
+            RobotMap.numTargets++;
         
         this.h6 = ScraperBike.nt.getNumber("H6", 0);
         this.w6 = ScraperBike.nt.getNumber("W6", 0);
         this.x6 = ScraperBike.nt.getNumber("X6", 0);
         this.y6 = ScraperBike.nt.getNumber("Y6", 0);
+        if(!Double.isNaN(this.h6/this.w6/this.x6/this.y6))
+            RobotMap.numTargets++;
         
         RobotMap.t1.clear();
         RobotMap.t2.clear();

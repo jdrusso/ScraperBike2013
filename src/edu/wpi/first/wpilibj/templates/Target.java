@@ -44,17 +44,24 @@ public class Target {
     public int vertPos;     //(0, 1, 2) = low, mid, high
     public int horPos;      //(0, 1) = left, right
     
-    public Target(double h, double w){
+    public Target(double h, double w, double x, double y){
         
         //this.height = h;
         //this.width = w;
         this.horPos = tUnassigned;
         this.vertPos = tUnassigned;
+        System.out.println("B - Height: " + h + ", Width: " + w + ", X: " + x + ", Y: " + y);
         this.setSize(h, w);
+        this.setCenter(x, y);
+        System.out.println("A - Height: " + this.height + ", Width: " + this.width + ", X: " + this.cenX + ", Y: " + this.cenY + ", Aspect: " + this.aspect);
         if (h == 0 | w == 0)
             this.isNull = true;
         else if (h != 0 && w !=0)
             this.isNull = false;
+    }
+    
+    public Target(boolean makingCopy){
+        
     }
     
     public void setCenter(double x, double y){
@@ -63,10 +70,13 @@ public class Target {
         this.cenY = y;
     }
     
-    public void setSize(double h, double w){
+    public synchronized void setSize(double h, double w){
         
+        System.out.println("Setting size.");
         this.height = h;
         this.width = w;
+        
+        System.out.println("Size set.");
         
         if (h == 0 | w == 0)
             this.isNull = true;
@@ -74,24 +84,36 @@ public class Target {
         else if (h != 0 && w !=0)
             this.isNull = false;
         
+        System.out.println("Null conditions checked.");
+        System.out.print("X = " + this.cenX + ", Y = " + this.cenY + ", W = " + w + ", H = " + h);
         this.aspect = w/h;
+        System.out.println(", A = " + this.aspect);
         
         
         if(Math.abs(this.aspect - topAspect) < tolerance){
             this.vertPos = this.tTop;
-            RobotMap.Top = this;
+            RobotMap.Top = this.cloneTarget();
+            System.out.println("Top -- " + RobotMap.Top.toString());
+            ScraperBike.nt.putString("TopTargetSTR", this.toString());
+            ScraperBike.nt.putNumber("TopTargetSTR'", RobotMap.Top.aspect);
         }
         
         else if(Math.abs(this.aspect - midAspect) < tolerance){
             this.vertPos = this.tMid;
             this.horPos = this.tUnassigned;
-            RobotMap.unsortedMid.addElement(this);
+            RobotMap.unsortedMid.addElement(this.cloneTarget());
+            System.out.println("Mid -- " + RobotMap.unsortedMid.elementAt(0).toString());
+            //ScraperBike.nt.putValue("MidTarget", ((Object)this));
+            ScraperBike.nt.putString("MidTargetSTR", this.toString());
+            ScraperBike.nt.putString("MidTargetSTRL", ((Target)RobotMap.unsortedMid.elementAt(0)).toString());
+            ScraperBike.nt.putNumber("MidTargetSTR'", RobotMap.LMid.aspect);
         }
         
         else if(Math.abs(this.aspect - botAspect) < tolerance){
             this.vertPos = this.tBot;
             this.horPos = this.tUnassigned;
-            RobotMap.unsortedBot.addElement(this);
+            RobotMap.unsortedBot.addElement(this.cloneTarget());
+            System.out.println("Bot");
         }
         
         this.horPos = tUnassigned;
@@ -114,16 +136,16 @@ public class Target {
             
             case tLeft:
                 if (this.vertPos == tBot)
-                    RobotMap.LBot = this;
+                    RobotMap.LBot = this.cloneTarget();
                 else if (this.vertPos == tMid)
-                    RobotMap.LMid = this;
+                    RobotMap.LMid = this.cloneTarget();
                 break;
                 
             case tRight:
                 if (this.vertPos == tBot)
-                    RobotMap.RBot = this;
+                    RobotMap.RBot = this.cloneTarget();
                 else if (this.vertPos == tMid)
-                    RobotMap.RMid = this;
+                    RobotMap.RMid = this.cloneTarget();
                 break;
         }
     }
@@ -140,5 +162,24 @@ public class Target {
         this.height = 0;
         this.width = 0;
         this.aspect = 0;
+    }
+    
+    public String toString(){
+        
+        String str = ("Height: " + this.height + ", Width: " + this.width + ", CenX: " + this.cenX + ", CenY: " + this.cenY + ", AR: " + this.aspect);
+        return str;
+    }
+    
+    public Target cloneTarget(){
+        Target copy = new Target(true);
+        copy.aspect = this.aspect;
+        copy.horPos = this.horPos;
+        copy.cenX = this.cenX;
+        copy.cenY = this.cenY;
+        copy.height = this.height;
+        copy.isNull = this.isNull;
+        copy.vertPos = this.vertPos;
+        copy.width = this.width;
+        return copy;
     }
 }
