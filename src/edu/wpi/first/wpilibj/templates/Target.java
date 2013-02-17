@@ -23,13 +23,13 @@ public class Target {
     //public static final double topAspect = 3.100;
     //public static final double midAspect = 2.138;
     //public static final double botAspect = 1.156;
-    public static final double topAspect = 62/20;
+    public static final double topAspect = RobotMap.topAspect;
     //public static final double midAspect = 62/29;
-    public static final double midAspect = 24/18;
+    public static final double midAspect = RobotMap.midAspect;
     //public static final double botAspect = 37/32;
-    public static final double botAspect = 69;
+    public static final double botAspect = RobotMap.botAspect;
     
-    private final double tolerance = 0.4;
+    private final double tolerance = RobotMap.targetTolerance;
     
     public boolean isNull = true;
     

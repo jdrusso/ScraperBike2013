@@ -90,12 +90,19 @@ public class RobotMap {
     public static final boolean shifterHighGear = false;
     
     /* TARGETING 
-     * Height Constants for shooter in inches
+     * Aspect ratio constants for targets, calculated as width/height in inches
      */
-    public static final double target1Height = 28.0/12.0;
-    public static final double target2Height = 61.0/12.0;
-    public static final double target3Height = 98.0/12.0;
-    public static final double shooterHeight = 30.0/12.0; //default, TBD
+    //public static final double topAspect = 3.100;
+    //public static final double midAspect = 2.138;
+    //public static final double botAspect = 1.156;
+    public static final double topAspect = 62/20;
+    //public static final double midAspect = 62/29;
+    public static final double midAspect = 24/18;
+    //public static final double botAspect = 37/32;
+    public static final double botAspect = 69;
+    
+    //Tolerance for target detected aspect ratio
+    public static final double targetTolerance = 0.4;
      
     //Create target objects for use in sorting later
     public static Target t1 = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0)
@@ -236,4 +243,6 @@ public class RobotMap {
     //public static final double autonomousSpeed = .92;
     public static final double climbSpeed = 0.5;
     public static final double elevatorSpeed = 0.1;
+    
+    public static boolean debug = false;
 }
