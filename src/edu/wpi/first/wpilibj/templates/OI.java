@@ -29,6 +29,8 @@ public class OI {
     private static Button reloadRight;
     private static Button rotate;
     private static Button climbPyramid;
+    private static Button armExtend;
+    private static Button armRetract;
     
     public static void initialize() {
         
@@ -37,7 +39,9 @@ public class OI {
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
         rotate = RobotMap.dButton6;
-        climbPyramid = RobotMap.dButton11;
+        climbPyramid = RobotMap.dButton9;
+        armExtend = RobotMap.dButton11;
+        armRetract = RobotMap.dButton10;
                 
         //speedSetterUp = RobotMap.shootButton6;
         //speedSetterDown = RobotMap.shootButton7;
@@ -59,6 +63,11 @@ public class OI {
         reloadLeft.whileHeld(new Reload(1));
         reloadRight.whileHeld(new Reload(-1));
         rotate.whileHeld(new RotateRobot());
+        
+        climbPyramid.whenPressed(new ClimbLevelOne());
+        armExtend.whileHeld(new ArmsExtend(2)); 
+        armRetract.whileHeld(new ArmsRetract());
+        
     }
     
     public static Joystick getJoystick1(){

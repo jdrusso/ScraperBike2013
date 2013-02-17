@@ -7,7 +7,6 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
@@ -29,20 +28,23 @@ public class ArmsRetract extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        arm.move(Relay.Value.kReverse);
+        arm.move(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !arm.isContacting();
+        //return !arm.isContacting();
+        return arm.isLimitAft();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+         arm.move(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+         arm.move(0);
     }
 }
