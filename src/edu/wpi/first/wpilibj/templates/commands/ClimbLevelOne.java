@@ -26,7 +26,7 @@ public class ClimbLevelOne extends CommandGroup {
         addSequential(new FrontPusherRetract());
         addSequential(new ArmsRetract());
         addSequential(new Pause(2.0));
-        addSequential(new FrontPusherClimbOver());
+        //addSequential(new FrontPusherClimbOver());
         addSequential(new RearPusherClimbOver());
         //addSequential(new ArmsExtend());//not sure, but I think this should be deleted
     }

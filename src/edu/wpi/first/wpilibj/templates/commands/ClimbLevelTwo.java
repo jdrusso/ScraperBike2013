@@ -18,8 +18,10 @@ public class ClimbLevelTwo extends CommandGroup {
     public ClimbLevelTwo() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new ArmsRetractConditional());
-        addSequential(new FrontPusherClimbOver());
+        addSequential(new ArmsExtend(2));
+        addSequential(new ArmsRetract());
+        addSequential(new Pause(2.0));
+        //addSequential(new FrontPusherClimbOver());
         addSequential(new RearPusherClimbOver());
     }
 
