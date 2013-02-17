@@ -76,7 +76,7 @@ public class Target {
         this.height = h;
         this.width = w;
         
-        ScraperBike.debugPrint("Size set.");
+        ScraperBike.debugPrintln("Size set.");
         
         if (h == 0 | w == 0)
             this.isNull = true;
@@ -84,25 +84,24 @@ public class Target {
         else if (h != 0 && w !=0)
             this.isNull = false;
         
-        ScraperBike.debugPrint("Null conditions checked.");
+        ScraperBike.debugPrintln("Null conditions checked.");
         ScraperBike.debugPrint("X = " + this.cenX + ", Y = " + this.cenY + ", W = " + w + ", H = " + h);
         this.aspect = w/h;
-        ScraperBike.debugPrint(", A = " + this.aspect);
-        
+        ScraperBike.debugPrintln(", A = " + this.aspect);
         
         if(Math.abs(this.aspect - topAspect) < tolerance){
             this.vertPos = this.tTop;
             RobotMap.Top = this.cloneTarget();
-            ScraperBike.debugPrint("Top -- " + RobotMap.Top.toString());
+            ScraperBike.debugPrintln("Top -- " + RobotMap.Top.toString());
             ScraperBike.nt.putString("TopTargetSTR", this.toString());
-            ScraperBike.nt.putNumber("TopTargetSTR'", RobotMap.Top.aspect);
+            //ScraperBike.nt.putString("TopTargetSTR'", RobotMap.Top.toString());
         }
         
         else if(Math.abs(this.aspect - midAspect) < tolerance){
             this.vertPos = this.tMid;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedMid.addElement(this.cloneTarget());
-            ScraperBike.debugPrint("Mid -- " + RobotMap.unsortedMid.elementAt(0).toString());
+            ScraperBike.debugPrintln("Mid -- " + RobotMap.unsortedMid.elementAt(0).toString());
             //ScraperBike.nt.putValue("MidTarget", ((Object)this));
             ScraperBike.nt.putString("MidTargetSTR", this.toString());
             ScraperBike.nt.putString("MidTargetSTRL", ((Target)RobotMap.unsortedMid.elementAt(0)).toString());
@@ -113,7 +112,7 @@ public class Target {
             this.vertPos = this.tBot;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedBot.addElement(this.cloneTarget());
-            ScraperBike.debugPrint("Bot");
+            ScraperBike.debugPrintln("Bot");
         }
         
         this.horPos = tUnassigned;
@@ -249,15 +248,16 @@ public class Target {
         Tft = 0;
         
         switch(this.vertPos){
-            case 3:
-                Tft = RobotMap.topH; break;
-            case 2:
-                Tft = RobotMap.midH; break;
             case 1:
-                Tft = RobotMap.botH; break;
+                Tft = RobotMap.botH/12; break;
+            case 2:
+                Tft = RobotMap.midH/12; break;
+            case 3:
+                Tft = RobotMap.topH/12; break;
         }
         
-        range = (.5*((Tft*FOVpx)/Tpx))/(Math.tan(theta*(180/Math.PI)));
+        range = (.5*((Tft*FOVpx)/Tpx))/(Math.tan(Math.toRadians(theta)));
+        System.out.println("Tft: " + Tft + ", FOVPx: " + FOVpx + ", theta: " + theta + ", Distance: " + range);
         
         return range;
     }
