@@ -92,14 +92,21 @@ public class RobotMap {
     /* TARGETING 
      * Aspect ratio constants for targets, calculated as width/height in inches
      */
+    
+    public static final double topW = 62;
+    public static final double topH = 20;
+    public static final double midW = 24;
+    public static final double midH = 18;
+    public static final double botW = 69;
+    public static final double botH = 1;
     //public static final double topAspect = 3.100;
     //public static final double midAspect = 2.138;
     //public static final double botAspect = 1.156;
-    public static final double topAspect = 62/20;
+    public static final double topAspect = topW/topH;
     //public static final double midAspect = 62/29;
-    public static final double midAspect = 24/18;
+    public static final double midAspect = midW/midH;
     //public static final double botAspect = 37/32;
-    public static final double botAspect = 69;
+    public static final double botAspect = botW/botH;
     
     //Tolerance for target detected aspect ratio
     public static final double targetTolerance = 0.4;
@@ -197,19 +204,19 @@ public class RobotMap {
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for Drive Train Rotation.
-    //public static final double DTRKp = (double) (.25/20);
+    public static final double DTRKp = (double) (.25/20);
     // Ki - K integral value for Drive Train Rotation.
-    //public static final double DTRKi = (double) (3);
+    public static final double DTRKi = (double) (3);
     // Kp - K differential value for Drive Train Rotation.
-    //public static final double DTRKd = (double) (0);
+    public static final double DTRKd = (double) (0);
     
      /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for Lateral Drive Train.
-    //public static final double DTLKp = (double) (1);
+    public static final double DTLKp = (double) (1);
     // Ki - K integral value for Lateral Drive Train.
-    //public static final double DTLKi = (double) (0);
+    public static final double DTLKi = (double) (0);
     // Kp - K differential value for Lateral Drive Train.
-    //public static final double DTLKd = (double) (0);
+    public static final double DTLKd = (double) (0);
     
     /*String KeyValues for Vision Tracking Hashtable*/
     //VTx - X value offset
@@ -223,6 +230,7 @@ public class RobotMap {
     //public static boolean VerTurretManualControl = false;
 
 
+    //Offset for allowing user to press a button to move the setpoint, currently just used as the center position of the camera FoV
     public static double cameraXOffset = 160;
     public static final int defaultCameraOffset = 160;
     public static final int cameraYOffset = 0;
@@ -230,7 +238,7 @@ public class RobotMap {
     public static final int realignRight = 1;
     public static final int realignCenter = 0;
     
-    public static double targetDistance = 6;
+    public static double targetDesiredDistance = 6;
     public static double LatMovOut = 0;
     
     public static double range = 0;
