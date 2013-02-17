@@ -20,7 +20,7 @@ public class Pause extends CommandBase {
     
     public Pause(double amount) {
         
-        delayamount = amount * Math.pow(10, 6);
+        delayamount = amount * 1000000;
         time = new Timer();
         time.start();
         // Use requires() here to declare subsystem dependencies
