@@ -56,6 +56,7 @@ public class  PIDShoot extends PIDCommand {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         this.setSetpoint(OI.getAdjustedThrottle());
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
