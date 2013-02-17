@@ -30,7 +30,7 @@ public class VerticalTurretAxis extends Subsystem  {
     }
     
     public void moveElevation() {
-        verTurretTalon.set(0.1);
+        verTurretTalon.set(RobotMap.elevatorSpeed);
     }
     
     public void stopElevation() {
