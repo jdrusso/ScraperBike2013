@@ -64,4 +64,11 @@ public class OI {
         return RobotMap.shootStick;
     }
     
+    public static double getAdjustedThrottle(){
+        
+        double speed;
+        speed = (RobotMap.shootStick.getZ()+1)/2;
+        return speed;
+    }
+    
 }

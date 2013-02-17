@@ -14,6 +14,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
+import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
 /**
@@ -54,6 +55,7 @@ public class  PIDShoot extends PIDCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        this.setSetpoint(OI.getAdjustedThrottle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
