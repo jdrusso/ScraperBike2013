@@ -56,11 +56,11 @@ public class OI {
         
     }
     
-    public static Joystick getJoystick1(){
+    public static Joystick getDriveStick(){
         return RobotMap.dStick;
     }
     
-    public static Joystick getJoystick2(){
+    public static Joystick getShootStick(){
         return RobotMap.shootStick;
     }
     

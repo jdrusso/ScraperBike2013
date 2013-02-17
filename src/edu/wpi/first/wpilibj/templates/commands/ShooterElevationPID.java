@@ -16,11 +16,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
  *
  * @author abbottk
  */
-public class VerticalTurretRotation extends PIDCommand {
+public class ShooterElevationPID extends PIDCommand {
     private VerticalTurretAxis VerticalAxis;
     
     
-    public VerticalTurretRotation(double Kp, double Ki, double Kd){
+    public ShooterElevationPID(double Kp, double Ki, double Kd){
         super("VerticalTurretRotation", Kp, Ki, Kd);
         this.VerticalAxis = ScraperBike.getVerticalTurretAxis();
         requires(this.VerticalAxis);
