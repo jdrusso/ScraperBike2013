@@ -182,7 +182,12 @@ public class Target {
         copy.width = this.width;
         return copy;
     }
-    
+  /**
+   * Calculates the average range to all detected targets.
+   * Attempts to get a more accurate distance for range by measuring 
+   * the distance to all the detected targets, and taking an average.
+   * @return double - Average Distance
+   */  
     public static double getAvgRange(){
         
         double avgRange = 0;
@@ -225,7 +230,7 @@ public class Target {
      * Calculates range to a detected Target object, using trig and similar triangles.
      * 
      * 
-     * @return Distance in feet
+     * @return double - Distance in feet
      */
     
     public double getRange(){
