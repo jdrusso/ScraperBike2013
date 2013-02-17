@@ -45,37 +45,37 @@ public class VerticalTurretAxis extends Subsystem  {
         super.setDefaultCommand(new ShooterElevationManual());
     }    
     public void rotate(double speed){
-        
-        if(RobotMap.bottomLimit.get() && RobotMap.topLimit.get()){
-            verTurretTalon.set(speed);
-//            VerLog.setOutputs("" + speed);
-            
-        } else if (!RobotMap.bottomLimit.get()){
-            
-            if(speed >= 0){
-                
-                verTurretTalon.set(speed);
-//                VerLog.setOutputs("" + speed);
-            
-            } else if (speed < 0){
-                
-                verTurretTalon.set(0);
-//                VerLog.setOutputs("" + speed);
-            }
-            
-            
-        } else if (!RobotMap.topLimit.get()){
-            if(speed <= 0){
-                
-                verTurretTalon.set(speed);
-//                VerLog.setOutputs("" + speed);
-            
-            }
-            else if (speed > 0){
-                verTurretTalon.set(0);
-//                VerLog.setOutputs("" + speed);
-            }
-        }
+        verTurretTalon.set(speed);
+//        if(RobotMap.bottomLimit.get() && RobotMap.topLimit.get()){
+//            verTurretTalon.set(speed);
+////            VerLog.setOutputs("" + speed);
+//            
+//        } else if (!RobotMap.bottomLimit.get()){
+//            
+//            if(speed >= 0){
+//                
+//                verTurretTalon.set(speed);
+////                VerLog.setOutputs("" + speed);
+//            
+//            } else if (speed < 0){
+//                
+//                verTurretTalon.set(0);
+////                VerLog.setOutputs("" + speed);
+//            }
+//            
+//            
+//        } else if (!RobotMap.topLimit.get()){
+//            if(speed <= 0){
+//                
+//                verTurretTalon.set(speed);
+////                VerLog.setOutputs("" + speed);
+//            
+//            }
+//            else if (speed > 0){
+//                verTurretTalon.set(0);
+////                VerLog.setOutputs("" + speed);
+//            }
+//        }
     }
    
     public static Gyro getGyro(){
