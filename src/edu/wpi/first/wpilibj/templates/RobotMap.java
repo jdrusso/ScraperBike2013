@@ -234,8 +234,6 @@ public class RobotMap {
     public static final double maxRPM = 1500;
     
     //public static final double autonomousSpeed = .92;
-    public static final double climbSpeed = .5;
-    
-
-    
+    public static final double climbSpeed = 0.5;
+    public static final double elevatorSpeed = 0.1;
 }
