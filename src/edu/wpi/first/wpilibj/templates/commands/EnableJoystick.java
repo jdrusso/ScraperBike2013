@@ -7,25 +7,22 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
-public class ClimbPyramid extends CommandGroup {
-    
-    public ClimbPyramid() {
-        addSequential(new ClimbLevelOne());
-        //addSequential(new Pause(0.6));, if we implement this command, should we have a pause inbetween the level climbs?
-        addSequential(new ClimbLevelTwo());
-        //addSequential(new Pause(0.6));, if we implement this command, should we have a pause inbetween the level climbs?
-        addSequential(new ClimbLevelThree());
+public class EnableJoystick extends CommandBase {
+
+    public EnableJoystick() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+        RobotMap.JoystickEnabled = true;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,17 +31,15 @@ public class ClimbPyramid extends CommandGroup {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    
     }
 }

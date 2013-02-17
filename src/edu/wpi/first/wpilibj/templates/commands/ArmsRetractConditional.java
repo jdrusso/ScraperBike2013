@@ -7,13 +7,11 @@
 
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
 /**
- *
+ *we may not use this, it has errors currently
  * @author bradmiller
  */
 public class ArmsRetractConditional extends CommandBase {
@@ -36,7 +34,7 @@ public class ArmsRetractConditional extends CommandBase {
             started = true;
         }
         if (started) {
-            arm.move(Relay.Value.kReverse);    
+            arm.move(-1);    
         }
         
     }
@@ -48,10 +46,12 @@ public class ArmsRetractConditional extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+         arm.move(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+         arm.move(0);
     }
 }

@@ -16,17 +16,19 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
  */
 public class FrontPusherExtend extends CommandBase {
     private Pusher g;
+    private int inputPosition;
     
-    public FrontPusherExtend() {
+    public FrontPusherExtend(int position) {
         g = ScraperBike.getPusher();
         requires(g);
+        inputPosition = position;
     }
 
     protected void initialize() {
     }
 
     protected void execute() {
-        g.moveFrontPusher(1);
+        g.moveFrontPusher(inputPosition);
     }
 
     protected boolean isFinished() {

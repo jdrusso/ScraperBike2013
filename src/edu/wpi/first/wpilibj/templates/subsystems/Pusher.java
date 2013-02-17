@@ -32,9 +32,9 @@ public class Pusher extends Subsystem {
         rearGripDeployed = false;
         frontGripContacted = false;
         rearGripContacted = false;
-        frontSolenoid1 = new Solenoid(RobotMap.gripsFrontSolenoid1);
-        frontSolenoid2 = new Solenoid(RobotMap.gripsFrontSolenoid2);
-        rearSolenoid = new Solenoid(RobotMap.gripsRearSolenoid);
+        frontSolenoid1 = RobotMap.frontPusherFirst;
+        frontSolenoid2 = RobotMap.frontPusherSecond;
+        rearSolenoid = RobotMap.rearPusher;
         
     }
     /** The front Pusher has two air cylinders to have the option to extend 3 or 6 inches.

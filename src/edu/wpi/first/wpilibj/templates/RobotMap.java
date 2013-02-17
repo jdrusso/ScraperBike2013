@@ -44,7 +44,9 @@ public class RobotMap {
      * 
      */
     //TODO: GET THE ACTUAL PORT ASSIGNMENT
-    
+   
+    public static final boolean shifterDriveTrainDirection = true;
+    public static final boolean shifterArmsDirection = false;   
     
     /*
      * Height Constants for shooter in inches
@@ -205,6 +207,7 @@ public class RobotMap {
    
     public static boolean HorTurretManualControl = false;
     public static boolean VerTurretManualControl = false;
+    public static boolean JoystickEnabled = true;
 
     public static double cameraXOffset = 160;
     public static final int defaultCameraOffset = 160;
@@ -215,6 +218,7 @@ public class RobotMap {
     
     public static double targetDistance = 6;
     public static double LatMovOut = 0;
+    
     public static double range = 0;
     
     public static double desiredAngle = 0.0;
@@ -223,6 +227,7 @@ public class RobotMap {
     public static final double maxRPM = 1500;
     
     public static final double autonomousSpeed = .92;
+    public static final double climbSpeed = .5;
     
     //Solenoids
     public static final Solenoid shifter = new Solenoid(1);
@@ -232,4 +237,5 @@ public class RobotMap {
     public static final Solenoid rearPusher = new Solenoid(5);
     public static final Solenoid popper = new Solenoid(6);
     public static final Solenoid popper2 = new Solenoid(7);
+
 }
