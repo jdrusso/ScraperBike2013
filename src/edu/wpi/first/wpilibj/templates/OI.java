@@ -64,6 +64,7 @@ public class OI {
         reloadRight.whileHeld(new Reload(-1));
         rotate.whileHeld(new RotateRobot());
         
+        climbPyramid.whenPressed(new ClimbLevelOne());
         armExtend.whileHeld(new ArmsExtend(2)); 
         armRetract.whileHeld(new ArmsRetract());
         

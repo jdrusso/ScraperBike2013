@@ -17,7 +17,9 @@ public class ClimbPyramid extends CommandGroup {
     
     public ClimbPyramid() {
         addSequential(new ClimbLevelOne());
+        //addSequential(new Pause(0.6));, if we implement this command, should we have a pause inbetween the level climbs?
         addSequential(new ClimbLevelTwo());
+        //addSequential(new Pause(0.6));, if we implement this command, should we have a pause inbetween the level climbs?
         addSequential(new ClimbLevelThree());
     }
 
