@@ -32,6 +32,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class DriveTrain extends Subsystem {
     
+    private Solenoid powerTakeOff;
     private Solenoid shifter;
     private static RobotDrive drive;
     private Encoder transmission1;
@@ -51,7 +52,8 @@ public class DriveTrain extends Subsystem {
         super("Drive Train");
 //        Log = new MetaCommandLog("DriveTrain", "Gyro" , "Left Jaguars,Right Jaguars");
         //gyro1 = new Gyro(RobotMap.AnalogSideCar , RobotMap.DriveTrainGyroInput);
-        shifter = RobotMap.powerTakeoff;
+        powerTakeOff = RobotMap.powerTakeoff;
+        shifter = RobotMap.shifter;
         //shifter.setDirection(Relay.Direction.kBoth);
         
         lfJag = new Jaguar(RobotMap.frontLeftMotor);
@@ -86,28 +88,45 @@ public class DriveTrain extends Subsystem {
 //    }
     
     public void drive(double speed) {
-        shifter.set(RobotMap.shifterDriveTrainDirection);
+        powerDriveTrain();
         drive.drive(speed, 0.0);
     }
     
     public void drive(double speed, double rot) {
-        shifter.set(RobotMap.shifterDriveTrainDirection);
+        powerDriveTrain();
         drive.drive(speed, rot);
     }
     
     public void arcadeDrive(Joystick j){
-        shifter.set(RobotMap.shifterDriveTrainDirection);
+        powerDriveTrain();
         drive.arcadeDrive(j);
     }
     
     public void rotate(double rot) {
-        shifter.set(RobotMap.shifterDriveTrainDirection);
+        powerDriveTrain();
         drive.arcadeDrive(0, rot);
     }
     
     public void climb(double speed) {
-        shifter.set(RobotMap.shifterArmsDirection);
+        shiftLowGear();
+        powerArms();
         drive.drive(speed, 0.0);
+    }
+    
+    public void shiftLowGear() {
+        shifter.set(RobotMap.shifterLowGear);
+    }
+    
+    public void shiftHighGear() {
+        shifter.set(RobotMap.shifterHighGear);
+    }
+    
+    public void powerDriveTrain() {
+        powerTakeOff.set(RobotMap.shifterDriveTrainDirection);
+    }
+    
+    public void powerArms() {
+        powerTakeOff.set(RobotMap.shifterArmsDirection);
     }
 
     public static Gyro getGyro1(){

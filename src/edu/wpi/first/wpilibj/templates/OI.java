@@ -7,24 +7,18 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-//import edu.team2035.meta.MetaTCPVariables;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.templates.commands.*;
-/**
+/** This file connects Joystick inputs (Buttons) into commands.
  * 
  * @author Team 2035 Programmers
  */
 public class OI {
-    // Process operator interface input here.
-    private static Button manualShooter;
+
+    private static Button shiftLowGear;
     private static Button pidShooter;
-    //private static Button speedSetterUp;
-    //private static Button speedSetterDown;
-    //private static Button VerTurretFwd;
-    //private static Button VerTurretRev;
-    private static Button autoTargeter;
-    private static Button autoTargeterDisable;
+    private static Button manualShooter;
     private static Button reloadLeft;
     private static Button reloadRight;
     private static Button rotate;
@@ -34,39 +28,31 @@ public class OI {
     
     public static void initialize() {
         
-        manualShooter = RobotMap.dButton3;
+        // Joystick 1 (Driving Joystick)
+        shiftLowGear = RobotMap.dTrigger;
         pidShooter = RobotMap.dButton2;
+        manualShooter = RobotMap.dButton3;
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
         rotate = RobotMap.dButton6;
         climbPyramid = RobotMap.dButton9;
-        armExtend = RobotMap.dButton11;
         armRetract = RobotMap.dButton10;
-                
-        //speedSetterUp = RobotMap.shootButton6;
-        //speedSetterDown = RobotMap.shootButton7;
-        //speedSetterUp.whileHeld(new ChangeShooterSpeed('+'));
-        //speedSetterDown.whileHeld(new ChangeShooterSpeed('-'));
-        //speedSetterUp.whenReleased(new ChangeShooterSpeed(' '));
-        //speedSetterDown.whenReleased(new ChangeShooterSpeed(' '));
+        armExtend = RobotMap.dButton11;
         
-        autoTargeter = RobotMap.shootButton8;
-        autoTargeterDisable = RobotMap.shootButton9;
-        //autoTargeter.whenPressed(new HorizontalTurretRotation(RobotMap.HorTurretKp, RobotMap.HorTurretKi, RobotMap.HorTurretKd));
-        autoTargeter.whenPressed(new DriveTrainTargeting(RobotMap.DTRKp, RobotMap.DTRKi, RobotMap.DTRKd));
-        autoTargeter.whenPressed(new DriveTrainLateral(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd));
-        //autoTargeterDisable.whenPressed(new HorizontalTurretRotationManual());
-        autoTargeterDisable.whenPressed(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), getJoystick1()));
+        // Joystick 2 (Shooting Joystick)
         
-        manualShooter.whileHeld(new Shoot());
+        // Joystick 1
+        shiftLowGear.whileHeld(new ShiftLowGear());
         pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
+        manualShooter.whileHeld(new Shoot());
         reloadLeft.whileHeld(new Reload(1));
         reloadRight.whileHeld(new Reload(-1));
         rotate.whileHeld(new RotateRobot());
-        
         climbPyramid.whenPressed(new ClimbLevelOne());
-        armExtend.whileHeld(new ArmsExtend(2)); 
         armRetract.whileHeld(new ArmsRetract());
+        armExtend.whileHeld(new ArmsExtend(2)); 
+        
+        // Joystick 2
         
     }
     
