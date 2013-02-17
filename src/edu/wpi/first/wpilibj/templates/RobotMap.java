@@ -235,14 +235,14 @@ public class RobotMap {
     
     public static double range = 0;
     
-    public static double desiredAngle = 0.0;
+    public static double desiredShooterAngle = 0.0;
     
     public static double shootRPM = 0;
     public static final double maxRPM = 1500;
     
     //public static final double autonomousSpeed = .92;
-    public static final double climbSpeed = .5;
+    public static final double climbSpeed = 0.5;
+    public static final double elevatorSpeed = 0.1;
     
     public static boolean debug = false;
-    
 }

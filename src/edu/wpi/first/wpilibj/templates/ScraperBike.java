@@ -148,6 +148,8 @@ public class ScraperBike extends IterativeRobot {
             display.println(Line.kUser6, 1, "CenY: " + RobotMap.LMid.cenY);
         }
         
+        display.println(Line.kUser6, 1, "Shoot Encoder" + RobotMap.shootEncoder.get() + "          ");
+        
 //        display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
 //        display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
 //        display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
