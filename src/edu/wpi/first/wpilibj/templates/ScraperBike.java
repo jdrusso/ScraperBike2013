@@ -134,7 +134,7 @@ public class ScraperBike extends IterativeRobot {
         
         Scheduler.getInstance().run();
         
-        if (!RobotMap.unsortedMid.isEmpty()){
+        if (!RobotMap.unsortedMid.isEmpty()) {
             
             ScraperBike.debugPrintln("Vertical position: " + ((Target)RobotMap.unsortedMid.elementAt(0)).vertPos 
                              + ", Horizontal Position: " + ((Target)RobotMap.unsortedMid.elementAt(0)).horPos);
