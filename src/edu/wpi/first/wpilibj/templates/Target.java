@@ -182,4 +182,78 @@ public class Target {
         copy.width = this.width;
         return copy;
     }
+    
+    public static double getAvgRange(){
+        
+        double avgRange = 0;
+        double totRange = 0;
+        int validTargets = 0;
+        
+        for (int i = 0; i < RobotMap.numTargets; i++){
+            
+            switch(i){
+                
+                case 1:
+                    totRange += RobotMap.t1.getRange();
+                    validTargets++; break;
+                case 2:
+                    totRange += RobotMap.t2.getRange();
+                    validTargets++; break;
+                case 3:
+                    totRange += RobotMap.t3.getRange();
+                    validTargets++; break;
+                case 4:
+                    totRange += RobotMap.t4.getRange();
+                    validTargets++; break;
+                case 5:
+                    totRange += RobotMap.t5.getRange();
+                    validTargets++; break;
+                case 6:
+                    totRange += RobotMap.t6.getRange();
+                    validTargets++; break;
+            }
+        }
+        
+        avgRange = totRange/validTargets;
+        
+        ScraperBike.nt.putNumber("Averaged Range", avgRange);
+        return avgRange;
+    }
+    
+    /**
+     * Calculates the range to a target.
+     * Calculates range to a detected Target object, using trig and similar triangles.
+     * 
+     * 
+     * @return Distance in feet
+     */
+    
+    public double getRange(){
+        
+        double range;
+        
+        double Tft;
+        double FOVpx;
+        double Tpx;
+        double theta;
+        
+        range = 0;
+        FOVpx = 240;
+        Tpx = this.height;
+        theta = 47/2;
+        Tft = 0;
+        
+        switch(this.vertPos){
+            case 3:
+                Tft = RobotMap.topH; break;
+            case 2:
+                Tft = RobotMap.midH; break;
+            case 1:
+                Tft = RobotMap.botH; break;
+        }
+        
+        range = (.5*((Tft*FOVpx)/Tpx))/(Math.tan(theta*(180/Math.PI)));
+        
+        return range;
+    }
 }
