@@ -16,10 +16,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import java.util.Vector;
 
 /**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
+ * The RobotMap is a collection of constant values that are used throughout the code.
+ * Some constants are port numbers for the physical wiring.
+ * This provides flexibility changing wiring, makes checking
+ * the wiring easier and significantly reduces the number of constants 
+ * defined elsewhere in the code.
  * 
  * @author Team 2035 Programmers
  */
@@ -29,8 +30,21 @@ public class RobotMap {
     // public static final int rangefinderPort = 1;
     // public static final int rangefinderModule = 1;
     
+    /* cRIO SIDECARS
+     * 
+     */
+    public static final int AnalogSideCar = 1; // Analog SideCar is connected to cRIO Slot 1
+    public static final int DigitalSideCar = 2; // Digital SideCar is connected to cRIO Slot 2
+    public static final int SolenoidSideCar = 3; // Solenoid SideCar is connected to cRIO Slot 3
+    
+    /* ANALOG SIDECAR 1 
+     *
+     */
+    
+    
+    /* DIGITAL SIDECAR 1
     /* PWM OUTPUTS for Digital Sidecar
-     * These should be sequential.
+     * 
      */
     public static final int frontLeftMotor = 1;
     public static final int rearLeftMotor = 2;
@@ -43,20 +57,46 @@ public class RobotMap {
     /* Relay outputs for Spikes
      * 
      */
-    //TODO: GET THE ACTUAL PORT ASSIGNMENT
-   
+    public static final Encoder shootEncoder = new Encoder(1, 2);
+    public static final DigitalInput topLimit = new DigitalInput(3); //DIO 3, limit switch Normally open
+    public static final DigitalInput bottomLimit = new DigitalInput(4); //DIO 4, limit switch Normally open
+    public static final DigitalInput armsContacted = new DigitalInput(5); // Arms subsystem
+    public static final DigitalInput armsExtendedFore = new DigitalInput(6); // Arms subsytem
+    public static final DigitalInput armsExtendedAft = new DigitalInput(7); // Arms subsytem
+    public static final DigitalInput fingerContacted = new DigitalInput(8); // Finger Subsystem
+    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(9); // Pusher subsytem
+    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(10); // Pusher subsytem
+    public static final DigitalInput pusherRearSensor1 = new DigitalInput(11); // Pusher subsystem
+    public static final DigitalInput pusherRearSensor2 = new DigitalInput(12); // Pusher subsystem
+    
+    public static final int pressureSwitch = 13;
+    public static final int compressorRelay = 6;
+    
     public static final boolean shifterDriveTrainDirection = true;
     public static final boolean shifterArmsDirection = false;   
     
-    /*
+    /* SOLENOIDS SIDECAR 1
+     * 
+     */
+    public static final Solenoid shifter = new Solenoid(1);
+    public static final Solenoid powerTakeoff = new Solenoid(2);
+    public static final Solenoid frontPusherFirst = new Solenoid(3);
+    public static final Solenoid frontPusherSecond = new Solenoid(4);
+    public static final Solenoid rearPusher = new Solenoid(5);
+    public static final Solenoid popper = new Solenoid(6);
+    public static final Solenoid popper2 = new Solenoid(7);
+    
+    public static final boolean shifterLowGear = true;
+    public static final boolean shifterHighGear = false;
+    
+    /* TARGETING 
      * Height Constants for shooter in inches
      */
     public static final double target1Height = 28.0/12.0;
     public static final double target2Height = 61.0/12.0;
     public static final double target3Height = 98.0/12.0;
     public static final double shooterHeight = 30.0/12.0; //default, TBD
-    
-    
+     
     //Create target objects for use in sorting later
     public static Target t1 = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0)
             , ScraperBike.nt.getNumber("X1", 0), ScraperBike.nt.getNumber("Y1", 0));
@@ -86,10 +126,11 @@ public class RobotMap {
     /* DRIVER STATION CONTROLS
      * 
      */
+    public static boolean JoystickEnabled = true;
     public static final int DriverJoystickNumber = 1; // Robot Driver's Joystick USB number
+    public static final int shooterJoystickNumber = 2; // Robot Driver's Joystick USB number
     
     public static final Joystick dStick = new Joystick(DriverJoystickNumber);
-    
     public static final JoystickButton dTrigger = new JoystickButton(dStick, 1);
     public static final JoystickButton dButton2 = new JoystickButton(dStick, 2);
     public static final JoystickButton dButton3 = new JoystickButton(dStick, 3);
@@ -102,10 +143,7 @@ public class RobotMap {
     public static final JoystickButton dButton10 = new JoystickButton(dStick, 10);
     public static final JoystickButton dButton11 = new JoystickButton(dStick, 11);
     
-    public static final int shooterJoystickNumber = 2; // Robot Driver's Joystick USB number
-    
     public static final Joystick shootStick = new Joystick(shooterJoystickNumber);
-    
     public static final JoystickButton shootTrigger = new JoystickButton(shootStick, 1);
     public static final JoystickButton shootButton2 = new JoystickButton(shootStick, 2);
     public static final JoystickButton shootButton3 = new JoystickButton(shootStick, 3);
@@ -118,59 +156,29 @@ public class RobotMap {
     public static final JoystickButton shootButton10 = new JoystickButton(shootStick, 10);
     public static final JoystickButton shootButton11 = new JoystickButton(shootStick, 11);
     
-    /* cRIO SIDECARS
-     * 
-     */
-    public static final int AnalogSideCar = 1; // Analog SideCar is connected to cRIO Slot 1
-    public static final int DigitalSideCar = 2; // Digital SideCar is connected to cRIO Slot 2
-    public static final int SolenoidSideCar = 3; // Solenoid SideCar is connected to cRIO Slot 3
-    
-    /* ANALOG INPUTS 
-     * These should be sequential.
-     */
-    
-    /* DIGITAL INPUTS 
-     * These should be sequential.
-     */
-    
-    public static final Encoder shootEncoder = new Encoder(1, 2);
-    public static final DigitalInput topLimit = new DigitalInput(3); //DIO 3, limit switch Normally open
-    public static final DigitalInput bottomLimit = new DigitalInput(4); //DIO 4, limit switch Normally open
-    public static final DigitalInput armsContacted = new DigitalInput(5); // Arms subsystem
-    public static final DigitalInput armsExtendedFore = new DigitalInput(6); // Arms subsytem
-    public static final DigitalInput armsExtendedAft = new DigitalInput(7); // Arms subsytem
-    public static final DigitalInput fingerContacted = new DigitalInput(8); // Finger Subsystem
-    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(9); // Pusher subsytem
-    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(10); // Pusher subsytem
-    public static final DigitalInput pusherRearSensor1 = new DigitalInput(11); // Pusher subsystem
-    public static final DigitalInput pusherRearSensor2 = new DigitalInput(12); // Pusher subsystem
-    
-    public static final int pressureSwitch = 13;
-    public static final int compressorRelay = 6;
-    
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for AutoBalancing.
-    public static final double AutoBalKp = (double) (0.5 / 45);
+    //public static final double AutoBalKp = (double) (0.5 / 45);
     // Ki - K integral value for AutoBalancing.
-    public static final double AutoBalKi = (double) (0);
+    //public static final double AutoBalKi = (double) (0);
     // Kd - K differential value for AutoBalancing.
-    public static final double AutoBalKd = (double) (0.25 / 20);
+    //public static final double AutoBalKd = (double) (0.25 / 20);
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for HorizontalTurretRotation.
-    public static final double HorTurretKp = (double) (.25/20);
+    //public static final double HorTurretKp = (double) (.25/20);
     // Ki - K integral value for HorizontalTurretRotation.
-    public static final double HorTurretKi = (double) (0);
+    //public static final double HorTurretKi = (double) (0);
     // Kp - K differential value for HorizontalTurretRotation.
-    public static final double HorTurretKd = (double) (0);
+    //public static final double HorTurretKd = (double) (0);
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for VerticalTurretRotation.
-    public static final double VerTurretKp = (double) (.25/2);
+    //public static final double VerTurretKp = (double) (.25/2);
     // Ki - K integral value for VerticalTurretRotation.
-    public static final double VerTurretKi = (double) (0);
+    //public static final double VerTurretKi = (double) (0);
     // Kp - K differential value for VerticalTurretRotation.
-    public static final double VerTurretKd = (double) (0);
+    //public static final double VerTurretKd = (double) (0);
     
      /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for shooter.
@@ -182,32 +190,31 @@ public class RobotMap {
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for Drive Train Rotation.
-    public static final double DTRKp = (double) (.25/20);
+    //public static final double DTRKp = (double) (.25/20);
     // Ki - K integral value for Drive Train Rotation.
-    public static final double DTRKi = (double) (3);
+    //public static final double DTRKi = (double) (3);
     // Kp - K differential value for Drive Train Rotation.
-    public static final double DTRKd = (double) (0);
+    //public static final double DTRKd = (double) (0);
     
      /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for Lateral Drive Train.
-    public static final double DTLKp = (double) (1);
+    //public static final double DTLKp = (double) (1);
     // Ki - K integral value for Lateral Drive Train.
-    public static final double DTLKi = (double) (0);
+    //public static final double DTLKi = (double) (0);
     // Kp - K differential value for Lateral Drive Train.
-    public static final double DTLKd = (double) (0);
+    //public static final double DTLKd = (double) (0);
     
     /*String KeyValues for Vision Tracking Hashtable*/
     //VTx - X value offset
-    public static final String VTx = "VTx";
+    //public static final String VTx = "VTx";
     //VTy - y value offset
-    public static final String VTy = "VTy";
+    //public static final String VTy = "VTy";
     //VTd - distance to target
-    public static final String VTd = "VTd";//
+    //public static final String VTd = "VTd";//
     
-   
-    public static boolean HorTurretManualControl = false;
-    public static boolean VerTurretManualControl = false;
-    public static boolean JoystickEnabled = true;
+    //public static boolean HorTurretManualControl = false;
+    //public static boolean VerTurretManualControl = false;
+
 
     public static double cameraXOffset = 160;
     public static final int defaultCameraOffset = 160;
@@ -226,19 +233,9 @@ public class RobotMap {
     public static double shootRPM = 0;
     public static final double maxRPM = 1500;
     
-    public static final double autonomousSpeed = .92;
+    //public static final double autonomousSpeed = .92;
     public static final double climbSpeed = .5;
     
-    //Solenoids
-    public static final Solenoid shifter = new Solenoid(1);
-    public static final Solenoid powerTakeoff = new Solenoid(2);
-    public static final Solenoid frontPusherFirst = new Solenoid(3);
-    public static final Solenoid frontPusherSecond = new Solenoid(4);
-    public static final Solenoid rearPusher = new Solenoid(5);
-    public static final Solenoid popper = new Solenoid(6);
-    public static final Solenoid popper2 = new Solenoid(7);
-    
-    public static final boolean shifterLowGear = true;
-    public static final boolean shifterHighGear = false;
 
+    
 }
