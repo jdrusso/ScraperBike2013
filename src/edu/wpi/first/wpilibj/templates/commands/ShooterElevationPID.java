@@ -5,11 +5,9 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 //import edu.team2035.meta.MetaTCPVariables;
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.PIDCommand;
-import edu.wpi.first.wpilibj.templates.OI;
-import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 
 /**
@@ -18,6 +16,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
  */
 public class ShooterElevationPID extends PIDCommand {
     private VerticalTurretAxis VerticalAxis;
+    private double lastAngle;
     
     
     public ShooterElevationPID(double Kp, double Ki, double Kd){
@@ -25,11 +24,13 @@ public class ShooterElevationPID extends PIDCommand {
         this.VerticalAxis = ScraperBike.getVerticalTurretAxis();
         requires(this.VerticalAxis);
         
+        lastAngle = 0;
+        
     }
     protected double returnPIDInput() {
         //this.gyro1 = this.VerticalAxis.getGyro1();
-        //return gyro1.getAngle();
-        return this.getSetpoint();
+        return -VerticalTurretAxis.readGyroDegress();
+        //return this.getSetpoint();
         
     }
 
@@ -42,14 +43,35 @@ public class ShooterElevationPID extends PIDCommand {
         //speedController = new ShooterSpeed(RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd); //
         //speedController.start();
         
+        // use 10 percent tolerance to the desired 
+        this.getPIDController().setPercentTolerance(10);
+        
     }
 
     protected void execute() {
         
         this.determineSetpoint();
-        this.setSetpoint(RobotMap.desiredShooterAngle);
+        
+        if (lastAngle != RobotMap.desiredShooterAngle) {
+            
+            VerticalTurretAxis.resetGyro();      
+            lastAngle = RobotMap.desiredShooterAngle;
+        }
+        
+//        if (RobotMap.desiredShooterAngle != 0.0)    {
+//            
+//            VerticalTurretAxis.getGyro();
+//            this.setSetpoint(RobotMap.desiredShooterAngle);
+//            //VerticalTurretAxis = RobotMap.desiredShooterAngle;
+//        }
+//        
+//        if (Math.abs (RobotMap.desiredShooterAngle - VerticalTurretAxis.readGyroDegress()) < 0.5) {
+//            RobotMap.desiredShooterAngle = 0.0;
+//        }
         
     }
+        
+    
 
     protected boolean isFinished() {
         
@@ -64,7 +86,14 @@ public class ShooterElevationPID extends PIDCommand {
     protected void interrupted() {
     }
     
-    protected void determineSetpoint(){
+    /**
+     * This will do something to determine how the target information changes the PID Controller's Setpoint (reference r(t))
+     */
+    protected void determineSetpoint() {
+        
+        // code here to choose a desiredShooterAngle
+ 
+        
         
     }
 
