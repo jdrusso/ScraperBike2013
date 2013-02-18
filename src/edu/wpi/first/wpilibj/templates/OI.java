@@ -22,6 +22,8 @@ public class OI {
     private static Button reloadLeft;
     private static Button reloadRight;
     private static Button rotate;
+    private static Button frontPusher1;
+    private static Button frontPusher2;
     private static Button climbPyramid;
     private static Button armExtend;
     private static Button armRetract;
@@ -43,6 +45,8 @@ public class OI {
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
         rotate = RobotMap.dButton6;
+        frontPusher1 = RobotMap.dButton7;
+        frontPusher2 = RobotMap.dButton8;
         climbPyramid = RobotMap.dButton9;
         armRetract = RobotMap.dButton10;
         armExtend = RobotMap.dButton11;
@@ -54,6 +58,10 @@ public class OI {
         reloadLeft.whileHeld(new Reload(1));
         reloadRight.whileHeld(new Reload(-1));
         rotate.whileHeld(new RotateRobot());
+        frontPusher1.whileHeld(new FrontPusherExtend(1));
+        frontPusher2.whileHeld(new FrontPusherExtend(2));
+        frontPusher1.whenReleased(new FrontPusherRetract());
+        frontPusher2.whenReleased(new FrontPusherRetract());
         climbPyramid.whenPressed(new ClimbLevelOne());
         armRetract.whileHeld(new ArmsRetract());
         armExtend.whileHeld(new ArmsExtend(2)); 
