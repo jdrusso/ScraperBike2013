@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.templates.Target;
 
 /**
  *
@@ -23,11 +24,11 @@ public class DriveTrainTargeting extends PIDCommand {
     private RobotDrive d;
     
     
-    public DriveTrainTargeting(double Kp, double Ki, double Kd){
+    public DriveTrainTargeting(double Kp, double Ki, double Kd, Target t){
         super("", Kp, Ki, Kd);
         this.driveTrain = ScraperBike.getDriveTrain();
         requires(this.driveTrain);
-        
+        this.setSetpoint(t.cenX);
     }    
     
 //    public DriveTrainTargeting(double Kp, double Ki, double Kd, double Kp2, double Ki2, double Kd2){
@@ -52,7 +53,6 @@ public class DriveTrainTargeting extends PIDCommand {
 //            HorizontalTurretAxis.getCommandLog().setOutputs("N/A");//
             return RobotMap.cameraXOffset;
         }
-        //TODO:  Get x values and add to meta command log, also do for vertical turret
         
     }
 
@@ -83,7 +83,6 @@ public class DriveTrainTargeting extends PIDCommand {
 
     protected void execute() {
         
-        this.setSetpoint(RobotMap.cameraXOffset);
     }
 
     protected boolean isFinished() {

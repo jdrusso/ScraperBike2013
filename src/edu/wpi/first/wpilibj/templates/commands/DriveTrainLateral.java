@@ -43,7 +43,7 @@ public class DriveTrainLateral extends PIDCommand {
         //if not, this effectively stops the loop from moving anything.
         else {
             
-            return RobotMap.targetDistance;
+            return RobotMap.targetDesiredDistance;
         }
         
     }
@@ -66,7 +66,7 @@ public class DriveTrainLateral extends PIDCommand {
 
     protected void execute() {
         
-        this.setSetpoint(RobotMap.targetDistance);
+        this.setSetpoint(RobotMap.targetDesiredDistance);
     }
 
     protected boolean isFinished() {
@@ -77,6 +77,7 @@ public class DriveTrainLateral extends PIDCommand {
     protected void end() {
         
         RobotMap.LatMovOut = 0;
+        //TODO: Make this start StandardDrive so that we don't need a whenRelease() in OI?
     }
 
     protected void interrupted() {

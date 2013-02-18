@@ -76,7 +76,7 @@ public class Target {
         this.height = h;
         this.width = w;
         
-        ScraperBike.debugPrint("Size set.");
+        ScraperBike.debugPrintln("Size set.");
         
         if (h == 0 | w == 0)
             this.isNull = true;
@@ -84,25 +84,24 @@ public class Target {
         else if (h != 0 && w !=0)
             this.isNull = false;
         
-        ScraperBike.debugPrint("Null conditions checked.");
+        ScraperBike.debugPrintln("Null conditions checked.");
         ScraperBike.debugPrint("X = " + this.cenX + ", Y = " + this.cenY + ", W = " + w + ", H = " + h);
         this.aspect = w/h;
-        ScraperBike.debugPrint(", A = " + this.aspect);
-        
+        ScraperBike.debugPrintln(", A = " + this.aspect);
         
         if(Math.abs(this.aspect - topAspect) < tolerance){
             this.vertPos = this.tTop;
             RobotMap.Top = this.cloneTarget();
-            ScraperBike.debugPrint("Top -- " + RobotMap.Top.toString());
+            ScraperBike.debugPrintln("Top -- " + RobotMap.Top.toString());
             ScraperBike.nt.putString("TopTargetSTR", this.toString());
-            ScraperBike.nt.putNumber("TopTargetSTR'", RobotMap.Top.aspect);
+            //ScraperBike.nt.putString("TopTargetSTR'", RobotMap.Top.toString());
         }
         
         else if(Math.abs(this.aspect - midAspect) < tolerance){
             this.vertPos = this.tMid;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedMid.addElement(this.cloneTarget());
-            ScraperBike.debugPrint("Mid -- " + RobotMap.unsortedMid.elementAt(0).toString());
+            ScraperBike.debugPrintln("Mid -- " + RobotMap.unsortedMid.elementAt(0).toString());
             //ScraperBike.nt.putValue("MidTarget", ((Object)this));
             ScraperBike.nt.putString("MidTargetSTR", this.toString());
             ScraperBike.nt.putString("MidTargetSTRL", ((Target)RobotMap.unsortedMid.elementAt(0)).toString());
@@ -113,7 +112,7 @@ public class Target {
             this.vertPos = this.tBot;
             this.horPos = this.tUnassigned;
             RobotMap.unsortedBot.addElement(this.cloneTarget());
-            ScraperBike.debugPrint("Bot");
+            ScraperBike.debugPrintln("Bot");
         }
         
         this.horPos = tUnassigned;
@@ -181,5 +180,85 @@ public class Target {
         copy.vertPos = this.vertPos;
         copy.width = this.width;
         return copy;
+    }
+  /**
+   * Calculates the average range to all detected targets.
+   * Attempts to get a more accurate distance for range by measuring 
+   * the distance to all the detected targets, and taking an average.
+   * @return double - Average Distance
+   */  
+    public static double getAvgRange(){
+        
+        double avgRange = 0;
+        double totRange = 0;
+        int validTargets = 0;
+        
+        for (int i = 0; i < RobotMap.numTargets; i++){
+            
+            switch(i){
+                
+                case 1:
+                    totRange += RobotMap.t1.getRange();
+                    validTargets++; break;
+                case 2:
+                    totRange += RobotMap.t2.getRange();
+                    validTargets++; break;
+                case 3:
+                    totRange += RobotMap.t3.getRange();
+                    validTargets++; break;
+                case 4:
+                    totRange += RobotMap.t4.getRange();
+                    validTargets++; break;
+                case 5:
+                    totRange += RobotMap.t5.getRange();
+                    validTargets++; break;
+                case 6:
+                    totRange += RobotMap.t6.getRange();
+                    validTargets++; break;
+            }
+        }
+        
+        avgRange = totRange/validTargets;
+        
+        ScraperBike.nt.putNumber("Averaged Range", avgRange);
+        return avgRange;
+    }
+    
+    /**
+     * Calculates the range to a target.
+     * Calculates range to a detected Target object, using trig and similar triangles.
+     * 
+     * 
+     * @return double - Distance in feet
+     */
+    
+    public double getRange(){
+        
+        double range;
+        
+        double Tft;
+        double FOVpx;
+        double Tpx;
+        double theta;
+        
+        range = 0;
+        FOVpx = 240;
+        Tpx = this.height;
+        theta = 47/2;
+        Tft = 0;
+        
+        switch(this.vertPos){
+            case 1:
+                Tft = RobotMap.botH/12; break;
+            case 2:
+                Tft = RobotMap.midH/12; break;
+            case 3:
+                Tft = RobotMap.topH/12; break;
+        }
+        
+        range = (.5*((Tft*FOVpx)/Tpx))/(Math.tan(Math.toRadians(theta)));
+        System.out.println("Tft: " + Tft + ", FOVPx: " + FOVpx + ", theta: " + theta + ", Distance: " + range);
+        
+        return range;
     }
 }

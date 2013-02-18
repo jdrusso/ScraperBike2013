@@ -26,9 +26,17 @@ public class OI {
     private static Button armExtend;
     private static Button armRetract;
     
+    private static Button shoot;
+    private static Button keepAtRange;
+    private static Button lockTop;
+    private static Button lockLMid;
+    private static Button lockRMid;
+    private static Button lockLBot;
+    private static Button lockRBot;
+    
     public static void initialize() {
         
-        // Joystick 1 (Driving Joystick)
+        // Joystick 1 Button (Driving Joystick)
         shiftLowGear = RobotMap.dTrigger;
         pidShooter = RobotMap.dButton2;
         manualShooter = RobotMap.dButton3;
@@ -39,9 +47,7 @@ public class OI {
         armRetract = RobotMap.dButton10;
         armExtend = RobotMap.dButton11;
         
-        // Joystick 2 (Shooting Joystick)
-        
-        // Joystick 1
+        // Joystick 1 Actions
         shiftLowGear.whileHeld(new ShiftLowGear());
         pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
         manualShooter.whileHeld(new Shoot());
@@ -52,7 +58,35 @@ public class OI {
         armRetract.whileHeld(new ArmsRetract());
         armExtend.whileHeld(new ArmsExtend(2)); 
         
-        // Joystick 2
+        // Joystick 2 Buttons (Shooting Joystick)
+        shoot = RobotMap.shootTrigger;
+        keepAtRange = RobotMap.shootButton2;
+        lockTop = RobotMap.shootButton3;
+        lockLMid = RobotMap.shootButton4;
+        lockRMid = RobotMap.shootButton5;
+        lockLBot = RobotMap.shootButton8;
+        lockRBot = RobotMap.shootButton9;
+        
+        // Joystick 2 Actions
+        shoot.whileHeld(new PIDShoot(RobotMap.maxRPM));
+        
+        keepAtRange.whileHeld(new DriveTrainLateral(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd));
+        keepAtRange.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
+        
+        lockTop.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.Top));
+        lockTop.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
+        
+        lockLMid.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.LMid));
+        lockLMid.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
+        
+        lockRMid.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.RMid));
+        lockRMid.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
+        
+        lockLBot.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.LBot));
+        lockLBot.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
+        
+        lockRBot.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.RBot));
+        lockRBot.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
         
     }
     
