@@ -36,6 +36,7 @@ public class ScraperBike extends IterativeRobot {
     private static Pusher pusher;
     private static Arms arms;
     private static TargetParser tp;
+    private static UpdateSolenoidModule updateSolenoids;
     
     public static DriveTrain getDriveTrain() {
         return DriveTrain;
@@ -92,6 +93,8 @@ public class ScraperBike extends IterativeRobot {
         RobotMap.shootEncoder.start();
         nt.putString("Status", "Initialized");
         tp = new TargetParser();
+        updateSolenoids = new UpdateSolenoidModule();
+        updateSolenoids.start();
         
     }
     public void disabledInit(){
