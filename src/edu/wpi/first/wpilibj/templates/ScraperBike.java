@@ -89,6 +89,7 @@ public class ScraperBike extends IterativeRobot {
         display.updateLCD();
         compressor = new Compressor(RobotMap.pressureSwitch, RobotMap.compressorRelay);
         compressor.start();
+        RobotMap.shootEncoder.start();
         nt.putString("Status", "Initialized");
         tp = new TargetParser();
         
@@ -138,13 +139,14 @@ public class ScraperBike extends IterativeRobot {
         
         //if (!RobotMap.unsortedMid.isEmpty()) {
             
-            System.out.println("Distance: " + RobotMap.Top.getRange());
-        
             display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
             display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
             display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
-            display.println(Line.kUser4, 1, "Distance: " + RobotMap.Top.getRange());
-                        
+            display.println(Line.kUser4, 1, "Distance (ft): " + RobotMap.Top.getRange());
+            display.println(Line.kUser5, 1, "Distance (in): " + RobotMap.Top.getRange()*12);
+            display.println(Line.kUser6, 1, "shoot encoder: " + RobotMap.shootEncoder.get());
+                      
+            System.out.println("Distance: " + RobotMap.Top.getRange()*12);
             //display.println(Line.kUser4, 1, "Aspect Ratio: " + RobotMap.LMid.aspect);
             //display.println(Line.kUser5, 1, "CenX: " + RobotMap.LMid.cenX);
             //display.println(Line.kUser6, 1, "CenY: " + RobotMap.LMid.cenY);
