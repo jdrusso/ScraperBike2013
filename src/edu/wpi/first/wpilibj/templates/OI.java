@@ -43,6 +43,11 @@ public class OI {
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
         rotate = RobotMap.dButton6;
+        
+        Button pusher = RobotMap.dButton7;
+        pusher.whileHeld(new RearPusherExtend());
+        pusher.whenReleased(new RearPusherRetract());
+        
         climbPyramid = RobotMap.dButton9;
         armRetract = RobotMap.dButton10;
         armExtend = RobotMap.dButton11;
