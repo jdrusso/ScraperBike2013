@@ -54,7 +54,7 @@ public class Arms extends Subsystem {
      * climb speed set in RobotMap
      * @param direction 0 for off, 1 for forward, -1 for reverse
      */
-    public void move(int direction) {
+    public void move(double direction) {
         d.climb(direction*RobotMap.climbSpeed);
     }
 }

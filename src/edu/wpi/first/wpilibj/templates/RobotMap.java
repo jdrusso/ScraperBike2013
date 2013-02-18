@@ -50,9 +50,9 @@ public class RobotMap {
     public static final int rearLeftMotor = 2;
     public static final int frontRightMotor = 3;
     public static final int rearRightMotor = 4;
-    public static final int ShooterMotor = 5;
-    public static final int ReloadMotor = 6;
-    public static final int VerTurretMotor = 7;
+    public static final int ShooterMotor = 9;
+    public static final int ReloadMotor = 10;
+    public static final int VerTurretMotor = 8;
     
     /* Relay outputs for Spikes
      * 
@@ -86,6 +86,18 @@ public class RobotMap {
     public static final Solenoid popper = new Solenoid(6);
     public static final Solenoid popper2 = new Solenoid(7);
     
+    /* SOLENOIDS SIDECAR 2
+     * 
+     */
+    public static final Solenoid shifter_2 = new Solenoid(2, 1);
+    public static final Solenoid powerTakeoff_2 = new Solenoid(2, 2);
+    public static final Solenoid frontPusherFirst_2 = new Solenoid(2, 3);
+    public static final Solenoid frontPusherSecond_2 = new Solenoid(2, 4);
+    public static final Solenoid rearPusher_2 = new Solenoid(2, 5);
+    public static final Solenoid popper_2 = new Solenoid(2, 6);
+    public static final Solenoid popper2_2 = new Solenoid(2, 7);
+    
+    
     public static final boolean shifterLowGear = true;
     public static final boolean shifterHighGear = false;
     
@@ -111,6 +123,10 @@ public class RobotMap {
     //Tolerance for target detected aspect ratio
     public static final double targetTolerance = 0.4;
      
+    
+    public static Vector unsortedMid = new Vector();
+    public static Vector unsortedBot = new Vector();
+    
     //Create target objects for use in sorting later
     public static Target t1 = new Target(ScraperBike.nt.getNumber("H1", 0), ScraperBike.nt.getNumber("W1", 0)
             , ScraperBike.nt.getNumber("X1", 0), ScraperBike.nt.getNumber("Y1", 0));
@@ -131,9 +147,6 @@ public class RobotMap {
     public static Target LBot = new Target(0, 0, 0, 0);
     public static Target RBot = new Target(0, 0, 0, 0);
     public static Target Tower = new Target(0, 0, 0, 0);
-    
-    public static Vector unsortedMid = new Vector();
-    public static Vector unsortedBot = new Vector();
     
     public static int numTargets;
     
@@ -252,5 +265,5 @@ public class RobotMap {
     public static final double climbSpeed = 0.5;
     public static final double elevatorSpeed = 0.1;
     
-    public static boolean debug = false;
+    public static boolean debug = true;
 }
