@@ -10,14 +10,13 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 
 //import edu.team2035.meta.MetaGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.templates.commands.StandardDrive;
 //import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.templates.OI;
@@ -38,10 +37,10 @@ public class DriveTrain extends Subsystem {
     private Encoder transmission1;
     private DigitalInput sensor1;
     private DigitalInput sensor2;
-    private Jaguar lfJag;
-    private Jaguar rtJag;
-    private Jaguar lfRearJag;
-    private Jaguar rtRearJag;
+    private Talon FrontLeftTalon;
+    private Talon FrontRightTalon;
+    private Talon RearLeftTalon;
+    private Talon RearRightTalon;
     private double motorSpeeds;
     private static Gyro gyro1;
     //private static MetaCommandLog Log;
@@ -56,11 +55,11 @@ public class DriveTrain extends Subsystem {
         powerTakeOff = RobotMap.powerTakeoff; // Solenoid 2
         //shifter.setDirection(Relay.Direction.kBoth);
         
-        lfJag = new Jaguar(RobotMap.frontLeftMotor);
-        lfRearJag = new Jaguar(RobotMap.rearLeftMotor);
-        rtJag = new Jaguar(RobotMap.frontRightMotor);
-        rtRearJag = new Jaguar(RobotMap.rearRightMotor);
-        drive = new RobotDrive(lfJag, lfRearJag, rtJag, rtRearJag);
+        FrontLeftTalon = new Talon(RobotMap.frontLeftMotor);
+        RearLeftTalon = new Talon(RobotMap.rearLeftMotor);
+        FrontRightTalon = new Talon(RobotMap.frontRightMotor);
+        RearRightTalon = new Talon(RobotMap.rearRightMotor);
+        drive = new RobotDrive(FrontLeftTalon, RearLeftTalon, FrontRightTalon, RearRightTalon);
         //drive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
         //drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
         //drive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
@@ -119,6 +118,7 @@ public class DriveTrain extends Subsystem {
     
     public void shiftHighGear() {
         shifter.set(RobotMap.shifterHighGear);
+        System.out.println("Shifting high");
     }
     
     public void powerDriveTrain() {
