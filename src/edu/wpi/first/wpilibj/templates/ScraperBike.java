@@ -140,7 +140,7 @@ public class ScraperBike extends IterativeRobot {
         
         Scheduler.getInstance().run();
         
-        //if (!RobotMap.unsortedMid.isEmpty()){
+        //if (!RobotMap.unsortedMid.isEmpty()) {
             
             display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
             display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
