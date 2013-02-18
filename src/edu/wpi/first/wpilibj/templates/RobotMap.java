@@ -266,4 +266,5 @@ public class RobotMap {
     public static final double elevatorSpeed = 0.1;
     
     public static boolean debug = true;
+    public static boolean debugTable = true;
 }

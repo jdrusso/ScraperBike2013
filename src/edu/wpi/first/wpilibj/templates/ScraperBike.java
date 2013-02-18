@@ -33,6 +33,7 @@ public class ScraperBike extends IterativeRobot {
     private Compressor compressor;
     private String status;
     public static NetworkTable nt;
+    public static NetworkTable debugTable;
     private static Pusher pusher;
     private static Arms arms;
     private static TargetParser tp;
@@ -71,6 +72,7 @@ public class ScraperBike extends IterativeRobot {
         // instantiate the command used for the autonomous period
         status = new String();
         nt = NetworkTable.getTable("ST");
+        debugTable = NetworkTable.getTable("Debug");
         nt.putString("Status", "Initializing");
         nt.putBoolean("AutoAlign", false);
         pusher =  new Pusher();
@@ -99,14 +101,14 @@ public class ScraperBike extends IterativeRobot {
     }
     public void disabledInit(){
         
-        ScraperBike.debugPrintln("Entering disabled...");
+        System.out.println("Entering disabled...");
     }
     public void disabledPeriodic(){
         
     }
     public void autonomousInit() {
         
-        ScraperBike.debugPrintln("Entering Autonomous...");
+        System.out.println("Entering Autonomous...");
     }
 
     /**
@@ -123,7 +125,7 @@ public class ScraperBike extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
          
-        ScraperBike.debugPrintln("Entering TeleOp...");
+        System.out.println("Entering TeleOp...");
         tp.start();
 
     }
@@ -137,6 +139,7 @@ public class ScraperBike extends IterativeRobot {
         display.updateLCD();
         
         RobotMap.debug = DriverStation.getInstance().getDigitalIn(1);
+        RobotMap.debugTable = DriverStation.getInstance().getDigitalIn(2);
         
         Scheduler.getInstance().run();
         
@@ -149,7 +152,7 @@ public class ScraperBike extends IterativeRobot {
             display.println(Line.kUser5, 1, "Distance (in): " + RobotMap.Top.getRange()*12);
             display.println(Line.kUser6, 1, "shoot encoder: " + RobotMap.shootEncoder.get());
                       
-            System.out.println("Distance: " + RobotMap.Top.getRange()*12);
+            //System.out.println("Distance: " + RobotMap.Top.getRange()*12);
             //display.println(Line.kUser4, 1, "Aspect Ratio: " + RobotMap.LMid.aspect);
             //display.println(Line.kUser5, 1, "CenX: " + RobotMap.LMid.cenX);
             //display.println(Line.kUser6, 1, "CenY: " + RobotMap.LMid.cenY);
@@ -166,6 +169,28 @@ public class ScraperBike extends IterativeRobot {
         
         display.updateLCD();
     }
+    
+    public static void debugToTable(String key, String text){
+        
+        if (RobotMap.debugTable){
+            ScraperBike.debugTable.putString(key,text);
+        }
+        //System.out.println("T/F: " + RobotMap.debugTable + ", StrKey: " + key + ", Text: " + text);
+    }  
+    
+    public static void debugToTable(String key, double text){
+        
+        if (RobotMap.debugTable){
+            ScraperBike.debugTable.putString(key, ""+text);
+        }
+    } 
+    
+    public static void debugToTable(String key, int text){
+        
+        if (RobotMap.debugTable){
+            ScraperBike.debugTable.putString(key,""+text);
+        }
+    } 
     
     public static void debugPrintln(String text){
         
