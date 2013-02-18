@@ -22,7 +22,7 @@ public class ClimbLevelTwo extends CommandGroup {
         addSequential(new ArmsRetract());
         addSequential(new Pause(2.0));
         //addSequential(new FrontPusherClimbOver());
-        addSequential(new RearPusherClimbOver());
+        //addSequential(new RearPusherClimbOver());
     }
 
     // Called just before this Command runs the first time

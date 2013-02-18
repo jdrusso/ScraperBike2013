@@ -33,6 +33,8 @@ public class OI {
     private static Button lockTop;
     private static Button lockLMid;
     private static Button lockRMid;
+    private static Button frontPusherRetract;
+    private static Button rearPusherRetract;
     private static Button lockLBot;
     private static Button lockRBot;
     
@@ -60,8 +62,8 @@ public class OI {
         rotate.whileHeld(new RotateRobot());
         frontPusher1.whileHeld(new FrontPusherExtend(1));
         frontPusher2.whileHeld(new FrontPusherExtend(2));
-        frontPusher1.whenReleased(new FrontPusherRetract());
-        frontPusher2.whenReleased(new FrontPusherRetract());
+        //frontPusher1.whenReleased(new FrontPusherRetract());
+        //frontPusher2.whenReleased(new FrontPusherRetract());
         climbPyramid.whenPressed(new ClimbLevelOne());
         armRetract.whileHeld(new ArmsRetract());
         armExtend.whileHeld(new ArmsExtend(2)); 
@@ -72,6 +74,8 @@ public class OI {
         lockTop = RobotMap.shootButton3;
         lockLMid = RobotMap.shootButton4;
         lockRMid = RobotMap.shootButton5;
+        frontPusherRetract = RobotMap.shootButton6;
+        rearPusherRetract = RobotMap.shootButton7;
         lockLBot = RobotMap.shootButton8;
         lockRBot = RobotMap.shootButton9;
         
@@ -89,6 +93,9 @@ public class OI {
         
         lockRMid.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.RMid));
         lockRMid.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
+        
+        frontPusherRetract.whenReleased(new FrontPusherRetract());
+        rearPusherRetract.whenReleased(new FrontPusherRetract());
         
         lockLBot.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.LBot));
         lockLBot.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
