@@ -213,7 +213,14 @@ public class RobotMap {
     // Ki - K integral value for shooter.
     public static final double shooterKi = (double) (0);
     // Kp - K differential value for shooter.
-    public static final double shooterKd = (double) (0);    
+    public static final double shooterKd = (double) (0);
+    
+    // Kp - K proportional value for shooter.
+    public static final double shooterElevationKp = (double) (5);
+    // Ki - K integral value for shooter.
+    public static final double shooterElevationKi = (double) (0);
+    // Kp - K differential value for shooter.
+    public static final double shooterElevationKd = (double) (0);
     
     /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for Drive Train Rotation.
