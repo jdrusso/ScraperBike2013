@@ -16,10 +16,12 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
  */
 public class FrontPusherRetract extends CommandBase {
        private Pusher g;
+       private boolean commanded;
        
     public FrontPusherRetract() {
         g = ScraperBike.getPusher();
         requires(g);
+        commanded = false;
     }
 
     protected void initialize() {
@@ -27,10 +29,11 @@ public class FrontPusherRetract extends CommandBase {
 
     protected void execute() {
         g.moveFrontPusher(0);
+        commanded = true;
     }
 
     protected boolean isFinished() {
-        return !g.isFrontContacting();
+        return commanded; //!g.isFrontContacting();
     }
 
     protected void end() {
