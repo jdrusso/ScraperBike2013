@@ -100,8 +100,8 @@ public class ScraperBike extends IterativeRobot {
         updateSolenoids = new UpdateSolenoidModule();
         updateSolenoids.start();
         
-        shooterElevationPID = new ShooterElevationPID(RobotMap.shooterElevationKp, RobotMap.shooterElevationKi, RobotMap.shooterElevationKd);
-        shooterElevationPID.start();
+        //shooterElevationPID = new ShooterElevationPID(RobotMap.shooterElevationKp, RobotMap.shooterElevationKi, RobotMap.shooterElevationKd);
+        //shooterElevationPID.start();
         
     }
     public void disabledInit(){

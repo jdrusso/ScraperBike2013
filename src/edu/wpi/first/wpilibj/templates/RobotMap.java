@@ -40,6 +40,7 @@ public class RobotMap {
     /* ANALOG SIDECAR 1 
      *
      */
+    public static final int gyroAnalogInput = 1;
     
     
     /* DIGITAL SIDECAR 1
