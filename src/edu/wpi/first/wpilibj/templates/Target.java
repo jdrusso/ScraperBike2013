@@ -244,19 +244,26 @@ public class Target {
         
         switch(this.vertPos){
             case 1:
-                Tft = RobotMap.botH/12; break;
+                Tft = RobotMap.botH; break;
             case 2:
-                Tft = RobotMap.midH/12; break;
+                Tft = RobotMap.midH; break;
             case 3:
-                Tft = RobotMap.topH/12; break;
+                Tft = RobotMap.topH; break;
         }
         
         range = (.5*((Tft*FOVpx)/Tpx))/(Math.tan(Math.toRadians(theta)));
+        ScraperBike.debugToTable("R_Tft", Tft);
+        ScraperBike.debugToTable("R_FOVpx", FOVpx);
+        ScraperBike.debugToTable("R_Tpx", Tpx);
+        ScraperBike.debugToTable("R_theta", theta);
+        ScraperBike.debugToTable("R_uncorrectedRange", range);
         
-        /*Correct ranges based on a polynomial equation for error 
+        /*Correct ranges based on an exponential equation for error 
         *derived from empirical data
         */
-        range = range*(1);
+        range += (0.5966*range) - 11.571;
+        
+        ScraperBike.debugToTable("R_correctedRange", range);
         
         return range;
     }
