@@ -77,8 +77,8 @@ public class ScraperBike extends IterativeRobot {
         nt.putString("Status", "Initializing");
         nt.putBoolean("AutoAlign", false);
         pusher =  new Pusher();
+        DriveTrain = new DriveTrain(); // must be before Arms constructor
         arms = new Arms();
-        DriveTrain = new DriveTrain();
         VerticalAxis = new VerticalTurretAxis();   
         shooterController = new Shooter();
         display = DriverStationLCD.getInstance();
@@ -132,6 +132,11 @@ public class ScraperBike extends IterativeRobot {
          
         System.out.println("Entering TeleOp...");
         tp.start();
+        
+        pusher.moveFrontPusher(0);
+        pusher.moveRearPusher(0);
+        DriveTrain.powerDriveTrain();
+        DriveTrain.shiftHighGear();
 
     }
     /**
