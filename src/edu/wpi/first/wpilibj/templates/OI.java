@@ -42,20 +42,21 @@ public class OI {
         
         // Joystick 1 Button (Driving Joystick)
         shiftLowGear = RobotMap.dTrigger;
-        pidShooter = RobotMap.dButton2;
+        pidShooter = RobotMap.dButton2; //doesn't shoot
         manualShooter = RobotMap.dButton3;
         reloadLeft = RobotMap.dButton4;
         reloadRight = RobotMap.dButton5;
         rotate = RobotMap.dButton6;
         frontPusher1 = RobotMap.dButton7;
         frontPusher2 = RobotMap.dButton8;
-        climbPyramid = RobotMap.dButton9;
+        climbPyramid = RobotMap.dButton9; // doesn't climb the pyramid right now
         armRetract = RobotMap.dButton10;
         armExtend = RobotMap.dButton11;
         
         // Joystick 1 Actions
         shiftLowGear.whileHeld(new ShiftLowGear());
-        pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
+        //pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
+        pidShooter.whileHeld(new PowerDriveTrain());
         manualShooter.whileHeld(new Shoot());
         reloadLeft.whileHeld(new Reload(1));
         reloadRight.whileHeld(new Reload(-1));
@@ -64,7 +65,7 @@ public class OI {
         frontPusher2.whileHeld(new FrontPusherExtend(2));
         //frontPusher1.whenReleased(new FrontPusherRetract());
         //frontPusher2.whenReleased(new FrontPusherRetract());
-        climbPyramid.whenPressed(new ClimbLevelOne());
+        climbPyramid.whenPressed(new RearPusherExtend());
         armRetract.whileHeld(new ArmsRetract());
         armExtend.whileHeld(new ArmsExtend(2)); 
         
@@ -80,7 +81,8 @@ public class OI {
         lockRBot = RobotMap.shootButton9;
         
         // Joystick 2 Actions
-        shoot.whileHeld(new PIDShoot(RobotMap.maxRPM));
+        //This has some issue 2013-2-18 at 6pm.  This button may have been pushed
+        //shoot.whileHeld(new PIDShoot(RobotMap.maxRPM));
         
         keepAtRange.whileHeld(new DriveTrainLateral(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd));
         keepAtRange.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
@@ -94,8 +96,8 @@ public class OI {
         lockRMid.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.RMid));
         lockRMid.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
         
-        frontPusherRetract.whenReleased(new FrontPusherRetract());
-        rearPusherRetract.whenReleased(new FrontPusherRetract());
+        frontPusherRetract.whenPressed(new FrontPusherRetract());
+        rearPusherRetract.whenPressed(new RearPusherRetract());
         
         lockLBot.whileHeld(new DriveTrainTargeting(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd, RobotMap.LBot));
         lockLBot.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
@@ -116,7 +118,7 @@ public class OI {
     public static double getAdjustedThrottle(){
         
         double speed;
-        speed = (RobotMap.shootStick.getZ()+1)/2;
+        speed = -Math.abs((RobotMap.shootStick.getZ()+1.0)/2.0) - 0.3;
         return speed;
     }
     
