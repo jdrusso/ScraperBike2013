@@ -5,7 +5,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogChannel;
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.templates.MagneticEncoder;
@@ -18,7 +17,7 @@ import edu.wpi.first.wpilibj.templates.OI;
  */
 public class Shooter extends Subsystem {
 
-    public Jaguar ShootTalon;
+    public Talon ShootTalon;
     public Talon ReloadTalon;
     public AnalogChannel RangeFinder;
     
@@ -27,7 +26,7 @@ public class Shooter extends Subsystem {
 //    private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.shooterEncoderPos);
 
     public Shooter() {
-        ShootTalon = new Jaguar(RobotMap.ShooterMotor);
+        ShootTalon = new Talon(RobotMap.ShooterMotor);
         ReloadTalon = new Talon(RobotMap.ReloadMotor);
     }
     protected void initDefaultCommand() {

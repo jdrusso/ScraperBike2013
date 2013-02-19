@@ -61,7 +61,7 @@ public class DriveTrainTargeting extends PIDCommand {
         // Only give the PIDcommand output if the manual control is not on.
         
         //this.driveTrain.rotate(-output*.55);
-        ScraperBike.debugPrint("Speed: " + RobotMap.LatMovOut + ", Rotation: " + output*.63);
+        ScraperBike.debugToTable("DriveTrain Targeting", "Speed: " + RobotMap.LatMovOut + ", Rotation: " + output*.63);
         
         if (Math.abs(RobotMap.LatMovOut) >= .1)
         {

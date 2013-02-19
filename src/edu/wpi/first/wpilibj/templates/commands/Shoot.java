@@ -35,7 +35,7 @@ public class Shoot extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         shooter.setShooterMotor(joystick.getZ());
-        ScraperBike.debugPrint(joystick.getZ() + ", shoot");
+        ScraperBike.debugToTable("Shooter Z", joystick.getZ());
     }
 
     // Make this return true when this Command no longer needs to run execute()
