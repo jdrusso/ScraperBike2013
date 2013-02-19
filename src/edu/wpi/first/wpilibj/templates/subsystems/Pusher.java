@@ -11,12 +11,13 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
-/**
+/**Sets specifications for the pushers.
  * @author Team 2035 Programmers
  */
 
 public class Pusher extends Subsystem {
     
+    //sets the booleans and their default tru/false settings
     private boolean frontGripDeployed1;
     private boolean frontGripDeployed2;
     private boolean rearGripDeployed;

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**
+/**Stops the arms from moving when command is run.
  *
  * @author Team 2035 Programmers
  */

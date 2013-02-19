@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
-/**
+/**manually shoots the shooter when button 3 on the driver joystick is pressed, it does not load the shooter however.
  *
  * @author Team 2035 Programmers
  */

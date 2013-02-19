@@ -10,7 +10,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**
+/**Shifts robot into its lower gear when the trigger on the drive joystick is pressed.
  *
  * @author Team 2035 Programmers
  */
@@ -57,6 +57,7 @@ public class ShiftLowGear extends CommandBase {
     /** This method is called when another command which requires one or more of the same
      * subsystems is scheduled to run.
      */
+    //this shifts the Drive into high gear when the trigger is released.
     protected void interrupted() {
         drive.shiftHighGear();
     }

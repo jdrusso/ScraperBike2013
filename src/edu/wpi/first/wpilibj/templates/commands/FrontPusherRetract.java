@@ -10,7 +10,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
-/**
+/**Retracts the front pusher, and is used in the FrontPusherClimbOver Command
  *
  * @author Team 2035 Programmers
  */

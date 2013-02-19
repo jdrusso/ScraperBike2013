@@ -32,7 +32,7 @@ public class ArmsRetractConditional extends CommandBase {
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    // Called repeatedly when this Command is scheduled to run, allows arms to retract only if they are hooked on to the bar on the pyramid
     protected void execute() {
         if (arm.isContacting()) {
             started = true;

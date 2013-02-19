@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 
-/**
+/**automatically aligns the turret to the desired angle
  *
- * @author abbottk
+ * @author team 2035 programmers
  */
 public class ShooterElevationPID extends PIDCommand {
     private VerticalTurretAxis VerticalAxis;
@@ -48,6 +48,7 @@ public class ShooterElevationPID extends PIDCommand {
         
     }
 
+    // checks to see if the last angle the turret was on was the one that is desired. If not, it realigns itself.
     protected void execute() {
         
         this.determineSetpoint();

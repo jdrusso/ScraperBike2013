@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
 /**
- *
+ *retracts and then extends rear pusher so it goes over the lip of the pyramid.
  * @author Team 2035 programmers
  */
 public class RearPusherClimbOver extends CommandBase {
@@ -31,6 +31,7 @@ public class RearPusherClimbOver extends CommandBase {
     protected void initialize() {
     }
 
+    //checks and sees what the state of the rear pusher's surroundings are to see if it should extend/retract or not.
     protected void execute() {
         if (state == 0) {
             if (pusher.checkRearSensor1()) {
