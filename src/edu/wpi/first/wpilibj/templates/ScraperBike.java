@@ -148,8 +148,8 @@ public class ScraperBike extends IterativeRobot {
             display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
             display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
             display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
-            display.println(Line.kUser4, 1, "Distance (ft): " + RobotMap.Top.getRange());
-            display.println(Line.kUser5, 1, "Distance (in): " + RobotMap.Top.getRange()*12);
+            display.println(Line.kUser4, 1, "Distance (ft): " + RobotMap.Top.getRange()/12);
+            display.println(Line.kUser5, 1, "Distance (in): " + RobotMap.Top.getRange());
             display.println(Line.kUser6, 1, "shoot encoder: " + RobotMap.shootEncoder.get());
                       
             //System.out.println("Distance: " + RobotMap.Top.getRange()*12);
