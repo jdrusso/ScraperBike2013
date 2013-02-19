@@ -45,8 +45,10 @@ public class StandardDrive extends CommandBase{
 //        DriveTrain.setMetaCommandOutputs();
         //drive.arcadeDrive(Joystick1);
         //if (RobotMap.JoystickEnabled) {
+            DriveTrain.powerDriveTrain();
             
             DriveTrain.arcadeDrive(Joystick1);
+            
         //}
     
     }

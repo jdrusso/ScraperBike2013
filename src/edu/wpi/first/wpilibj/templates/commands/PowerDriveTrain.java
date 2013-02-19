@@ -14,11 +14,13 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
  *
  * @author Team 2035 Programmers
  */
-public class ShiftLowGear extends CommandBase {
+public class PowerDriveTrain extends CommandBase {
     private DriveTrain drive;
+    private boolean commanded;
 
-    public ShiftLowGear() {
+    public PowerDriveTrain() {
         drive = ScraperBike.getDriveTrain();
+        commanded = false;
         //requires(drive);
     }
 
@@ -34,7 +36,8 @@ public class ShiftLowGear extends CommandBase {
      *
      */
     protected void execute() {
-        drive.shiftLowGear();
+        drive.powerDriveTrain();
+        commanded = true;
         // code here is executed repeatedly until isFinished() returns true
     }
 
@@ -43,14 +46,14 @@ public class ShiftLowGear extends CommandBase {
      * @return true only after the command has finished (using a switch or other sensor or a timer)
      */
     protected boolean isFinished() {
-        return false;
+        return commanded;
     }
 
     /** This method is called once after isFinished returns true
      * 
      */
     protected void end() {
-        drive.shiftHighGear();
+        
         // code here is run once after isFinished() returns true.
     }
 
@@ -58,6 +61,6 @@ public class ShiftLowGear extends CommandBase {
      * subsystems is scheduled to run.
      */
     protected void interrupted() {
-        drive.shiftHighGear();
+        
     }
 }
