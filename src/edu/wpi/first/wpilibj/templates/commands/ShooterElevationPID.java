@@ -91,6 +91,8 @@ public class ShooterElevationPID extends PIDCommand {
      */
     protected void determineSetpoint() {
         
+        RobotMap.desiredShooterAngle = ScraperBike.nt.getNumber("DesiredShooterAngle", 0.0);
+        
         // code here to choose a desiredShooterAngle
  
         
