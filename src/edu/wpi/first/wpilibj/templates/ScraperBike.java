@@ -28,10 +28,10 @@ public class ScraperBike extends IterativeRobot {
     private static Shooter shooterController;
     private static DriverStationLCD display;
     private static boolean isDisabled;
-    private static Shooter shooter;
-    private double shooterSpeed;
+    //private static Shooter shooter;
+    //private double shooterSpeed;
     private Compressor compressor;
-    private String status;
+    //private String status;
     public static NetworkTable nt;
     public static NetworkTable debugTable;
     private static Pusher pusher;
@@ -71,7 +71,7 @@ public class ScraperBike extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        status = new String();
+        //status = new String();
         nt = NetworkTable.getTable("ST");
         debugTable = NetworkTable.getTable("Debug");
         nt.putString("Status", "Initializing");
