@@ -55,6 +55,24 @@ public class Arms extends Subsystem {
      * @param direction 0 for off, 1 for forward, -1 for reverse
      */
     public void move(double direction) {
+    /* if (direction == forward) {
+     *      if (armsFrontLimitSwitch.triggered) {
+     *          arms.move(0)
+     *      }
+     *      if (armsFrontLimitSwitch.notTriggered) {
+     *          arms.move(1)
+     *      }
+     * }
+     *  else if (direction == reverse) {
+     *       if (armsRearLimitSwitch.Triggered) {
+     *          arms.move(0)
+     *       }
+     *       if (armsRearLimitSwitch.notTriggered) {
+     *          arms.move(-1)
+     *       }
+     * }
+     */ 
+        //if arms are not at maximum extension (the arms limit switch is not triggered), then extend.
         d.climb(direction*RobotMap.climbSpeed);
     }
 }
