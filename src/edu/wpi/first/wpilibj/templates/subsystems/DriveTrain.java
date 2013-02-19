@@ -122,10 +122,12 @@ public class DriveTrain extends Subsystem {
     }
     
     public void powerDriveTrain() {
+        System.out.println("SHIFTING THIS SHIT UP YO");
         powerTakeOff.set(RobotMap.shifterDriveTrainDirection);
     }
     
     public void powerArms() {
+        System.out.println("SHIFTIN THEM ARMS BACK");
         powerTakeOff.set(RobotMap.shifterArmsDirection);
     }
 
