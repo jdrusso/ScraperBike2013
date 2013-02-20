@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 /**
- *
- * @author abbottk
+ * Creates variables.
+ * @author Team 2035
  */
 public class StandardDrive extends CommandBase{
 
@@ -26,6 +26,11 @@ public class StandardDrive extends CommandBase{
     private DriveTrain DriveTrain;
     private Gyro gyro1;
     
+    /**
+     * Gives variables their assignments.
+     * @param d
+     * @param j 
+     */
     public StandardDrive(RobotDrive d, Joystick j){
         super("DefaultDriveTrain");
         DriveTrain = ScraperBike.getDriveTrain(); 
@@ -35,11 +40,18 @@ public class StandardDrive extends CommandBase{
         drive = d;    
     }
     
+    /**
+     * Stores a value in the network table to confirm that it is not an 
+     * auto alignment value.
+     */
     protected void initialize() {
         ScraperBike.nt.putBoolean("AutoAlign", false);
 //        DriveTrain.getCommandLog().setCommand(this.getName());
     }
-
+    
+    /**
+     * Allows the robot to be controlled with one joystick. 
+     */
     protected void execute() {
 //        DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
 //        DriveTrain.setMetaCommandOutputs();
@@ -55,6 +67,9 @@ public class StandardDrive extends CommandBase{
         return false;
     }
 
+    /**
+     * Stops the motors allowing it to drive.
+     */
     protected void end() {
         drive.stopMotor();
     }

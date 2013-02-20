@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 
 /**
+ * Creates variables.
  * @author Team 2035 Programmers
  */
 public class Arms extends Subsystem {
@@ -21,6 +22,9 @@ public class Arms extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
    
+    /**
+     * Gives the variables their assignments.
+     */
     public Arms() {
         d = ScraperBike.getDriveTrain();
         contacted = false;
@@ -32,19 +36,35 @@ public class Arms extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    /**
+     * Checks if the arms are contacting the pyramid.
+     * @return True if the arms are contacting, false if not.
+     */
     public boolean isContacting() {
         contacted = RobotMap.armsContacted.get();
         return contacted;
     }
     
+    /**
+     * Checks if the arms are extended at its limit.
+     * @return True if they are extended to it's limit, false if not.
+     */
     public boolean isLimitFore() {
         return RobotMap.armsExtendedFore.get();
     }
     
+    /**
+     * Checks if the arms are retracted at it's limit.
+     * @return True if they are retracted at it's limit, false if not.
+     */
     public boolean isLimitAft() {
         return RobotMap.armsExtendedAft.get();
     }
     
+    /**
+     * Checks if the arms are extended.
+     * @return True, if the arms are extended, false if not.
+     */
     public boolean isExtended() {
         extended = RobotMap.armsExtendedFore.get() || RobotMap.armsExtendedAft.get();
         return extended;
@@ -53,6 +73,10 @@ public class Arms extends Subsystem {
     /** This moves the arms.
      * climb speed set in RobotMap
      * @param direction 0 for off, 1 for forward, -1 for reverse
+     */
+    /**
+     * moves the arms in a given direction.
+     * @param direction 
      */
     public void move(double direction) {
 //     if (direction == 1) {
