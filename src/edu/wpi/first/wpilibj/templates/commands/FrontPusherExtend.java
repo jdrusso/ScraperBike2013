@@ -10,6 +10,8 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
+/**
+ * Creates variables.
 /** 
  *
  * @author Team 2035 Programmers
@@ -19,6 +21,10 @@ public class FrontPusherExtend extends CommandBase {
     private int inputPosition;
     private boolean commanded;
     
+    /**
+     * Gives assignments to variables and requires the subsystem that it uses.
+     * @param position 
+     */
     public FrontPusherExtend(int position) {
         g = ScraperBike.getPusher();
         requires(g);
@@ -28,12 +34,19 @@ public class FrontPusherExtend extends CommandBase {
 
     protected void initialize() {
     }
-
+    
+    /**
+     * Extends the front pusher to the given parameters.
+     */
     protected void execute() {
         g.moveFrontPusher(inputPosition);
         commanded = true;
     }
 
+    /**
+     * Checks to see if the front pusher is contacting the pyramid.
+     * @return true if the pusher is contacting, false if not.
+     */
     protected boolean isFinished() {
         return commanded;//g.isFrontContacting();
     }

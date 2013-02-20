@@ -64,11 +64,13 @@ public class RobotMap {
     public static final DigitalInput armsContacted = new DigitalInput(5); // Arms subsystem
     public static final DigitalInput armsExtendedFore = new DigitalInput(6); // Arms subsytem
     public static final DigitalInput armsExtendedAft = new DigitalInput(7); // Arms subsytem
-    public static final DigitalInput fingerContacted = new DigitalInput(8); // Finger Subsystem
-    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(9); // Pusher subsytem
-    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(10); // Pusher subsytem
-    public static final DigitalInput pusherRearSensor1 = new DigitalInput(11); // Pusher subsystem
-    public static final DigitalInput pusherRearSensor2 = new DigitalInput(12); // Pusher subsystem
+    public static final DigitalInput armsFrontLimitSwitch = new DigitalInput(8); // Arms subsystem
+    public static final DigitalInput armsRearLimitSwitch = new DigitalInput(9); // Arms subsysyem
+    public static final DigitalInput fingerContacted = new DigitalInput(10); // Finger Subsystem
+    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(11); // Pusher subsytem
+    public static final DigitalInput pusherFrontSensor2 = new DigitalInput(12); // Pusher subsytem
+    public static final DigitalInput pusherRearSensor1 = new DigitalInput(13); // Pusher subsystem
+    public static final DigitalInput pusherRearSensor2 = new DigitalInput(14); // Pusher subsystem
     
     public static final int pressureSwitch = 13;
     public static final int compressorRelay = 6;

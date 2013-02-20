@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.templates.commands.ShooterElevationManual;
 
 
 /**
- *
+ * Creates variables.
  * @author Team 2035 Programmers
  */
 public class VerticalTurretAxis extends Subsystem  {
@@ -24,29 +24,47 @@ public class VerticalTurretAxis extends Subsystem  {
         gyro = new Gyro(RobotMap.gyroAnalogInput);
     }    
     
+    /**
+     * Resets the gyro.
+     */
     public static void resetGyro() {
         gyro.reset();
     }
     
+    /*
+     * Gets the current angle of the gyro.
+     * @return the current angle of the gyro.
+     */
     public static double readGyroDegress() {
         return gyro.getAngle();
     }
     
+    /**
+     * Updates the angle of the gyro.
+     * @param d 
+     */
     public void updateAngle(double d) {
         angle += d;
     }
     
+    /**
+     * Moves the elevation of the shooter.
+     */
     public void moveElevation() {
         verTurretTalon.set(RobotMap.elevatorSpeed);
     }
     
+    /**
+     * Stops moving the elevation of the shooter.
+     */
     public void stopElevation() {
         verTurretTalon.set(0.0);
     }
     
     protected void initDefaultCommand() {
         super.setDefaultCommand(new ShooterElevationManual());
-    }    
+    }
+    
     public void rotate(double speed){
         verTurretTalon.set(speed);
 //        if(RobotMap.bottomLimit.get() && RobotMap.topLimit.get()){
@@ -81,6 +99,10 @@ public class VerticalTurretAxis extends Subsystem  {
 //        }
     }
    
+    /**
+     * Gets the current value of the gyro.
+     * @return the value of the gyro.
+     */
     public static Gyro getGyro(){
         return gyro;
     }

@@ -11,13 +11,16 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
 /**
- *
+ * Creates variables.
  * @author Team 2035 Programmers
  */
 public class RearPusherExtend extends CommandBase {
     private Pusher g;
     private boolean commanded;
     
+    /**
+     * gives assignments to variables and requires the subsystem it uses.
+     */
     public RearPusherExtend() {
         g = ScraperBike.getPusher();
         requires(g);
@@ -27,19 +30,26 @@ public class RearPusherExtend extends CommandBase {
     protected void initialize() {
         
     }
-
+    
+    /**
+     * Extends the rear pusher to the given parameters.
+     */
     protected void execute() {
         g.moveRearPusher(1);
         commanded = true;
     }
-
+    
+    /**
+     * Checks is the rear pusher is contacting the pyramid.
+     * @return true if the pusher is contacting, false if not.
+     */
     protected boolean isFinished() {
         return commanded; //g.isRearContacting();
     }
-
+    
     protected void end() {
     }
-
+    
     protected void interrupted() {
     }
 }
