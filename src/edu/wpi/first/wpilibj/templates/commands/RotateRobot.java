@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
-/**
+/**turns the robot in place.
  *
  * @author Team 2035 Programmers
  */
@@ -25,7 +25,7 @@ public class RotateRobot extends CommandBase {
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    // Called repeatedly when this Command is scheduled to run. Sets how fast the robot rotates
     protected void execute() {
         turn.rotate(0.4);
     }
@@ -35,7 +35,7 @@ public class RotateRobot extends CommandBase {
         return false;
     }
 
-    // Called once after isFinished returns true
+    // Called once after isFinished returns true. stops the robot rotating by setting the speed to 0.
     protected void end() {
         turn.rotate(0.0);
     }

@@ -18,23 +18,24 @@ public class ChangeShooterElevation extends CommandBase {
     private VerticalTurretAxis elev;
     private double degrees;
     
+    //allows the shooter to change position only if ScraperBike.VerticalTurretAxis subsytem isn't being used.
     public ChangeShooterElevation(int Degrees) {
         elev = ScraperBike.getVerticalTurretAxis();
         requires(elev);
         degrees = Degrees;
     }
 
-    // Called just before this Command runs the first time
+    // Called just before this Command runs the first time. resets gyro to 0.
     protected void initialize() {
        elev.resetGyro();
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    // Called repeatedly when this Command is scheduled to run.  moves turret up/down to the desired angle.
     protected void execute() {
         elev.moveElevation();
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    // Make this return true when this Command no longer needs to run execute(). checks the turret's angle to the desired angle, and if it is within the alloted margin of error, stops the turret from correcting itself.
     protected boolean isFinished() {
        return (Math.abs(degrees - VerticalTurretAxis.readGyroDegress())< 0.1);
     }

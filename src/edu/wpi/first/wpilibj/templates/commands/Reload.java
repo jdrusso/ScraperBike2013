@@ -10,7 +10,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
-/**
+/**runs motor that turns the metal stick that reloads the shooter either way, depending on which button you press.
  *
  * @author Team 2035 Programmers
  */

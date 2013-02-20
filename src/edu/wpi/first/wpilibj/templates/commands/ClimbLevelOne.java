@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
+/**runs the necessary commands to make the robot climb up first level of the pyramid by itself, used as part of the ClimbPyramid command.
  *
  * @author bradmiller
  */

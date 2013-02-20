@@ -16,10 +16,12 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
  */
 public class RearPusherExtend extends CommandBase {
     private Pusher g;
+    private boolean commanded;
     
     public RearPusherExtend() {
         g = ScraperBike.getPusher();
         requires(g);
+        commanded = false;
     }
 
     protected void initialize() {
@@ -28,10 +30,11 @@ public class RearPusherExtend extends CommandBase {
 
     protected void execute() {
         g.moveRearPusher(1);
+        commanded = true;
     }
 
     protected boolean isFinished() {
-        return g.isRearContacting();
+        return commanded; //g.isRearContacting();
     }
 
     protected void end() {

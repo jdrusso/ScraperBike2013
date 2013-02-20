@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 /**
  *
@@ -16,11 +17,15 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
  */
 public class ArmsExtend extends CommandBase {
     private Arms arm;
+    private DriveTrain dt;
     private int endcond;
+    
     
     public ArmsExtend(int endCondition) {
         arm = ScraperBike.getArms();
+        dt = ScraperBike.getDriveTrain();
         requires(arm);
+        requires(dt);
         endcond = endCondition;
     }
 
@@ -35,12 +40,13 @@ public class ArmsExtend extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (endcond == 1) {
-            return arm.isContacting();
-        } else if (endcond == 2) {
-            return arm.isLimitFore();
-        } 
         return false;
+//        if (endcond == 1) {
+//            return arm.isContacting();
+//        } else if (endcond == 2) {
+//            return arm.isLimitFore();
+//        } 
+//        return false;
     }
 
     // Called once after isFinished returns true

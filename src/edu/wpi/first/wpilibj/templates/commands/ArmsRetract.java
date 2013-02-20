@@ -9,17 +9,23 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**
+/**retracts arms at full speed when button 10 on the drive joystick is pressed until button is released, or maximum extent is reached. Works only if Arms and DriveTrain subsystems are not currently being used.
  *
  * @author Team 2035 Programmers
  */
 public class ArmsRetract extends CommandBase {
     private Arms arm;
+    private DriveTrain dt;
     
+    
+    //makes ArmsRetract work only if arm and dt are currently not in use
     public ArmsRetract() {
         arm = ScraperBike.getArms();
+        dt = ScraperBike.getDriveTrain();
         requires(arm);
+        requires(dt);
     }
 
     // Called just before this Command runs the first time
@@ -34,7 +40,7 @@ public class ArmsRetract extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         //return !arm.isContacting();
-        return arm.isLimitAft();
+        return false;//arm.isLimitAft();
     }
 
     // Called once after isFinished returns true

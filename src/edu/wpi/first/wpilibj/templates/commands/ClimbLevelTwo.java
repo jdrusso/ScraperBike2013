@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
+/**runs the necessary commands to make the robot climb up second level of the pyramid by itself, used as part of the ClimbPyramid command.
  *
  * @author bradmiller
  */
@@ -21,8 +21,8 @@ public class ClimbLevelTwo extends CommandGroup {
         addSequential(new ArmsExtend(2));
         addSequential(new ArmsRetract());
         addSequential(new Pause(2.0));
-        //addSequential(new FrontPusherClimbOver());
-        //addSequential(new RearPusherClimbOver());
+        //addSequential(new FrontPusherClimbOver()); should we add this as part of the code?
+        //addSequential(new RearPusherClimbOver()); should we add this as part of the code?
     }
 
     // Called just before this Command runs the first time

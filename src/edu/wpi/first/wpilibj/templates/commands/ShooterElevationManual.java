@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 
-/**
+/**allows you to manually change the angle of the shooter with the y-axis of the shooter joystick.
  *
  * @author jrusso
  */

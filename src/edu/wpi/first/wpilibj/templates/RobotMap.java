@@ -40,6 +40,7 @@ public class RobotMap {
     /* ANALOG SIDECAR 1 
      *
      */
+    public static final int gyroAnalogInput = 1;
     
     
     /* DIGITAL SIDECAR 1
@@ -72,8 +73,8 @@ public class RobotMap {
     public static final int pressureSwitch = 13;
     public static final int compressorRelay = 6;
     
-    public static final boolean shifterDriveTrainDirection = true;
-    public static final boolean shifterArmsDirection = false;   
+    public static final boolean shifterDriveTrainDirection = false;
+    public static final boolean shifterArmsDirection = true;   
     
     /* SOLENOIDS SIDECAR 1
      * 
