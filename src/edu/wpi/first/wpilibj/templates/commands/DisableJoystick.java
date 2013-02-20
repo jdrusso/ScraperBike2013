@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
-/**
+/**turns off joystick when the ClimbLevelOne Command is run.
  *
  * @author Team 2035 Programmers
  */

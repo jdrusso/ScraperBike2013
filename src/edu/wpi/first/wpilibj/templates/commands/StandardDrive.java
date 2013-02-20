@@ -24,7 +24,7 @@ public class StandardDrive extends CommandBase{
     private Joystick Joystick2;
     private RobotDrive drive;
     private DriveTrain DriveTrain;
-    private Gyro gyro1;
+    //private Gyro gyro1;
     
     /**
      * Gives variables their assignments.
@@ -34,7 +34,7 @@ public class StandardDrive extends CommandBase{
     public StandardDrive(RobotDrive d, Joystick j){
         super("DefaultDriveTrain");
         DriveTrain = ScraperBike.getDriveTrain(); 
-        gyro1 = DriveTrain.getGyro1();
+        //gyro1 = DriveTrain.getGyro1();
         requires(DriveTrain);
         Joystick1 = j;
         drive = d;    
@@ -57,8 +57,10 @@ public class StandardDrive extends CommandBase{
 //        DriveTrain.setMetaCommandOutputs();
         //drive.arcadeDrive(Joystick1);
         //if (RobotMap.JoystickEnabled) {
+            DriveTrain.powerDriveTrain();
             
             DriveTrain.arcadeDrive(Joystick1);
+            
         //}
     
     }

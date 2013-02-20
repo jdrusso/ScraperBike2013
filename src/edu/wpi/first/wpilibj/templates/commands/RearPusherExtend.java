@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
  */
 public class RearPusherExtend extends CommandBase {
     private Pusher g;
+    private boolean commanded;
     
     /**
      * gives assignments to variables and requires the subsystem it uses.
@@ -23,6 +24,7 @@ public class RearPusherExtend extends CommandBase {
     public RearPusherExtend() {
         g = ScraperBike.getPusher();
         requires(g);
+        commanded = false;
     }
 
     protected void initialize() {
@@ -34,6 +36,7 @@ public class RearPusherExtend extends CommandBase {
      */
     protected void execute() {
         g.moveRearPusher(1);
+        commanded = true;
     }
     
     /**
@@ -41,7 +44,7 @@ public class RearPusherExtend extends CommandBase {
      * @return true if the pusher is contacting, false if not.
      */
     protected boolean isFinished() {
-        return g.isRearContacting();
+        return commanded; //g.isRearContacting();
     }
     
     protected void end() {

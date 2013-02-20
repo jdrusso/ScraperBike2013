@@ -11,12 +11,13 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
-/**
+/**Sets specifications for the pushers.
  * @author Team 2035 Programmers
  */
 
 public class Pusher extends Subsystem {
     
+    //sets the booleans and their default tru/false settings
     private boolean frontGripDeployed1;
     private boolean frontGripDeployed2;
     private boolean rearGripDeployed;
@@ -35,7 +36,8 @@ public class Pusher extends Subsystem {
         frontSolenoid1 = RobotMap.frontPusherFirst; // Solenoid 3
         frontSolenoid2 = RobotMap.frontPusherSecond; // Solenoid 4
         rearSolenoid = RobotMap.rearPusher; // Solenoid 5
-        
+        this.moveFrontPusher(0);
+        this.moveRearPusher(0);
     }
     /** The front Pusher has two air cylinders to have the option to extend 3 or 6 inches.
      * 
@@ -46,14 +48,14 @@ public class Pusher extends Subsystem {
             frontSolenoid1.set(true);
             frontGripDeployed1 = true;
             
-            frontSolenoid2.set(false);
+            frontSolenoid2.set(true);  //TODO: wired backwards
             frontGripDeployed2 = false;
         }
         if(position == 2) {
             frontSolenoid2.set(true);
             frontGripDeployed1 = true;
             
-            frontSolenoid2.set(true);
+            frontSolenoid2.set(false);  //TODO: wired backwards
             frontGripDeployed2 = true;
             
         }
@@ -61,7 +63,7 @@ public class Pusher extends Subsystem {
             frontSolenoid1.set(false);
             frontGripDeployed1 = false;
             
-            frontSolenoid2.set(false);
+            frontSolenoid2.set(true);  //TODO: wired backwards
             frontGripDeployed2 = false;
         }
     }

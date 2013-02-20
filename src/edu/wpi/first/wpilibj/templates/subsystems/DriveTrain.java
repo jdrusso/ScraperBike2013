@@ -43,6 +43,7 @@ public class DriveTrain extends Subsystem {
     private Talon RearRightTalon;
     private double motorSpeeds;
     private static Gyro gyro1;
+    //private static Gyro gyro1;
     //private static MetaCommandLog Log;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -146,6 +147,7 @@ public class DriveTrain extends Subsystem {
      * Gives power to the drive train.
      */
     public void powerDriveTrain() {
+        System.out.println("SHIFTING THIS SHIT UP YO");
         powerTakeOff.set(RobotMap.shifterDriveTrainDirection);
     }
     
@@ -153,6 +155,7 @@ public class DriveTrain extends Subsystem {
      * Gives power to the arms.
      */
     public void powerArms() {
+        System.out.println("SHIFTIN THEM ARMS BACK");
         powerTakeOff.set(RobotMap.shifterArmsDirection);
     }
     
@@ -163,6 +166,10 @@ public class DriveTrain extends Subsystem {
     public static Gyro getGyro1(){
         return gyro1;
     }
+
+//    public static Gyro getGyro1(){
+//        return gyro1;
+//    }
     
     /**
      * Gets the value of robot drive.

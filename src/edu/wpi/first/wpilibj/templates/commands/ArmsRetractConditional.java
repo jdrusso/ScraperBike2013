@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 /**
  *we may not use this, it has errors currently
@@ -16,11 +17,14 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
  */
 public class ArmsRetractConditional extends CommandBase {
     private Arms arm;
+    private DriveTrain dt;
     private boolean started;
     
     public ArmsRetractConditional() {
         arm = ScraperBike.getArms();
+        dt = ScraperBike.getDriveTrain();
         requires(arm);
+        requires(dt);
         started = false;
     }
 
@@ -28,7 +32,7 @@ public class ArmsRetractConditional extends CommandBase {
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    // Called repeatedly when this Command is scheduled to run, allows arms to retract only if they are hooked on to the bar on the pyramid
     protected void execute() {
         if (arm.isContacting()) {
             started = true;

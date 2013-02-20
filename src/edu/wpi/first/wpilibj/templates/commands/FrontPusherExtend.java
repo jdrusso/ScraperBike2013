@@ -12,11 +12,14 @@ import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
 /**
  * Creates variables.
+/** 
+ *
  * @author Team 2035 Programmers
  */
 public class FrontPusherExtend extends CommandBase {
     private Pusher g;
     private int inputPosition;
+    private boolean commanded;
     
     /**
      * Gives assignments to variables and requires the subsystem that it uses.
@@ -26,6 +29,7 @@ public class FrontPusherExtend extends CommandBase {
         g = ScraperBike.getPusher();
         requires(g);
         inputPosition = position;
+        commanded = false;
     }
 
     protected void initialize() {
@@ -36,6 +40,7 @@ public class FrontPusherExtend extends CommandBase {
      */
     protected void execute() {
         g.moveFrontPusher(inputPosition);
+        commanded = true;
     }
 
     /**
@@ -43,7 +48,7 @@ public class FrontPusherExtend extends CommandBase {
      * @return true if the pusher is contacting, false if not.
      */
     protected boolean isFinished() {
-        return g.isFrontContacting();
+        return commanded;//g.isFrontContacting();
     }
 
     protected void end() {

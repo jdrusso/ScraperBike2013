@@ -8,12 +8,15 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
 /**
- * Creates variables.
+ * Creates variables and manually shoots the shooter when button 3 on the driver joystick is pressed, 
+ * it does not load the shooter however.
+ *
  * @author Team 2035 Programmers
  */
 public class Shoot extends CommandBase {
@@ -41,7 +44,7 @@ public class Shoot extends CommandBase {
      * Sets the speed of the shooter motor.
      */
     protected void execute() {
-        shooter.setShooterMotor(joystick.getZ());
+        shooter.setShooterMotor(OI.getAdjustedThrottle());
         ScraperBike.debugToTable("Shooter Z", joystick.getZ());
     }
 

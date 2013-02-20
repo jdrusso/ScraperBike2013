@@ -17,6 +17,13 @@ public class VerticalTurretAxis extends Subsystem  {
     private static Gyro gyro;
     private double angle;
     
+    public VerticalTurretAxis(){
+        super("VerticalTurretAxis");
+        verTurretTalon = new Talon(RobotMap.VerTurretMotor);
+        
+        gyro = new Gyro(RobotMap.gyroAnalogInput);
+    }    
+    
     /**
      * Resets the gyro.
      */
@@ -52,14 +59,6 @@ public class VerticalTurretAxis extends Subsystem  {
      */
     public void stopElevation() {
         verTurretTalon.set(0.0);
-    }
-    
-    /**
-     * gives the variables an assignment.
-     */
-    public VerticalTurretAxis(){
-        super("VerticalTurretAxis");
-        verTurretTalon = new Talon(RobotMap.VerTurretMotor);
     }
     
     protected void initDefaultCommand() {

@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 /**
  * Creates variables.
@@ -22,10 +23,14 @@ public class ArmsExtend extends CommandBase {
      * Gives Assignments to variables and requires each subsystem that it uses.
      * @param endCondition 
      */
+    private DriveTrain dt;
+    
     public ArmsExtend(int endCondition) {
         arm = ScraperBike.getArms();
+        dt = ScraperBike.getDriveTrain();
         requires(arm);
         endCond = endCondition;
+        requires(dt);
     }
 
     // Called just before this Command runs the first time
@@ -56,6 +61,12 @@ public class ArmsExtend extends CommandBase {
             return arm.isLimitFore();
         } 
         return false;
+//        if (endcond == 1) {
+//            return arm.isContacting();
+//        } else if (endcond == 2) {
+//            return arm.isLimitFore();
+//        } 
+//        return false;
     }
     
     // Called once after isFinished returns true
