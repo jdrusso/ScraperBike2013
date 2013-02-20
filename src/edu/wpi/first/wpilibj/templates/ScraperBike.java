@@ -103,6 +103,8 @@ public class ScraperBike extends IterativeRobot {
         //shooterElevationPID = new ShooterElevationPID(RobotMap.shooterElevationKp, RobotMap.shooterElevationKi, RobotMap.shooterElevationKd);
         //shooterElevationPID.start();
         
+        RobotMap.shootEncoder.setDistancePerPulse((1.0/360.0));
+        
     }
     public void disabledInit(){
         
@@ -142,9 +144,9 @@ public class ScraperBike extends IterativeRobot {
     /**
      * This function is called periodically during operator control
      */
-    public void teleopPeriodic() {        
-        //status =  nt.getString("Status", "");
-        //display.println(Line.kUser1, 1, "Status: " + status + "              ");
+    public void teleopPeriodic() {
+        
+        System.out.println("DIO 6: " + !RobotMap.armsExtendedFore.get() + ", DIO 7: " + !RobotMap.armsExtendedAft.get() + ", DIO 9: " + !RobotMap.armsHome.get());
         
         display.updateLCD();
         
@@ -152,30 +154,16 @@ public class ScraperBike extends IterativeRobot {
         RobotMap.debugTable = DriverStation.getInstance().getDigitalIn(2);
         
         Scheduler.getInstance().run();
-        
-        //if (!RobotMap.unsortedMid.isEmpty()) {
             
-            display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
-            display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
-            display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
-            display.println(Line.kUser4, 1, "Distance (ft): " + RobotMap.Top.getRange()/12);
-            display.println(Line.kUser5, 1, "Distance (in): " + RobotMap.Top.getRange());
-            display.println(Line.kUser6, 1, "shoot encoder: " + RobotMap.shootEncoder.get());
-                      
-            //System.out.println("Distance: " + RobotMap.Top.getRange()*12);
-            //display.println(Line.kUser4, 1, "Aspect Ratio: " + RobotMap.LMid.aspect);
-            //display.println(Line.kUser5, 1, "CenX: " + RobotMap.LMid.cenX);
-            //display.println(Line.kUser6, 1, "CenY: " + RobotMap.LMid.cenY);
-        //}
-        
-        //display.println(Line.kUser6, 1, "Shoot Encoder" + RobotMap.shootEncoder.get() + "          ");
-        
-//        display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
-//        display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
-//        display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
-//        display.println(Line.kUser4, 1, "Height: " + RobotMap.Top.height);
-//        display.println(Line.kUser5, 1, "Width: " + RobotMap.Top.width);
-        //ScraperBike.debugPrintln(RobotMap.Top.aspect);
+        display.println(Line.kUser1, 1, "Aspect Ratio: " + RobotMap.Top.aspect);
+        display.println(Line.kUser2, 1, "CenX: " + RobotMap.Top.cenX);
+        display.println(Line.kUser3, 1, "CenY: " + RobotMap.Top.cenY);
+        display.println(Line.kUser4, 1, "Distance (in): " + RobotMap.Top.getRange());
+        //display.println(Line.kUser5, 1, "Distance (ft): " + RobotMap.Top.getRange()/12);
+        display.println(Line.kUser5, 1, "shoot RPM: " + RobotMap.shootEncoder.getRate()*60);
+        display.println(Line.kUser6, 1, "shoot encoder: " + (((double)RobotMap.shootEncoder.get())/360));
+        this.debugToTable("Encoder getrate", RobotMap.shootEncoder.getRate());
+        this.debugToTable("Encoder get", RobotMap.shootEncoder.get());
         
         display.updateLCD();
     }
@@ -185,7 +173,6 @@ public class ScraperBike extends IterativeRobot {
         if (RobotMap.debugTable){
             ScraperBike.debugTable.putString(key,text);
         }
-        //System.out.println("T/F: " + RobotMap.debugTable + ", StrKey: " + key + ", Text: " + text);
     }  
     
     public static void debugToTable(String key, double text){
