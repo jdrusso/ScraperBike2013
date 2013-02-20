@@ -28,10 +28,10 @@ public class ScraperBike extends IterativeRobot {
     private static Shooter shooterController;
     private static DriverStationLCD display;
     private static boolean isDisabled;
-    private static Shooter shooter;
-    private double shooterSpeed;
+    //private static Shooter shooter;
+    //private double shooterSpeed;
     private Compressor compressor;
-    private String status;
+    //private String status;
     public static NetworkTable nt;
     public static NetworkTable debugTable;
     private static Pusher pusher;
@@ -71,14 +71,14 @@ public class ScraperBike extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        status = new String();
+        //status = new String();
         nt = NetworkTable.getTable("ST");
         debugTable = NetworkTable.getTable("Debug");
         nt.putString("Status", "Initializing");
         nt.putBoolean("AutoAlign", false);
         pusher =  new Pusher();
+        DriveTrain = new DriveTrain(); // must be before Arms constructor
         arms = new Arms();
-        DriveTrain = new DriveTrain();
         VerticalAxis = new VerticalTurretAxis();   
         shooterController = new Shooter();
         display = DriverStationLCD.getInstance();
@@ -100,8 +100,8 @@ public class ScraperBike extends IterativeRobot {
         updateSolenoids = new UpdateSolenoidModule();
         updateSolenoids.start();
         
-        shooterElevationPID = new ShooterElevationPID(RobotMap.shooterElevationKp, RobotMap.shooterElevationKi, RobotMap.shooterElevationKd);
-        shooterElevationPID.start();
+        //shooterElevationPID = new ShooterElevationPID(RobotMap.shooterElevationKp, RobotMap.shooterElevationKi, RobotMap.shooterElevationKd);
+        //shooterElevationPID.start();
         
     }
     public void disabledInit(){
@@ -132,6 +132,11 @@ public class ScraperBike extends IterativeRobot {
          
         System.out.println("Entering TeleOp...");
         tp.start();
+        
+        pusher.moveFrontPusher(0);
+        pusher.moveRearPusher(0);
+        DriveTrain.powerDriveTrain();
+        DriveTrain.shiftHighGear();
 
     }
     /**

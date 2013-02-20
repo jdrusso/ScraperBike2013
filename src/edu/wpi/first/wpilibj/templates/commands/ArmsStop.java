@@ -9,17 +9,21 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**
+/**Stops the arms from moving when command is run.
  *
  * @author Team 2035 Programmers
  */
 public class ArmsStop extends CommandBase {
     private Arms arm;
+    private DriveTrain dt;
     
     public ArmsStop() {
         arm = ScraperBike.getArms();
+        dt = ScraperBike.getDriveTrain();
         requires(arm);
+        requires(dt);
     }
 
     // Called just before this Command runs the first time

@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**
+/**Runs the necessary commands to make the robot climb up the pyramid by itself when button 9 on the drive joystick is pressed.
  *
  * @author bradmiller
  */

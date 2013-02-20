@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
+import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 /**
  *
@@ -16,10 +17,13 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
  */
 public class ArmsExtendConditional extends CommandBase {
     private Arms arm;
+    private DriveTrain dt;
     
     public ArmsExtendConditional() {
         arm = ScraperBike.getArms();
+        dt = ScraperBike.getDriveTrain();
         requires(arm);
+        requires(dt);
     }
 
     // Called just before this Command runs the first time

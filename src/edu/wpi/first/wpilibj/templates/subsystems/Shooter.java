@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.OI;
 
-/**
+/**defines the motors, booleans, and other variables for Commands that have to do with shooting frisbees.
  *
  * @author abbottk
  */
@@ -25,6 +25,7 @@ public class Shooter extends Subsystem {
     
 //    private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.shooterEncoderPos);
 
+    //defines which motors work with the shooter
     public Shooter() {
         ShootTalon = new Talon(RobotMap.ShooterMotor);
         ReloadTalon = new Talon(RobotMap.ReloadMotor);
@@ -34,15 +35,18 @@ public class Shooter extends Subsystem {
     
     }
     
+    //defines how to set the speed for the motors.
     public void setShooterMotor(double speed){
         ShootTalon.set(speed);
         
     }
     
+    //defines how fast the relod motor spins
     public void setReloadMotor(double speed){
         ReloadTalon.set(speed);
     }    
     
+    // gives the range from the camera to the shooter
     public double getRange(){
         
         double range = this.RangeFinder.getVoltage()/.098;

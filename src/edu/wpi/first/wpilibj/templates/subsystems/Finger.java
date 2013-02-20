@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
-/** finger subsystem implements code for a finger latch that holds the robot up on the pyramid as it climbs.
+/** finger subsystem implements code for a finger latch that holds the robot up on the pyramid as it climbs. *NOT BEING USED
  *
  */
 public class Finger extends Subsystem {

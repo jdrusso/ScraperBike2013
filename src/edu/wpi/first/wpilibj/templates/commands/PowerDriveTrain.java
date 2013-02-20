@@ -10,15 +10,17 @@ package edu.wpi.first.wpilibj.templates.commands;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**Shifts robot into its lower gear when the trigger on the drive joystick is pressed.
+/**
  *
  * @author Team 2035 Programmers
  */
-public class ShiftLowGear extends CommandBase {
+public class PowerDriveTrain extends CommandBase {
     private DriveTrain drive;
+    private boolean commanded;
 
-    public ShiftLowGear() {
+    public PowerDriveTrain() {
         drive = ScraperBike.getDriveTrain();
+        commanded = false;
         //requires(drive);
     }
 
@@ -34,7 +36,8 @@ public class ShiftLowGear extends CommandBase {
      *
      */
     protected void execute() {
-        drive.shiftLowGear();
+        drive.powerDriveTrain();
+        commanded = true;
         // code here is executed repeatedly until isFinished() returns true
     }
 
@@ -43,22 +46,21 @@ public class ShiftLowGear extends CommandBase {
      * @return true only after the command has finished (using a switch or other sensor or a timer)
      */
     protected boolean isFinished() {
-        return false;
+        return commanded;
     }
 
     /** This method is called once after isFinished returns true
      * 
      */
     protected void end() {
-        drive.shiftHighGear();
+        
         // code here is run once after isFinished() returns true.
     }
 
     /** This method is called when another command which requires one or more of the same
      * subsystems is scheduled to run.
      */
-    //this shifts the Drive into high gear when the trigger is released.
     protected void interrupted() {
-        drive.shiftHighGear();
+        
     }
 }
