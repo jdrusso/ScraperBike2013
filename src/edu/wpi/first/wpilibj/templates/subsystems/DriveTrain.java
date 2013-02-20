@@ -98,7 +98,8 @@ public class DriveTrain extends Subsystem {
     
     public void arcadeDrive(Joystick j){
         powerDriveTrain();
-        drive.arcadeDrive(j);
+        //drive.arcadeDrive(j);
+        drive.arcadeDrive(j.getY(), -j.getX());
     }
     
     public void rotate(double rot) {
