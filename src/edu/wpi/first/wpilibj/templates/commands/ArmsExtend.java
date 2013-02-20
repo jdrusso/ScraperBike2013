@@ -11,17 +11,21 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 
 /**
- *
+ * Creates variables.
  * @author Team 2035 Programmers
  */
 public class ArmsExtend extends CommandBase {
     private Arms arm;
-    private int endcond;
+    private int endCond;
     
+    /**
+     * Gives Assignments to variables and requires each subsystem that it uses.
+     * @param endCondition 
+     */
     public ArmsExtend(int endCondition) {
         arm = ScraperBike.getArms();
         requires(arm);
-        endcond = endCondition;
+        endCond = endCondition;
     }
 
     // Called just before this Command runs the first time
@@ -29,27 +33,46 @@ public class ArmsExtend extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    
+     /**
+     * The Arms extend at full speed until limit switch is triggered,
+     * or button is released.
+     */
     protected void execute() {
         arm.move(1);
     }
-
+    
     // Make this return true when this Command no longer needs to run execute()
+    
+    /**
+     * Checks the arm's current position and if the arms are contacting the
+     * pyramid or are extended to far.
+     * @return the limit of the arms or if the arms are contacting
+     */
     protected boolean isFinished() {
-        if (endcond == 1) {
+        if (endCond == 1) {
             return arm.isContacting();
-        } else if (endcond == 2) {
+        } else if (endCond == 2) {
             return arm.isLimitFore();
         } 
         return false;
     }
-
+    
     // Called once after isFinished returns true
+    
+    /**
+     * Stop extending or retracting arms.
+     */
     protected void end() {
         arm.move(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    
+    /**
+     * Stop extending or retracting the arms.
+     */
     protected void interrupted() {
          arm.move(0);
     }
