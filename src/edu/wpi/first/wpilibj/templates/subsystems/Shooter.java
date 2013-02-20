@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.OI;
+import edu.wpi.first.wpilibj.templates.ScraperBike;
 
 /**defines the motors, booleans, and other variables for Commands that have to do with shooting frisbees.
  *
@@ -38,6 +38,7 @@ public class Shooter extends Subsystem {
     //defines how to set the speed for the motors.
     public void setShooterMotor(double speed){
         ShootTalon.set(speed);
+        ScraperBike.debugToTable("PID_Shooter", speed);
         
     }
     
