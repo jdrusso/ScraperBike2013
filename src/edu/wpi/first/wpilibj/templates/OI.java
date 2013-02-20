@@ -55,8 +55,7 @@ public class OI {
         
         // Joystick 1 Actions
         shiftLowGear.whileHeld(new ShiftLowGear());
-        //pidShooter.whileHeld(new PIDShoot(RobotMap.maxRPM));
-        pidShooter.whileHeld(new PowerDriveTrain());
+        pidShooter.whileHeld(new PIDShoot());
         manualShooter.whileHeld(new Shoot());
         reloadLeft.whileHeld(new Reload(1));
         reloadRight.whileHeld(new Reload(-1));
@@ -81,8 +80,8 @@ public class OI {
         lockRBot = RobotMap.shootButton9;
         
         // Joystick 2 Actions
-        //This has some issue 2013-2-18 at 6pm.  This button may have been pushed
         //shoot.whileHeld(new PIDShoot(RobotMap.maxRPM));
+        //shoot.whileHeld(new Shoot());
         
         keepAtRange.whileHeld(new DriveTrainLateral(RobotMap.DTLKp, RobotMap.DTLKi, RobotMap.DTLKd));
         keepAtRange.whenReleased(new StandardDrive(ScraperBike.getDriveTrain().getDrive(), RobotMap.dStick));
@@ -118,7 +117,8 @@ public class OI {
     public static double getAdjustedThrottle(){
         
         double speed;
-        speed = -Math.abs((RobotMap.shootStick.getZ()+1.0)/2.0) - 0.3;
+        speed = 1-(RobotMap.shootStick.getZ()+1)/2;
+        ScraperBike.debugToTable("ShootStick Speed", speed);
         return speed;
     }
     
