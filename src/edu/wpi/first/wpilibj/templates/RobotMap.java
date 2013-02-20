@@ -8,6 +8,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -58,14 +59,14 @@ public class RobotMap {
     /* Relay outputs for Spikes
      * 
      */
-    public static final Encoder shootEncoder = new Encoder(1, 2);
+    public static final Encoder shootEncoder = new Encoder(1, 2, true, CounterBase.EncodingType.k2X);
     public static final DigitalInput topLimit = new DigitalInput(3); //DIO 3, limit switch Normally open
     public static final DigitalInput bottomLimit = new DigitalInput(4); //DIO 4, limit switch Normally open
     public static final DigitalInput armsContacted = new DigitalInput(5); // Arms subsystem
     public static final DigitalInput armsExtendedFore = new DigitalInput(6); // Arms subsytem
     public static final DigitalInput armsExtendedAft = new DigitalInput(7); // Arms subsytem
     public static final DigitalInput fingerContacted = new DigitalInput(8); // Finger Subsystem
-    public static final DigitalInput pusherFrontSensor1 = new DigitalInput(9); // Pusher subsytem
+    public static final DigitalInput armsHome = new DigitalInput(9); // Pusher subsytem
     public static final DigitalInput pusherFrontSensor2 = new DigitalInput(10); // Pusher subsytem
     public static final DigitalInput pusherRearSensor1 = new DigitalInput(11); // Pusher subsystem
     public static final DigitalInput pusherRearSensor2 = new DigitalInput(12); // Pusher subsystem
@@ -210,9 +211,9 @@ public class RobotMap {
     
      /* ROBOT CODE DEFINED CONSTANTS */
     // Kp - K proportional value for shooter.
-    public static final double shooterKp = (double) (5);
+    public static final double shooterKp = (double) (0.001);
     // Ki - K integral value for shooter.
-    public static final double shooterKi = (double) (0);
+    public static final double shooterKi = (double) (0.0001);
     // Kp - K differential value for shooter.
     public static final double shooterKd = (double) (0);
     
@@ -267,7 +268,7 @@ public class RobotMap {
     public static double desiredShooterAngle = 0.0;
     
     public static double shootRPM = 0;
-    public static final double maxRPM = 1500;
+    public static final double maxRPM = 6500;
     
     //public static final double autonomousSpeed = .92;
     public static final double climbSpeed = 0.5;
