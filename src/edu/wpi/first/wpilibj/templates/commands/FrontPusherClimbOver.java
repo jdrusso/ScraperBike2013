@@ -32,24 +32,24 @@ public class FrontPusherClimbOver extends CommandBase {
     }
 
     protected void execute() {
-        if (state == 0) {
-            if (pusher.checkFrontSensor1()) {
-                state = 1;
-            }
-        } else if (state == 1) {
-            pusher.moveFrontPusher(0);
-            // may need a dealy
-            state = 2;
-        } else if (state == 2) {
-            arms.move(-1);
-            state = 3;
-        } else if (state == 3) {
-            if (pusher.checkFrontSensor2()) {
-                pusher.moveFrontPusher(1);
-                // may need delay
-                state = 4;
-            }
-        } 
+//        if (state == 0) {
+//            if (pusher.checkFrontSensor1()) {
+//                state = 1;
+//            }
+//        } else if (state == 1) {
+//            pusher.moveFrontPusher(0);
+//            // may need a dealy
+//            state = 2;
+//        } else if (state == 2) {
+//            arms.move(-1);
+//            state = 3;
+//        } else if (state == 3) {
+//            if (pusher.checkFrontSensor2()) {
+//                pusher.moveFrontPusher(1);
+//                // may need delay
+//                state = 4;
+//            }
+//        } 
         
     }
 

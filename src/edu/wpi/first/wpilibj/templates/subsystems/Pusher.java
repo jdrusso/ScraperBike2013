@@ -110,31 +110,31 @@ public class Pusher extends Subsystem {
         return position;
     }
     
-    public boolean isFrontContacting() {
-        frontGripContacted = RobotMap.pusherFrontSensor1.get();
-        return frontGripContacted;
-    }
+//    public boolean isFrontContacting() {
+//        frontGripContacted = RobotMap.pusherFrontSensor1.get();
+//        return frontGripContacted;
+//    }
     
-    public boolean isRearContacting() {
-        rearGripContacted = RobotMap.pusherRearSensor1.get();
-        return rearGripContacted;
-    }
-    
-    public boolean checkFrontSensor1() {
-        return RobotMap.pusherFrontSensor1.get();
-    }
-    
-    public boolean checkFrontSensor2() {
-        return RobotMap.pusherFrontSensor2.get();
-    }
-    
-    public boolean checkRearSensor1() {
-        return RobotMap.pusherRearSensor1.get();
-    }
-    
-    public boolean checkRearSensor2() {
-        return RobotMap.pusherRearSensor2.get();
-    }
+//    public boolean isRearContacting() {
+//        rearGripContacted = RobotMap.pusherRearSensor1.get();
+//        return rearGripContacted;
+//    }
+//    
+//    public boolean checkFrontSensor1() {
+//        return RobotMap.pusherFrontSensor1.get();
+//    }
+//    
+//    public boolean checkFrontSensor2() {
+//        return RobotMap.pusherFrontSensor2.get();
+//    }
+//    
+//    public boolean checkRearSensor1() {
+//        return RobotMap.pusherRearSensor1.get();
+//    }
+//    
+//    public boolean checkRearSensor2() {
+//        return RobotMap.pusherRearSensor2.get();
+//    }
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

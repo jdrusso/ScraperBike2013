@@ -33,24 +33,24 @@ public class RearPusherClimbOver extends CommandBase {
 
     //checks and sees what the state of the rear pusher's surroundings are to see if it should extend/retract or not.
     protected void execute() {
-        if (state == 0) {
-            if (pusher.checkRearSensor1()) {
-                state = 1;
-            }
-        } else if (state == 1) {
-            pusher.moveRearPusher(0);
-            // may need a dealy
-            state = 2;
-        } else if (state == 2) {
-            arms.move(-1);
-            state = 3;
-        } else if (state == 3) {
-            if (pusher.checkRearSensor2()) {
-                pusher.moveRearPusher(1);
-                // may need delay
-                state = 4;
-            }
-        } 
+//        if (state == 0) {
+//            if (pusher.checkRearSensor1()) {
+//                state = 1;
+//            }
+//        } else if (state == 1) {
+//            pusher.moveRearPusher(0);
+//            // may need a dealy
+//            state = 2;
+//        } else if (state == 2) {
+//            arms.move(-1);
+//            state = 3;
+//        } else if (state == 3) {
+//            if (pusher.checkRearSensor2()) {
+//                pusher.moveRearPusher(1);
+//                // may need delay
+//                state = 4;
+//            }
+//        } 
         
     }
 
