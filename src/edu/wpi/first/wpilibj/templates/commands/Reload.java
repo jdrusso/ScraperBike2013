@@ -20,7 +20,7 @@ public class Reload extends CommandBase {
     
     public Reload(int direction) {
         shooter = ScraperBike.getShooterController();
-        requires(shooter);
+        //requires(shooter);
         this.direction = direction;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -32,7 +32,7 @@ public class Reload extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        shooter.setReloadMotor(direction * 0.5);
+        shooter.setReloadMotor(direction * 0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
