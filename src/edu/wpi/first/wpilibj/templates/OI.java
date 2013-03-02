@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -15,7 +15,9 @@ import edu.wpi.first.wpilibj.templates.commands.*;
  * @author Team 2035 Programmers
  */
 public class OI {
-
+    
+    // Place all variable definitions below
+    // Joystick 1
     private static Button shiftLowGear;
     private static Button pidShooter;
     private static Button manualShooter;
@@ -28,6 +30,7 @@ public class OI {
     private static Button armExtend;
     private static Button armRetract;
     
+    // Joystick 2
     private static Button shoot;
     private static Button keepAtRange;
     private static Button lockTop;
@@ -38,6 +41,12 @@ public class OI {
     private static Button lockLBot;
     private static Button lockRBot;
     
+    /**  This method has the code that connects each button to a Command.
+     *   The button can be either pressed or held down.
+     * <p/>
+     * This method is called by the parent class ScraperBike.
+     *
+     */
     public static void initialize() {
         
         // Joystick 1 Button (Driving Joystick)
@@ -106,14 +115,42 @@ public class OI {
         
     }
     
+    /**  The Joystick objects are created in the OI class.  
+     * The objects are also needed in ScraperBike, so this method provides access
+     * to joystick 1.
+     *
+     * @return Joystick 1 object (Drive Joystick)
+     */
     public static Joystick getDriveStick(){
         return RobotMap.dStick;
     }
     
+    /** The Joystick objects are created in the OI class.
+     * The objects are also needed in ScraperBike, so this method provides access
+     * to joystick 2.
+     *
+     * @return Joystick 2 object (Shoot Joystick)
+     */
     public static Joystick getShootStick(){
         return RobotMap.shootStick;
     }
     
+    /**  The Joystick throttle is mapped to [0, 1] rather than [-1, 1].
+     *   The return is given by the formula
+     * <p/>
+     * \( speed = 1 - \left( \text{Throttle} + 1 \right) / 2 \)
+     * <p/>
+     * In math shorthand, this is stated as \( speed \in [0, 1] \), where the square
+     * brackets mean that the value can also take on the end values 0 and 1.
+     * <p/>
+     * The extents are determined by substituting the values -1 and 1 for \( \text{Throttle} \).
+     * <p/>
+     * Maximum: \( speed = 1 - \left( -1 + 1 \right) / 2 = 1 - 0/2 = 1.\)
+     * <p/>
+     * Minimum: \( speed = 1 - \left( 1 + 1 \right) / 2 = 1 - 2/2 = 1 - 1 = 0.\)
+     *
+     * @return speed on the range [0, 1]
+     */
     public static double getAdjustedThrottle(){
         
         double speed;
