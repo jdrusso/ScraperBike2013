@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -14,12 +14,34 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.templates.commands.*;
 import edu.wpi.first.wpilibj.templates.subsystems.*;
 
-/**
- * The VM is configured to automatically run this class, and to call the
+/** This is the primary class file of the entire robot code.  This file
+ * contains the code that runs during each of the competition periods: autonomous,
+ * tele-operated, and disabled.
+ * <p/>
+ * The Java Virtual Machine that runs on the cRIO (called Squawk)
+ * is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
+ * documentation of WPILib. If you change the name of this class or the package after
+ * creating this project, you must also update the MANIFEST file in the resource
+ * directory of the NetBeans project.
+ * <p/>
+ * The order of execution of the methods is:
+ * <ul><li/>robotInit() - once after the boot up of the cRIO.
+ * <li/>disabledInit() - called once, every time the robot is placed in disabled mode.
+ * <li/>disabledPeriodic() - called multiple times a second, during which the robot is disabled.
+ * <li/>autonomousInit() - called once, every time the robot is placed in autonomous mode (only once on the field).
+ * <li/>autonomousPeriodic() - called multiple times a second, during which the robot is autonomously controlled.
+ * <li/>teleopInit() - called once, every time the robot is placed in tele-operated (user controlled) mode (only once on the field).
+ * <li/>teleopPeriodic() - called multiple times a second, during which the robot is user controlled.
+ * </ul>
+ * 
+ * On the competition field, the order of modes is:
+ * <ul><li/>disabled (while the field is getting ready)
+ * <li/>autonomous (15 seconds duration)
+ * <li/>disabled (briefly)
+ * <li/>teleop (2 minute duration)
+ * <li/>disabled (until the robot is powered off)
+ * </ul>
  */
 public class ScraperBike extends IterativeRobot {
 
@@ -32,7 +54,9 @@ public class ScraperBike extends IterativeRobot {
     //private double shooterSpeed;
     private Compressor compressor;
     //private String status;
+    /** Network Table to share values with the computer */
     public static NetworkTable nt;
+    /** The debugging Network Table. */
     public static NetworkTable debugTable;
     private static Pusher pusher;
     private static Arms arms;
@@ -40,27 +64,51 @@ public class ScraperBike extends IterativeRobot {
     private static UpdateSolenoidModule updateSolenoids;
     private static ShooterElevationPID shooterElevationPID;
     
+    /** Method to return a subsystem that is used in commands.
+     *
+     * @return the DriveTrain subsystem
+     */
     public static DriveTrain getDriveTrain() {
         return DriveTrain;
     }
     
+    /** Method to return a subsystem that is used in commands.
+     *
+     * @return the Pusher subsystem
+     */
     public static Pusher getPusher() {
         return pusher;
     }
     
+    /** Method to return a subsystem that is used in commands.
+     *
+     * @return the Arms subsystem
+     */
     public static Arms getArms() {
         return arms;
     }
 
+    /** Method to return a subsystem that is used in commands.
+     *
+     * @return the VerticalTurretAxis subsystem
+     */
     public static VerticalTurretAxis getVerticalTurretAxis(){
         
         return VerticalAxis;
     }
     
+    /** Method to return a subsystem that is used in commands.
+     *
+     * @return the Shooter subsystem
+     */
     public static Shooter getShooterController(){
         return shooterController;
     }
     
+    /** Whether or not the robot is disabled.
+     *
+     * @return true if the robot is disabled
+     */
     public static boolean getIsDisabled(){
         return isDisabled;
     }     
@@ -106,25 +154,42 @@ public class ScraperBike extends IterativeRobot {
         RobotMap.shootEncoder.setDistancePerPulse((1.0/360.0));
         
     }
+    
+    /** Called at the beginning of every disabled period.
+     * 
+     */
     public void disabledInit(){
         
         System.out.println("Entering disabled...");
     }
+    
+    /** Called several times a second during disabled mode.
+     * 
+     */
     public void disabledPeriodic(){
         
     }
+    
+    /**
+     * Called at the beginning of every autonomous period.
+     * Only used once on the competition field.
+     */
     public void autonomousInit() {
         
         System.out.println("Entering Autonomous...");
     }
 
     /**
-     * This function is called periodically during autonomous
+     * This function is called periodically during autonomous.
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
 
+    /** Called at the beginning of every teleop period.
+     * Only used once on the competition field.
+     * 
+     */
     public void teleopInit() {
         
         // This makes sure that the autonomous stops running when
@@ -141,8 +206,11 @@ public class ScraperBike extends IterativeRobot {
         DriveTrain.shiftHighGear();
 
     }
+    
     /**
-     * This function is called periodically during operator control
+     * This method is called periodically during operator control.
+     * <p/>
+     * This method is called approximately 200 times a second.
      */
     public void teleopPeriodic() {
         
@@ -168,6 +236,11 @@ public class ScraperBike extends IterativeRobot {
         display.updateLCD();
     }
     
+    /** Places in the Debug Network Table the entry key.
+     *
+     * @param key String to identify the information
+     * @param text String value
+     */
     public static void debugToTable(String key, String text){
         
         if (RobotMap.debugTable){
@@ -175,20 +248,35 @@ public class ScraperBike extends IterativeRobot {
         }
     }  
     
-    public static void debugToTable(String key, double text){
+    /** Places in the Debug Network Table the entry key.
+     *
+     * @param key String to identify the information
+     * @param number double value
+     */
+    public static void debugToTable(String key, double number){
         
         if (RobotMap.debugTable){
-            ScraperBike.debugTable.putString(key, ""+text);
+            ScraperBike.debugTable.putString(key, ""+number);
         }
     } 
     
-    public static void debugToTable(String key, int text){
+    /** Places in the Debug Network Table the entry key.
+     *
+     * @param key String to identify the information
+     * @param number integer value
+     */
+    public static void debugToTable(String key, int number){
         
         if (RobotMap.debugTable){
-            ScraperBike.debugTable.putString(key,""+text);
+            ScraperBike.debugTable.putString(key,""+number);
         }
     } 
     
+    /** Prints text to the console output visible on the computer.  Includes
+     * a new line character after the text.
+     *
+     * @param text String that contains information to output.
+     */
     public static void debugPrintln(String text){
         
         if (RobotMap.debug){
@@ -196,6 +284,10 @@ public class ScraperBike extends IterativeRobot {
         }
     } 
     
+    /** Prints text to the console output visible on the computer.
+     *
+     * @param text String that contains information to output.
+     */
     public static void debugPrint(String text){
         
         if (RobotMap.debug){
