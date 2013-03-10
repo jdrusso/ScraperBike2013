@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -27,6 +27,9 @@ public class Pusher extends Subsystem {
     private Solenoid frontSolenoid2;
     private Solenoid rearSolenoid;
 
+    /** Th Pusher constructor is called by the ScraperBike constructor.
+     *
+     */
     public Pusher() {
         frontGripDeployed1 = false;
         frontGripDeployed2 = false;
@@ -39,6 +42,7 @@ public class Pusher extends Subsystem {
         this.moveFrontPusher(0);
         this.moveRearPusher(0);
     }
+    
     /** The front Pusher has two air cylinders to have the option to extend 3 or 6 inches.
      * 
      * @param position Either 0 for both off, 1 for a single extension, or 2 for double extension
@@ -98,7 +102,7 @@ public class Pusher extends Subsystem {
         return position;
     }
     
-        /** Returns the Solenoid position of the rear Pusher.
+    /** Returns the Solenoid position of the rear Pusher.
      * 
      * @return 0 for not deployed, 1 for extended 3 inches.
      */
