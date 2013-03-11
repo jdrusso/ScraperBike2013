@@ -1,16 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates.commands;
 
-//import edu.team2035.meta.MetaTCPVariables;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 
-/**automatically aligns the turret to the desired angle
+/** Automatically aligns the turret to the desired angle
  *
  * @author team 2035 programmers
  */
@@ -19,8 +20,14 @@ public class ShooterElevationPID extends PIDCommand {
     private double lastAngle;
     
     
+    /**
+     *
+     * @param Kp
+     * @param Ki
+     * @param Kd
+     */
     public ShooterElevationPID(double Kp, double Ki, double Kd){
-        super("VerticalTurretRotation", Kp, Ki, Kd);
+        super("ShooterElevationPID", Kp, Ki, Kd);
         this.VerticalAxis = ScraperBike.getVerticalTurretAxis();
         requires(this.VerticalAxis);
         

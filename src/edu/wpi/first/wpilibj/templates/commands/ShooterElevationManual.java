@@ -1,23 +1,36 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 
-/**allows you to manually change the angle of the shooter with the y-axis of the shooter joystick.
+/** Allows you to manually change the angle of the shooter with the y-axis of 
+ * the shooter joystick.
  *
  * @author jrusso
  */
 public class ShooterElevationManual extends CommandBase {
+    /**
+     *
+     */
     public double direction;
 //    public Relay VerTurretSpike;
+    /**
+     *
+     */
     public VerticalTurretAxis vt;
     
+    /**
+     *
+     */
     public ShooterElevationManual() {
+        super("ShooterElevationManual");
         vt = ScraperBike.getVerticalTurretAxis();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

@@ -1,10 +1,9 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
@@ -18,8 +17,12 @@ public class ChangeShooterElevation extends CommandBase {
     private VerticalTurretAxis elev;
     private double degrees;
     
-    //allows the shooter to change position only if ScraperBike.VerticalTurretAxis subsytem isn't being used.
-    public ChangeShooterElevation(int Degrees) {
+    /**allows the shooter to change position only if 
+    * {@link ScraperBike#VerticalTurretAxis} subsystem isn't being used.
+    * @param Degrees double value of the number of degrees to change.
+    */
+    public ChangeShooterElevation(double Degrees) {
+        super("ChangeShooterElevation");
         elev = ScraperBike.getVerticalTurretAxis();
         requires(elev);
         degrees = Degrees;

@@ -219,8 +219,10 @@ public class RobotMap {
     /* DRIVER STATION CONTROLS
      * 
      */
-    /** Whether the joysticks are enabled (disabled for pyramid climbing). */
-    public static boolean JoystickEnabled = true;
+    /** Whether the joysticks are enabled (disabled for pyramid climbing). 
+     * Purposely made private to force the use of the public methods
+     * disabledJoystick(), enableJoystick(), and isJoystickEnabled() */
+    private static boolean JoystickEnabled = true;
     /** The USB port the driver joystick is connected to. */
     public static final int DriverJoystickNumber = 1; // Robot Driver's Joystick USB number
     /** The USB port the shooting joystick is connected to. */
@@ -397,4 +399,34 @@ public class RobotMap {
     public static boolean debug = true;
     /** Whether to provide the Network Table for debugging values. */
     public static boolean debugTable = true;
+    
+    private static final Object JoystickEnabledLock = new Object();
+    
+    /** Checks if the Joystick is enabled
+     *
+     * @return True if the Joystick control is enabled
+     */
+    public static boolean isJoystickEnabled() {
+        synchronized (JoystickEnabledLock) { 
+            return RobotMap.JoystickEnabled;
+        }
+    }
+    
+    /** Enables the Joystick control of the robot
+     *
+     */
+    public static void enableJoystick() {
+        synchronized (JoystickEnabledLock) {
+            RobotMap.JoystickEnabled = true;
+        }
+    }
+    
+    /** Disables the Joystick control of the robot
+     *
+     */
+    public static void disabledJoystick() {
+        synchronized (JoystickEnabledLock) {
+            RobotMap.JoystickEnabled = false;
+        }
+    }
 }

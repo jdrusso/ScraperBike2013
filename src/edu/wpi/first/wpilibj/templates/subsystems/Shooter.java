@@ -1,86 +1,77 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-//import edu.wpi.first.wpilibj.templates.MagneticEncoder;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 
-/**defines the motors, booleans, and other variables for Commands that have to do with shooting frisbees.
+/** Defines the motors, booleans, and other variables for Commands that have to do with shooting Frisbees.
  *
- * @author abbottk
+ * @author Team 2035 Programmers
  */
 public class Shooter extends Subsystem {
 
-    public Talon ShootTalon;
-    public Talon ReloadTalon;
-    public AnalogChannel RangeFinder;
+    private Talon ShootTalon;
+    private Talon ReloadTalon;
+    private AnalogChannel RangeFinder;
     
-    //private AnalogChannel ultrasonic = new AnalogChannel(RobotMap.ultrasonicInput);
-    
-//    private static MagneticEncoder magneticencoder = new MagneticEncoder(RobotMap.shooterEncoderPos);
-
-    //defines which motors work with the shooter
+    /** The Shooter constructor is called by the ScraperBike constructor.
+     *
+     */
     public Shooter() {
         ShootTalon = new Talon(RobotMap.ShooterMotor);
         ReloadTalon = new Talon(RobotMap.ReloadMotor);
     }
-    protected void initDefaultCommand() {
     
-    
-    }
-    
-    //defines how to set the speed for the motors.
+    /** Defines how to set the speed for the motor.
+     *
+     * @param speed for the shooting motor; it is between [-1, 1].
+     */
     public void setShooterMotor(double speed){
         ShootTalon.set(speed);
         ScraperBike.debugToTable("PID_Shooter", speed);
         
     }
     
-    //defines how fast the relod motor spins
+    /** Defines how fast the reload motor spins
+     *
+     * @param speed for the reloading motor; it is between [-1, 1].
+     */
     public void setReloadMotor(double speed){
         ReloadTalon.set(speed);
     }    
     
-    // gives the range from the camera to the shooter
+    /** Gives the range from the camera to the shooter.
+     *
+     * @return Range in inches
+     */
     public double getRange(){
         
         double range = this.RangeFinder.getVoltage()/.098;
         return range;
     }
     
+    /** Gives the range from the camera to the shooter.
+     *
+     * @return Range in feet
+     */
     public double getRangeFT(){
         
         return (getRange()/12);
     }
     
-//    public double getUltrasonic(){
-//     
-//        return ultrasonic.getVoltage();
-//    }
-    
-//    public double getUltrasonicRange(){
-//        
-//        double temp = ((5/512)*ultrasonic.getVoltage());
-//        ScraperBike.debugPrint(temp);
-//        return (temp);
-//    }
-
-//    public double getRotationsPeriod(){
-//        return magneticencoder.getPeriod();
-//    }
-//    
-//    public double getRotations(){
-//        return magneticencoder.getIntegerCounter();
-//    }
-//    
-//    public double getRotationsDouble(){
-//        return magneticencoder.getDoubleCounter();
-//    }
+    /** The default command that runs when no other Command is using this 
+     * subsystem.  
+     * 
+     */
+    protected void initDefaultCommand() {
+    }
 
 }
