@@ -17,7 +17,11 @@ public class RearPusherExtend extends CommandBase {
     private Pusher g;
     private boolean commanded;
     
+    /**
+     *
+     */
     public RearPusherExtend() {
+        super("RearPusherExtend");
         g = ScraperBike.getPusher();
         requires(g);
         commanded = false;

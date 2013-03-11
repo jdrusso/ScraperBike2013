@@ -25,7 +25,11 @@ public class TargetParser extends CommandBase {
     double w5; double h5; double x5; double y5;
     double w6; double h6; double x6; double y6;
     
+    /**
+     *
+     */
     public TargetParser() {
+        super("TargetParser");
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis); 
         

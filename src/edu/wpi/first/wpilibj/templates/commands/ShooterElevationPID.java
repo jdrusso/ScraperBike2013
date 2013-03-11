@@ -20,8 +20,14 @@ public class ShooterElevationPID extends PIDCommand {
     private double lastAngle;
     
     
+    /**
+     *
+     * @param Kp
+     * @param Ki
+     * @param Kd
+     */
     public ShooterElevationPID(double Kp, double Ki, double Kd){
-        super("VerticalTurretRotation", Kp, Ki, Kd);
+        super("ShooterElevationPID", Kp, Ki, Kd);
         this.VerticalAxis = ScraperBike.getVerticalTurretAxis();
         requires(this.VerticalAxis);
         

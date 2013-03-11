@@ -26,6 +26,7 @@ public class ArmsExtend extends CommandBase {
      * @param endCondition (not used)
      */
     public ArmsExtend(int endCondition) {
+        super("ArmsExtend");
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
         requires(arm);

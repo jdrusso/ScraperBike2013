@@ -22,6 +22,7 @@ public class ArmsExtendConditional extends CommandBase {
      *
      */
     public ArmsExtendConditional() {
+        super("ArmsExtendConditional");
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
         requires(arm);

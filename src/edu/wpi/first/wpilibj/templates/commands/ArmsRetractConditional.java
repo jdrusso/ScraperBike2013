@@ -10,16 +10,20 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**
- *we may not use this, it has errors currently
- * @author bradmiller
+/** we may not use this, it has errors currently
+ *
+ * @author Team 2035 Programmers
  */
 public class ArmsRetractConditional extends CommandBase {
     private Arms arm;
     private DriveTrain dt;
     private boolean started;
     
+    /**
+     *
+     */
     public ArmsRetractConditional() {
+        super("ArmsRetractConditional");
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
         requires(arm);

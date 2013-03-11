@@ -18,7 +18,12 @@ public class FrontPusherExtend extends CommandBase {
     private int inputPosition;
     private boolean commanded;
     
+    /**
+     *
+     * @param position
+     */
     public FrontPusherExtend(int position) {
+        super("FrontPusherExtend");
         g = ScraperBike.getPusher();
         requires(g);
         inputPosition = position;

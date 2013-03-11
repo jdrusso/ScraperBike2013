@@ -17,7 +17,11 @@ public class RearPusherRetract extends CommandBase {
     private Pusher g;
     private boolean commanded;
     
+    /**
+     *
+     */
     public RearPusherRetract() {
+        super("RearPusherRetract");
         g = ScraperBike.getPusher();
         requires(g);
         commanded = false;

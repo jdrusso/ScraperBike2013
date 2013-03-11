@@ -20,6 +20,9 @@ import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 public class  PIDShoot extends PIDVelocityCommand {
     private Shooter shooter;
 
+    /**
+     *
+     */
     public PIDShoot() {
         
         super("PIDShoot", RobotMap.shooterKp, RobotMap.shooterKi, RobotMap.shooterKd);
@@ -32,6 +35,10 @@ public class  PIDShoot extends PIDVelocityCommand {
         this.getPIDController().setPercentTolerance(2);
     }
 
+    /**
+     *
+     * @return
+     */
     protected double returnPIDInput() {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
@@ -42,6 +49,10 @@ public class  PIDShoot extends PIDVelocityCommand {
         return RobotMap.shootEncoder.getRate()*60;
     }
 
+    /**
+     *
+     * @param output
+     */
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
@@ -52,10 +63,16 @@ public class  PIDShoot extends PIDVelocityCommand {
     }
 
     // Called just before this Command runs the first time
+    /**
+     *
+     */
     protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    /**
+     *
+     */
     protected void execute() {
         this.setSetpoint(OI.getAdjustedThrottle()*RobotMap.maxRPM);
         ScraperBike.debugToTable("PIDSetpoint", OI.getAdjustedThrottle()*RobotMap.maxRPM);
@@ -63,11 +80,18 @@ public class  PIDShoot extends PIDVelocityCommand {
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    /**
+     *
+     * @return
+     */
     protected boolean isFinished() {
         return false;
     }
 
     // Called once after isFinished returns true
+    /**
+     *
+     */
     protected void end() {
         
         this.getPIDController().disable();
@@ -76,6 +100,9 @@ public class  PIDShoot extends PIDVelocityCommand {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    /**
+     *
+     */
     protected void interrupted() {
         
         this.getPIDController().disable();

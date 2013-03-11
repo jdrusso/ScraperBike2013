@@ -21,8 +21,14 @@ public class DriveTrainLateral extends PIDCommand {
     private RobotDrive d;
     
     
+    /**
+     *
+     * @param Kp
+     * @param Ki
+     * @param Kd
+     */
     public DriveTrainLateral(double Kp, double Ki, double Kd){
-        super("", Kp, Ki, Kd);
+        super("DriveTrainLateral", Kp, Ki, Kd);
         this.driveTrain = ScraperBike.getDriveTrain();
         //requires(this.driveTrain);
         

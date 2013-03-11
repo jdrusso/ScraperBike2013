@@ -14,10 +14,14 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class DisableJoystick extends CommandBase {
 
+    /**
+     *
+     */
     public DisableJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        RobotMap.JoystickEnabled = false;
+        super("DisableJoystick");
+        RobotMap.disabledJoystick();
     }
 
     // Called just before this Command runs the first time

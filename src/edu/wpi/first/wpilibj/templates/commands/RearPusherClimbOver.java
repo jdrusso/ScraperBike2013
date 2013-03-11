@@ -19,7 +19,11 @@ public class RearPusherClimbOver extends CommandBase {
     private Arms arms;
     private int state;
     
+    /**
+     *
+     */
     public RearPusherClimbOver() {
+        super("RearPusherClimbOver");
         pusher = ScraperBike.getPusher();
         requires(pusher);
         arms = ScraperBike.getArms();

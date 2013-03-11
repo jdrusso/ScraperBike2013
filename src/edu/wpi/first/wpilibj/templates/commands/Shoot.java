@@ -21,7 +21,11 @@ public class Shoot extends CommandBase {
     private Shooter shooter;
     private Joystick joystick;
     
+    /**
+     *
+     */
     public Shoot() {
+        super("Shoot");
         shooter = ScraperBike.getShooterController();
         requires(shooter);
         joystick = RobotMap.dStick;

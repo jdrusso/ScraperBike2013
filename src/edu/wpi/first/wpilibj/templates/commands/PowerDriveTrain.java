@@ -17,7 +17,11 @@ public class PowerDriveTrain extends CommandBase {
     private DriveTrain drive;
     private boolean commanded;
 
+    /**
+     *
+     */
     public PowerDriveTrain() {
+        super("PowerDriveTrain");
         drive = ScraperBike.getDriveTrain();
         commanded = false;
         //requires(drive);

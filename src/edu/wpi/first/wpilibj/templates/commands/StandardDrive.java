@@ -22,8 +22,13 @@ public class StandardDrive extends CommandBase{
     private DriveTrain DriveTrain;
     //private Gyro gyro1;
     
+    /**
+     *
+     * @param d
+     * @param j
+     */
     public StandardDrive(RobotDrive d, Joystick j){
-        super("DefaultDriveTrain");
+        super("StandardDrive");
         DriveTrain = ScraperBike.getDriveTrain(); 
         //gyro1 = DriveTrain.getGyro1();
         requires(DriveTrain);

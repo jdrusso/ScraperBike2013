@@ -15,6 +15,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class ClimbLevelOne extends CommandGroup {
 
+    /**
+     *
+     */
     public ClimbLevelOne() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

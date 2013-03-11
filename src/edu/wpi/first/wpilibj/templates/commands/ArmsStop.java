@@ -19,7 +19,11 @@ public class ArmsStop extends CommandBase {
     private Arms arm;
     private DriveTrain dt;
     
+    /**
+     *
+     */
     public ArmsStop() {
+        super("ArmsStop");
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
         requires(arm);

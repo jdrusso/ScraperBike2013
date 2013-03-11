@@ -12,11 +12,15 @@ package edu.wpi.first.wpilibj.templates.commands;
  */
 public class ExampleCommand extends CommandBase {
 
+    /**
+     *
+     */
     public ExampleCommand() {
         // Get subsystems from Robot class name
         
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        super("");
     }
 
     /** This method is called just before this Command runs the first time

@@ -8,13 +8,16 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**Runs the necessary commands to make the robot climb up the pyramid by itself 
+/** Runs the necessary commands to make the robot climb up the pyramid by itself 
  * when button 9 on the drive joystick is pressed.
  *
  * @author Team 2035 Programmers
  */
 public class ClimbPyramid extends CommandGroup {
     
+    /**
+     *
+     */
     public ClimbPyramid() {
         addSequential(new ClimbLevelOne());
         //addSequential(new Pause(0.6));, if we implement this command, should we have a pause inbetween the level climbs?

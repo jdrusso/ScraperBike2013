@@ -16,7 +16,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 public class RotateRobot extends CommandBase {
     private DriveTrain turn;
     
+    /**
+     *
+     */
     public RotateRobot() {
+        super("RotateRobot");
         turn = ScraperBike.getDriveTrain();
         requires(turn);
     }

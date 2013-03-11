@@ -14,7 +14,11 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class UpdateSolenoidModule extends CommandBase {
     
+    /**
+     *
+     */
     public UpdateSolenoidModule() {
+        super("UpdateSolenoidModule");
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

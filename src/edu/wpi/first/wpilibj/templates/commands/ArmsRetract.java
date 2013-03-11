@@ -20,9 +20,12 @@ public class ArmsRetract extends CommandBase {
     private Arms arm;
     private DriveTrain dt;
     
-    
-    //makes ArmsRetract work only if arm and dt are currently not in use
+    /** Makes ArmsRetract work only if Arms and DriveTrain are currently not 
+     * in use.
+     *
+     */
     public ArmsRetract() {
+        super("ArmsRetract");
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
         requires(arm);

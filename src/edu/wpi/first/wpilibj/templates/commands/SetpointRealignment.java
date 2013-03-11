@@ -16,7 +16,12 @@ public class SetpointRealignment extends CommandBase{
 
     int Direction;
     
+    /**
+     *
+     * @param d
+     */
     public SetpointRealignment(int d){
+        super("SetpointRealignment");
         Direction = d;
     }
     

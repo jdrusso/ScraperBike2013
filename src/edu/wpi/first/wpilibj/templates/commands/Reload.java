@@ -18,7 +18,12 @@ public class Reload extends CommandBase {
     private Shooter shooter;
     private int direction;
     
+    /**
+     *
+     * @param direction
+     */
     public Reload(int direction) {
+        super("Reload");
         shooter = ScraperBike.getShooterController();
         //requires(shooter);
         this.direction = direction;

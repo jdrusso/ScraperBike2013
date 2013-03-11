@@ -18,8 +18,12 @@ public class Pause extends CommandBase {
     private Timer time;
     private double delayamount;
     
+    /**
+     *
+     * @param amount
+     */
     public Pause(double amount) {
-        
+        super("Pause");
         delayamount = amount * 1000000;
         time = new Timer();
         time.start();

@@ -16,7 +16,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 public class ShiftLowGear extends CommandBase {
     private DriveTrain drive;
 
+    /**
+     *
+     */
     public ShiftLowGear() {
+        super("ShiftLowGear");
         drive = ScraperBike.getDriveTrain();
         //requires(drive);
     }

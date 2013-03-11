@@ -22,8 +22,15 @@ public class DriveTrainTargeting extends PIDCommand {
     private RobotDrive d;
     
     
+    /**
+     *
+     * @param Kp
+     * @param Ki
+     * @param Kd
+     * @param t
+     */
     public DriveTrainTargeting(double Kp, double Ki, double Kd, Target t){
-        super("", Kp, Ki, Kd);
+        super("DriveTrainTargeting", Kp, Ki, Kd);
         this.driveTrain = ScraperBike.getDriveTrain();
         requires(this.driveTrain);
         this.setSetpoint(t.cenX);
