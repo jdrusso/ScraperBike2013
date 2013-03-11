@@ -5,7 +5,6 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.subsystems;
 
 //import edu.team2035.meta.MetaGyro;
