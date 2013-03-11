@@ -27,7 +27,7 @@ public class Pusher extends Subsystem {
     private Solenoid frontSolenoid2;
     private Solenoid rearSolenoid;
 
-    /** Th Pusher constructor is called by the ScraperBike constructor.
+    /** The Pusher constructor is called by the ScraperBike constructor.
      *
      */
     public Pusher() {
@@ -142,6 +142,10 @@ public class Pusher extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
+    /** The default command that runs when no other Command is using this 
+     * subsystem.  
+     * 
+     */
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

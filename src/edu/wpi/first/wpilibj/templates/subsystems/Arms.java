@@ -29,7 +29,7 @@ public class Arms extends Subsystem {
         extended = false;
     }
     
-    /**
+    /** I am not sure what this is still used for.
      *
      * @return True if the arms
      */
@@ -38,7 +38,8 @@ public class Arms extends Subsystem {
         return contacted;
     }
     
-    /**
+    /** The Arms have a physical limit.  Otherwise they could become 
+     * disconnected mechanically.
      *
      * @return True if the Arms are as far forward physically as they should be 
      * allowed for safe operation
@@ -47,7 +48,8 @@ public class Arms extends Subsystem {
         return !RobotMap.armsExtendedFore.get();
     }
     
-    /**
+    /** The Arms have a physical limit.  Otherwise they could become 
+     * disconnected mechanically.
      *
      * @return True if the Arms are as far rear physically as they should be 
      * allowed for safe operation
@@ -56,7 +58,7 @@ public class Arms extends Subsystem {
         return !RobotMap.armsExtendedAft.get();
     }
     
-    /**
+    /** The Arms have a neutral home position.
      *
      * @return True if the Arms are in the center (home) position.
      */
@@ -64,7 +66,8 @@ public class Arms extends Subsystem {
         return !RobotMap.armsHome.get();
     }
     
-    /**
+    /** The Arms have a physical limit.  Otherwise they could become 
+     * disconnected mechanically.  This checks if either limit is reached.
      *
      * @return True if either completely extended in either direction
      */

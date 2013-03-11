@@ -30,9 +30,6 @@ public class Shooter extends Subsystem {
         ReloadTalon = new Talon(RobotMap.ReloadMotor);
     }
     
-    protected void initDefaultCommand() {
-    }
-    
     /** Defines how to set the speed for the motor.
      *
      * @param speed for the shooting motor; it is between [-1, 1].
@@ -43,7 +40,7 @@ public class Shooter extends Subsystem {
         
     }
     
-    /** defines how fast the reload motor spins
+    /** Defines how fast the reload motor spins
      *
      * @param speed for the reloading motor; it is between [-1, 1].
      */
@@ -51,7 +48,7 @@ public class Shooter extends Subsystem {
         ReloadTalon.set(speed);
     }    
     
-    /** gives the range from the camera to the shooter.
+    /** Gives the range from the camera to the shooter.
      *
      * @return Range in inches
      */
@@ -61,13 +58,20 @@ public class Shooter extends Subsystem {
         return range;
     }
     
-    /** gives the range from the camera to the shooter.
+    /** Gives the range from the camera to the shooter.
      *
      * @return Range in feet
      */
     public double getRangeFT(){
         
         return (getRange()/12);
+    }
+    
+    /** The default command that runs when no other Command is using this 
+     * subsystem.  
+     * 
+     */
+    protected void initDefaultCommand() {
     }
 
 }

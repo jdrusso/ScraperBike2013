@@ -42,7 +42,7 @@ public class VerticalTurretAxis extends Subsystem  {
         gyro.reset();
     }
     
-    /**
+    /** Reads the current Gyro measurement.
      *
      * @return Gyro output in degrees
      */
@@ -51,9 +51,9 @@ public class VerticalTurretAxis extends Subsystem  {
     }
     
     /**  We store an internal variable (angle) that represents an estimate of 
-     * the actual angle that the vertical turret axis is at.  The gyro measures
-     * relative angles (not absolute).  This variable represents the estimate 
-     * of the absolute angle.
+     * the actual angle that the vertical turret axis is positioned.  The gyro 
+     * measures relative angles (not absolute).  This variable represents the 
+     * estimate of the absolute angle.
      *
      * @param d Degree update from the gyro.
      */
@@ -114,7 +114,7 @@ public class VerticalTurretAxis extends Subsystem  {
 //        }
     }
    
-    /**
+    /**  This is not currently used.
      *
      * @return the Gyro object that is used by VerticalTurretAxis
      */

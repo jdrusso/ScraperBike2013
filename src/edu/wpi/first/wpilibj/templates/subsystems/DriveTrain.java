@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.templates.commands.StandardDrive;
-//import edu.team2035.meta.MetaCommandLog;
 import edu.wpi.first.wpilibj.templates.OI;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
@@ -84,7 +83,7 @@ public class DriveTrain extends Subsystem {
 //       return truncate(drive.getRightOutputs());
 //    }
     
-    /**
+    /** Drive the robot (spins the wheels)
      *
      * @param speed The commanded wheel speed; it is between [-1, 1].
      */
@@ -93,7 +92,7 @@ public class DriveTrain extends Subsystem {
         drive.drive(speed, 0.0);
     }
     
-    /**
+    /** Drive the robot (spins the wheels)
      *
      * @param speed The commanded wheel speed; it is between [-1, 1].
      * @param rot Rotation speed; it is between [-1, 1].  It is the difference 
@@ -105,7 +104,7 @@ public class DriveTrain extends Subsystem {
         drive.drive(speed, rot);
     }
     
-    /**
+    /** Drive the robot in Arcade drive mode.
      *
      * @param j Joystick to use for Arcade driving style
      */
@@ -115,7 +114,7 @@ public class DriveTrain extends Subsystem {
         drive.arcadeDrive(j.getY(), -j.getX());
     }
     
-    /**
+    /** Rotate the robot in place.
      *
      * @param rot Rotation speed; it is between [-1, 1].  It is the difference 
      * between the left side motor speed and the right side motor speed of 
@@ -126,7 +125,7 @@ public class DriveTrain extends Subsystem {
         drive.arcadeDrive(0, rot);
     }
     
-    /**
+    /** Use the Arms to climb up the pyramid.
      *
      * @param speed The commanded wheel speed; it is between [-1, 1].
      */
@@ -170,7 +169,7 @@ public class DriveTrain extends Subsystem {
     }
 
     
-    /**
+    /** The RobotDrive object is used for driving the robot.
      *
      * @return The RobotDrive object (which can be used to change the motor 
      * output)
