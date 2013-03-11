@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**Stops the arms from moving when command is run.
+/** Stops the arms from moving when command is run.
+ * Command ends immediately after stopping the motors.
  *
  * @author Team 2035 Programmers
  */

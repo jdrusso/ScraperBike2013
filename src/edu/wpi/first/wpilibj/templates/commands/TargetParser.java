@@ -13,7 +13,7 @@ import java.util.Vector;
 
 /**
  *
- * @author robotlab
+ * @author Team 2035 Programmers
  */
 public class TargetParser extends CommandBase {
 

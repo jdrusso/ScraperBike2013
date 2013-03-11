@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 
 /**
  *
- * @author abbottk
+ * @author Team 2035 Programmers
  */
 public class DriveTrainLateral extends PIDCommand {
     private DriveTrain driveTrain;

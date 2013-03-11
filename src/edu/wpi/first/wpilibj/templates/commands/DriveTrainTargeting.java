@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates.commands;
 
-
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.RobotMap;
@@ -16,7 +15,7 @@ import edu.wpi.first.wpilibj.templates.Target;
 
 /**
  *
- * @author abbottk
+ * @author Team 2035 Programmers
  */
 public class DriveTrainTargeting extends PIDCommand {
     private DriveTrain driveTrain;

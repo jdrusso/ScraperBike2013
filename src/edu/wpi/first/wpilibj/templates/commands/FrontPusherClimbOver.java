@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
-/**Retracts and extends the front pusher automatically as part of the ClimbLevelOne, so it doesn't get caught on the corner of the pyramid.
+/**Retracts and extends the front pusher automatically as part of the 
+ * ClimbLevelOne, so it doesn't get caught on the corner of the pyramid.
  *
  * @author Team 2035 programmers
  */

@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
  *
- * @author abbottk
+ * @author Team 2035 Programmers
  */
 public class SetpointRealignment extends CommandBase{
 

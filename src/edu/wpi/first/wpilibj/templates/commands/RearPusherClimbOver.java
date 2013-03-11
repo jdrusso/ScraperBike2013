@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
-/**
- *retracts and then extends rear pusher so it goes over the lip of the pyramid.
+/** Retracts and then extends rear pusher so it goes over the lip of the pyramid.
+ * 
  * @author Team 2035 programmers
  */
 public class RearPusherClimbOver extends CommandBase {

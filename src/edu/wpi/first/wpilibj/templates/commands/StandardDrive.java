@@ -13,12 +13,11 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 /**
  *
- * @author abbottk
+ * @author Team 2035 Programmers
  */
 public class StandardDrive extends CommandBase{
 
-    private Joystick  Joystick1;
-    private Joystick Joystick2;
+    private Joystick  Joystick;
     private RobotDrive drive;
     private DriveTrain DriveTrain;
     //private Gyro gyro1;
@@ -28,7 +27,7 @@ public class StandardDrive extends CommandBase{
         DriveTrain = ScraperBike.getDriveTrain(); 
         //gyro1 = DriveTrain.getGyro1();
         requires(DriveTrain);
-        Joystick1 = j;
+        Joystick = j;
         drive = d;    
     }
     
@@ -44,7 +43,7 @@ public class StandardDrive extends CommandBase{
         //if (RobotMap.JoystickEnabled) {
             DriveTrain.powerDriveTrain();
             
-            DriveTrain.arcadeDrive(Joystick1);
+            DriveTrain.arcadeDrive(Joystick);
             
         //}
     

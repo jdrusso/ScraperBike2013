@@ -17,7 +17,9 @@ public class ChangeShooterElevation extends CommandBase {
     private VerticalTurretAxis elev;
     private double degrees;
     
-    //allows the shooter to change position only if ScraperBike.VerticalTurretAxis subsytem isn't being used.
+    /**allows the shooter to change position only if 
+    * {@link ScraperBike#VerticalTurretAxis} subsystem isn't being used.
+    */
     public ChangeShooterElevation(int Degrees) {
         elev = ScraperBike.getVerticalTurretAxis();
         requires(elev);

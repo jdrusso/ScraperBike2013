@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.VerticalTurretAxis;
 
-/**automatically aligns the turret to the desired angle
+/** Automatically aligns the turret to the desired angle
  *
  * @author team 2035 programmers
  */

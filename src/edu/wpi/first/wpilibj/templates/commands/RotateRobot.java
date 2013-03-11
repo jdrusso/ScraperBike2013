@@ -8,7 +8,8 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
-/**turns the robot in place.
+
+/** Turns the robot in place.
  *
  * @author Team 2035 Programmers
  */

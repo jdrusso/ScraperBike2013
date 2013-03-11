@@ -18,6 +18,9 @@ public class ArmsExtendConditional extends CommandBase {
     private Arms arm;
     private DriveTrain dt;
     
+    /**
+     *
+     */
     public ArmsExtendConditional() {
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();

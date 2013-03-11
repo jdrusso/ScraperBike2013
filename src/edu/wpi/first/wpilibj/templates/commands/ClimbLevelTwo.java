@@ -8,9 +8,10 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**runs the necessary commands to make the robot climb up second level of the pyramid by itself, used as part of the ClimbPyramid command.
+/**runs the necessary commands to make the robot climb up second level of the 
+ * pyramid by itself, used as part of the ClimbPyramid command.
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class ClimbLevelTwo extends CommandGroup {
 

@@ -8,7 +8,8 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 
-/**Stops a Command from running all other commands/subsystems after the pause for the set amount of time.
+/** Stops a Command from running all other commands/subsystems after the pause 
+ * for the set amount of time.
  *
  * @author Team 2035 programmers
  */

@@ -5,11 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates.commands;
+
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
-/**sets the solenoids to their default positions when robot is powered up.
+/** Sets the solenoids to their default positions when robot is powered up.
  *
- * @author robotlab
+ * @author Team 2035 Programmers
  */
 public class UpdateSolenoidModule extends CommandBase {
     

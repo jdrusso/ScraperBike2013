@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**
+/** Used to extend the arms in the forward direction.
  *
  * @author Team 2035 Programmers
  */
@@ -20,6 +20,11 @@ public class ArmsExtend extends CommandBase {
     private int endcond;
     
     
+    /** Commands the Arms to extend.  
+     * Ends when the Arms extend to their forward limit.
+     *
+     * @param endCondition (not used)
+     */
     public ArmsExtend(int endCondition) {
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
