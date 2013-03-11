@@ -1,17 +1,17 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.Pusher;
 
-/**Retracts and extends the front pusher automatically as part of the ClimbLevelOne, so it doesn't get caught on the corner of the pyramid.
+/**Retracts and extends the front pusher automatically as part of the 
+ * ClimbLevelOne, so it doesn't get caught on the corner of the pyramid.
  *
  * @author Team 2035 programmers
  */
@@ -20,7 +20,11 @@ public class FrontPusherClimbOver extends CommandBase {
     private Arms arms;
     private int state;
     
+    /**
+     *
+     */
     public FrontPusherClimbOver() {
+        super("FrontPusherClimbOver");
         pusher = ScraperBike.getPusher();
         requires(pusher);
         arms = ScraperBike.getArms();

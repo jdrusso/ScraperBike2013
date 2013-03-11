@@ -1,17 +1,17 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**Stops the arms from moving when command is run.
+/** Stops the arms from moving when command is run.
+ * Command ends immediately after stopping the motors.
  *
  * @author Team 2035 Programmers
  */
@@ -19,7 +19,11 @@ public class ArmsStop extends CommandBase {
     private Arms arm;
     private DriveTrain dt;
     
+    /**
+     *
+     */
     public ArmsStop() {
+        super("ArmsStop");
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
         requires(arm);

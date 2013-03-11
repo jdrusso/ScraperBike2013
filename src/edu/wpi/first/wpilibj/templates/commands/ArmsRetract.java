@@ -1,17 +1,18 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
-/**retracts arms at full speed when button 10 on the drive joystick is pressed until button is released, or maximum extent is reached. Works only if Arms and DriveTrain subsystems are not currently being used.
+/** Retracts arms at full speed when button 10 on the drive joystick is pressed 
+ * until button is released, or maximum extent is reached. Works only if Arms 
+ * and DriveTrain subsystems are not currently being used.
  *
  * @author Team 2035 Programmers
  */
@@ -19,9 +20,12 @@ public class ArmsRetract extends CommandBase {
     private Arms arm;
     private DriveTrain dt;
     
-    
-    //makes ArmsRetract work only if arm and dt are currently not in use
+    /** Makes ArmsRetract work only if Arms and DriveTrain are currently not 
+     * in use.
+     *
+     */
     public ArmsRetract() {
+        super("ArmsRetract");
         arm = ScraperBike.getArms();
         dt = ScraperBike.getDriveTrain();
         requires(arm);

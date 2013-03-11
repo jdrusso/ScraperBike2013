@@ -1,16 +1,16 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Shooter;
 
-/**runs motor that turns the metal stick that reloads the shooter either way, depending on which button you press.
+/** Runs motor that turns the metal stick that reloads the shooter either way, 
+ * depending on which button you press.
  *
  * @author Team 2035 Programmers
  */
@@ -18,7 +18,12 @@ public class Reload extends CommandBase {
     private Shooter shooter;
     private int direction;
     
+    /**
+     *
+     * @param direction
+     */
     public Reload(int direction) {
+        super("Reload");
         shooter = ScraperBike.getShooterController();
         //requires(shooter);
         this.direction = direction;

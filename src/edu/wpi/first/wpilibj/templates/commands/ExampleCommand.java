@@ -1,10 +1,9 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
@@ -13,11 +12,15 @@ package edu.wpi.first.wpilibj.templates.commands;
  */
 public class ExampleCommand extends CommandBase {
 
+    /**
+     *
+     */
     public ExampleCommand() {
         // Get subsystems from Robot class name
         
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        super("");
     }
 
     /** This method is called just before this Command runs the first time

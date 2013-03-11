@@ -1,20 +1,23 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST Team 2035, 2012. All Rights Reserved.                  */
+/* Copyright (c) FIRST Team 2035, 2013. All Rights Reserved.                  */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-/**Runs the necessary commands to make the robot climb up the pyramid by itself when button 9 on the drive joystick is pressed.
+/** Runs the necessary commands to make the robot climb up the pyramid by itself 
+ * when button 9 on the drive joystick is pressed.
  *
- * @author bradmiller
+ * @author Team 2035 Programmers
  */
 public class ClimbPyramid extends CommandGroup {
     
+    /**
+     *
+     */
     public ClimbPyramid() {
         addSequential(new ClimbLevelOne());
         //addSequential(new Pause(0.6));, if we implement this command, should we have a pause inbetween the level climbs?
