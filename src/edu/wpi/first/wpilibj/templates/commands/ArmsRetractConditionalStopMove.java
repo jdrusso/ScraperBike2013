@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
@@ -30,7 +31,7 @@ public class ArmsRetractConditionalStopMove extends CommandBase {
         dt = ScraperBike.getDriveTrain();
         requires(arm);
         requires(dt);
-        started = false;
+        //started = false;
         endcondition = endcond;
     }
 
@@ -41,11 +42,17 @@ public class ArmsRetractConditionalStopMove extends CommandBase {
     // Called repeatedly when this Command is scheduled to run, allows arms to retract only if they are hooked on to the bar on the pyramid
     protected void execute() {
         //if (arm.isContacting()) {
-            started = true;
+        //    started = true;
         //}
-        if (started) {
-            arm.move(-1);    
-        }
+        //if (started) {
+            arm.move(-1.0);    
+        //}
+// TODO: Add when pause is verified
+//        if (RobotMap.isPaused()) {
+//            arm.move(0.0);
+//        } else {
+//            arm.move(-1.0);
+//        }
         
     }
 
@@ -54,9 +61,13 @@ public class ArmsRetractConditionalStopMove extends CommandBase {
         if (endcondition == 1) {
             // if either sensor is tripped, then stop.
             return arm.isHomePosition() || arm.isLimitAft();
+            //TODO: pause works
+            //return ((arm.isHomePosition() || arm.isLimitAft()) && !RobotMap.isPaused());
         }
         // otherwise only stop for the aft sensor.
         return arm.isLimitAft();
+        //TODO: pause works
+        //return arm.isLimitAft() && !RobotMap.isPaused();
     }
 
     // Called once after isFinished returns true
