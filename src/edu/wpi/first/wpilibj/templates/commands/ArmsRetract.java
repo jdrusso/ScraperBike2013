@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 /** Retracts arms at full speed when button 10 on the drive joystick is pressed 
  * until button is released, or maximum extent is reached. Works only if Arms 
  * and DriveTrain subsystems are not currently being used.
+ * 
+ * This is meant for joystick control, and not to be used by the climbing sequence.
  *
  * @author Team 2035 Programmers
  */

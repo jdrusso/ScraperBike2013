@@ -6,33 +6,22 @@
 /*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
-/** Runs the necessary commands to make the robot climb up first level of the 
- * pyramid by itself, used as part of the ClimbPyramid command.
+/** Pauses the climb sequence of the robot
  *
  * @author Team 2035 Programmers
  */
-public class ClimbLevelOne extends CommandGroup {
+public class PauseClimb extends CommandBase {
 
     /**
      *
      */
-    public ClimbLevelOne() {
+    public PauseClimb() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new DisableJoystick());
-        addSequential(new FrontPusherExtend(1));
-        addSequential(new Pause(0.25));
-        addSequential(new FrontPusherExtend(2));
-        addSequential(new ArmsExtendConditionalStopMove(2));
-        addSequential(new FrontPusherRetract());
-        addSequential(new ArmsRetractConditionalStopMove(1));
-        addSequential(new RearPusherExtend());
-        addSequential(new Pause(2.0));
-        //addSequential(new FrontPusherClimbOver());
-        //addSequential(new RearPusherClimbOver());
-        //addSequential(new ArmsExtend());//not sure, but I think this should be deleted
+        super("PauseClimb");
+        RobotMap.enablePause();
     }
 
     // Called just before this Command runs the first time
@@ -45,7 +34,7 @@ public class ClimbLevelOne extends CommandGroup {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

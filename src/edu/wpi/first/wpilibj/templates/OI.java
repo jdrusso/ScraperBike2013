@@ -29,6 +29,7 @@ public class OI {
     private static Button climbPyramid;
     private static Button armExtend;
     private static Button armRetract;
+    private static Button pause;
     
     // Joystick 2
     private static Button shoot;
@@ -61,6 +62,7 @@ public class OI {
         climbPyramid = RobotMap.dButton9; // doesn't climb the pyramid right now
         armRetract = RobotMap.dButton10;
         armExtend = RobotMap.dButton11;
+        //pause = ; // TODO: add button for pause
         
         // Joystick 1 Actions
         shiftLowGear.whileHeld(new ShiftLowGear());
@@ -76,6 +78,7 @@ public class OI {
         climbPyramid.whenPressed(new RearPusherExtend());
         armRetract.whileHeld(new ArmsRetract());
         armExtend.whileHeld(new ArmsExtend(2)); 
+        //pause.whenPressed(new PauseClimb());
         
         // Joystick 2 Buttons (Shooting Joystick)
         shoot = RobotMap.shootTrigger;
