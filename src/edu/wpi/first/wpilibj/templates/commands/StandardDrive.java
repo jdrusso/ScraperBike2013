@@ -8,6 +8,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.ScraperBike;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
@@ -45,12 +46,13 @@ public class StandardDrive extends CommandBase{
 //        DriveTrain.getCommandLog().setInputs("" + gyro1.getAngle());
 //        DriveTrain.setMetaCommandOutputs();
         //drive.arcadeDrive(Joystick1);
-        //if (RobotMap.JoystickEnabled) {
+//TODO: if pause works, uncomment.
+//        if (RobotMap.isJoystickEnabled()) {
             DriveTrain.powerDriveTrain();
             
             DriveTrain.arcadeDrive(Joystick);
             
-        //}
+//        }
     
     }
 

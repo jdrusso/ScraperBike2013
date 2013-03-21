@@ -7,6 +7,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /** Stops a Command from running all other commands/subsystems after the pause 
  * for the set amount of time.
@@ -42,6 +43,7 @@ public class Pause extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return (time.get() > delayamount);
+        //return (time.get() > delayamount) && !RobotMap.isPaused();
     }
 
     // Called once after isFinished returns true

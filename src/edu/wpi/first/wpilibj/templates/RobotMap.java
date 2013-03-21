@@ -429,4 +429,36 @@ public class RobotMap {
             RobotMap.JoystickEnabled = false;
         }
     }
+    
+    /** Pause for climbing mode */
+    private static boolean Paused;
+    private static final Object PauseLock = new Object();
+    
+    /** Checks if the Robot Climb is paused
+     *
+     * @return True if robot is paused
+     */
+    public static boolean isPaused() {
+        synchronized (PauseLock) { 
+            return RobotMap.Paused;
+        }
+    }
+    
+    /** Pauses the climb of the robot
+     *
+     */
+    public static void enablePause() {
+        synchronized (PauseLock) {
+            RobotMap.Paused = true;
+        }
+    }
+    
+    /** Ends pause of the climb of the robot
+     *
+     */
+    public static void disablePause() {
+        synchronized (PauseLock) {
+            RobotMap.Paused = false;
+        }
+    }
 }
