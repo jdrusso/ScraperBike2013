@@ -21,8 +21,13 @@ public class ClimbLevelTwo extends CommandGroup {
     public ClimbLevelTwo() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        addSequential(new ArmsExtend(2));
-        addSequential(new ArmsRetract());
+        addSequential(new ArmsRetractConditionalStopMove(2));
+        addSequential(new FrontPusherExtend(1));
+        addSequential(new Pause(1.0));
+        addSequential(new RearPusherRetract());
+        addSequential(new ArmsExtendConditionalStopMove(2));
+        addSequential(new ArmsRetractConditionalStopMove(1));
+        addSequential(new RearPusherExtend());
         addSequential(new Pause(2.0));
         //addSequential(new FrontPusherClimbOver()); should we add this as part of the code?
         //addSequential(new RearPusherClimbOver()); should we add this as part of the code?

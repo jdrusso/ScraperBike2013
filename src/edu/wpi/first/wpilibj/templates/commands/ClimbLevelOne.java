@@ -28,6 +28,7 @@ public class ClimbLevelOne extends CommandGroup {
         addSequential(new ArmsExtendConditionalStopMove(2));
         addSequential(new FrontPusherRetract());
         addSequential(new ArmsRetractConditionalStopMove(1));
+        addSequential(new RearPusherExtend());
         addSequential(new Pause(2.0));
         //addSequential(new FrontPusherClimbOver());
         //addSequential(new RearPusherClimbOver());
