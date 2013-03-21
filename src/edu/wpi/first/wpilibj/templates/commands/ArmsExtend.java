@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.templates.subsystems.Arms;
 import edu.wpi.first.wpilibj.templates.subsystems.DriveTrain;
 
 /** Used to extend the arms in the forward direction.
+ * 
+ * This is meant to be used for the joystick control, not for the climb sequence.
  *
  * @author Team 2035 Programmers
  */
